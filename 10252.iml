@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.path="$MODULE_DIR$" external.root.project.path="$MODULE_DIR$" external.system.id="GRADLE" external.system.module.group="" external.system.module.version="1.0" type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="Spring" name="Spring">
+      <configuration>
+        <fileset id="fileset" name="Spring Application Context" removed="false">
+          <file>file://$MODULE_DIR$/src/main/java/springmvc-servlet.xml</file>
+          <file>file://$MODULE_DIR$/src/main/java/ApplicationContext.xml</file>
+        </fileset>
+      </configuration>
+    </facet>
+    <facet type="web" name="Web Gradle : SSM.war">
+      <configuration>
+        <descriptors>
+          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/src/main/webapp/WEB-INF/web.xml" />
+        </descriptors>
+        <webroots>
+          <root url="file://$MODULE_DIR$/src/main/webapp" relative="/" />
+        </webroots>
+        <sourceRoots>
+          <root url="file://$MODULE_DIR$/src/main/java" />
+          <root url="file://$MODULE_DIR$/src/main/resources" />
+        </sourceRoots>
+      </configuration>
+    </facet>
+  </component>
+  <component name="NewModuleRootManager" inherit-compiler-output="false">
+    <output url="file://$MODULE_DIR$/build/classes/main" />
+    <output-test url="file://$MODULE_DIR$/build/classes/test" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/resources" type="java-test-resource" />
+      <excludeFolder url="file://$MODULE_DIR$/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/build" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: javax.servlet-api-3.1.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: javax.servlet.jsp-api-2.3.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: standard-1.1.2" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: spring-context-4.1.1.RELEASE" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: spring-webmvc-portlet-4.1.1.RELEASE" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: spring-jdbc-4.1.1.RELEASE" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: spring-orm-4.1.1.RELEASE" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: spring-jms-4.1.1.RELEASE" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: spring-oxm-4.1.1.RELEASE" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: spring-instrument-4.1.1.RELEASE" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: spring-aspects-4.1.1.RELEASE" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: spring-context-support-4.1.1.RELEASE" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: sqlite-jdbc-3.8.5-pre1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: dom4j-1.6.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: commons-lang3-3.3.2" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: commons-io-2.4" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: commons-collections-3.2.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: commons-codec-1.9" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: commons-beanutils-1.9.2" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: commons-fileupload-1.3.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: commons-math3-3.3" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: commons-pool-1.6" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: commons-digester-2.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: commons-net-3.3" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: commons-email-1.3.3" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: commons-dbcp-1.4" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: ant-1.9.4" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: pinyin4j-2.5.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: slf4j-api-1.7.7" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jcl-over-slf4j-1.7.7" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jul-to-slf4j-1.7.7" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: log4j-1.2.17" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: log4jdbc-remix-0.2.7" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: spring-test-4.1.1.RELEASE" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: junit-4.11" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: javassist-3.18.2-GA" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: mybatis-3.2.8" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: mybatis-spring-1.2.2" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: asm-3.3.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: aspectjrt-1.8.2" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cglib-3.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jackson-core-asl-1.9.13" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: ehcache-core-2.6.9" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jackson-databind-2.4.3" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: spring-aop-4.1.1.RELEASE" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: spring-beans-4.1.1.RELEASE" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: spring-core-4.1.1.RELEASE" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: spring-expression-4.1.1.RELEASE" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: spring-web-4.1.1.RELEASE" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: spring-webmvc-4.1.1.RELEASE" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: spring-tx-4.1.1.RELEASE" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: spring-messaging-4.1.1.RELEASE" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: aspectjweaver-1.8.2" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-tools-common-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-tools-validator-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-tools-wsdlto-core-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-tools-wsdlto-frontend-javascript-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-tools-misctools-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-tools-corba-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-tools-wsdlto-databinding-jaxb-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-tools-wsdlto-frontend-jaxws-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-tools-wadlto-jaxrs-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-tools-java2ws-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-xjc-runtime-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-xjc-dv-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-xjc-ts-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-xjc-bug671-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-xjc-boolean-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-xjc-javadoc-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-core-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-rt-features-clustering-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-rt-management-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-rt-transports-local-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-rt-transports-http-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-rt-transports-udp-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-rt-transports-http-hc-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-rt-transports-http-jetty-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-rt-transports-http-netty-server-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-rt-transports-http-netty-client-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: slf4j-jdk14-1.7.7" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-rt-transports-jms-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-rt-bindings-soap-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-rt-bindings-corba-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-rt-bindings-xml-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-rt-bindings-object-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-rt-bindings-coloc-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-rt-databinding-aegis-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-rt-databinding-xmlbeans-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-rt-ws-addr-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-rt-ws-rm-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-rt-ws-policy-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-rt-ws-mex-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-rt-ws-security-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-rt-frontend-jaxws-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-rt-frontend-js-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-rt-frontend-simple-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-rt-frontend-jaxrs-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-rt-rs-extension-providers-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-rt-rs-extension-search-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-rt-rs-security-cors-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-rt-rs-security-oauth-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-rt-rs-security-oauth2-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-rt-rs-security-xml-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-rt-rs-security-sso-saml-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-rt-javascript-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-services-sts-core-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-services-wsn-api-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-services-wsn-core-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-services-ws-discovery-api-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-services-ws-discovery-service-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jettison-1.3.5" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: FastInfoset-1.2.13" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: xml-apis-1.0.b2" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: mail-1.4.5" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: activation-1.1.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: ant-launcher-1.9.4" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: asm-4.2" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jackson-annotations-2.4.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jackson-core-2.4.3" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: aopalliance-1.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: velocity-1.7" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: wsdl4j-1.6.3" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: xmlschema-core-2.1.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-rt-wsdl-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: antlr-2.7.7" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: xml-resolver-1.2" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-rt-rs-service-description-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: geronimo-jaxws_2.2_spec-1.2" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jaxb-api-2.2.9" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: woodstox-core-asl-4.4.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: mina-core-2.0.7" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: httpcore-nio-4.3.2" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: httpasyncclient-4.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jetty-server-8.1.15.v20140411" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jetty-security-8.1.15.v20140411" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: geronimo-servlet_3.0_spec-1.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: netty-codec-http-4.0.18.Final" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: geronimo-jms_1.1_spec-1.1.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: geronimo-jta_1.1_spec-1.1.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-rt-databinding-jaxb-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: xmlbeans-2.6.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: wss4j-policy-2.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: neethi-3.0.3" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-rt-security-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: ehcache-2.8.3" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: wss4j-ws-security-dom-2.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: wss4j-ws-security-stax-2.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: wss4j-ws-security-policy-stax-2.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: js-1.7R2" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: javax.ws.rs-api-2.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: javax.annotation-api-1.2" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: cxf-rt-rs-client-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: oauth-provider-20100527" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: activemq-broker-5.9.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: stax2-api-3.1.4" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: httpcore-4.3.2" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: httpclient-4.3.2" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jetty-continuation-8.1.15.v20140411" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jetty-http-8.1.15.v20140411" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: netty-codec-4.0.18.Final" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: netty-handler-4.0.18.Final" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: wss4j-ws-security-common-2.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: xmlsec-2.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: opensaml-2.6.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: wss4j-bindings-2.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: oauth-20100527" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: activemq-client-5.9.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: activemq-openwire-legacy-5.9.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jetty-io-8.1.15.v20140411" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: javax.servlet-3.0.0.v201112011016" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: netty-transport-4.0.18.Final" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: netty-buffer-4.0.18.Final" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jasypt-1.9.2" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: geronimo-javamail_1.4_spec-1.7.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: openws-1.5.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: esapi-2.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: joda-time-2.2" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: serializer-2.7.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: hawtbuf-1.9" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: geronimo-j2ee-management_1.1_spec-1.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jetty-util-8.1.15.v20140411" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: netty-common-4.0.18.Final" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: xmltooling-1.4.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: hamcrest-core-1.3" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: commons-logging-1.1.3" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jaxb-xjc-2.2.10-b140310.1920" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jaxb-impl-2.2.10-b140310.1920" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jaxb-core-2.2.10-b140310.1920" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: commons-lang-2.6" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: stax-api-1.0-2" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: mybatis-generator-core-1.3.2" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: mysql-connector-java-5.1.33" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: unresolved_dependency___javax_servlet_jstl_jstl_1_2" level="project" />
+  </component>
+</module>
+
