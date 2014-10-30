@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<!-- mybatis-generator配置文件 -->
+<generatorConfiguration >
+<classPathEntry location="F:/eclipse-jee-luna_project/Spring_Registration_SpringMVC/WebContent/WEB-INF/lib/mysql-connector-java-3.1.13-bin.jar" />
+  <context id="context1" >
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost/registration" userId="root" password="000000" />
+    <javaModelGenerator targetPackage="com.student.registration.model" targetProject="Spring_Registration_SSM" />
+    <sqlMapGenerator targetPackage="com.student.registration.mapper" targetProject="Spring_Registration_SSM" />
+    <javaClientGenerator targetPackage="com.student.registration.dao" targetProject="Spring_Registration_SSM" type="XMLMAPPER" />
+    <table schema="" tableName="user" ></table>
+  </context>
+</generatorConfiguration>

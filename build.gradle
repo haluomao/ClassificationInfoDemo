@@ -1,0 +1,150 @@
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'com.bmuschko.tomcat'
+apply plugin: 'cargo'
+apply plugin: 'idea'
+
+
+version = '1.0'
+
+
+[compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
+
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.bmuschko:gradle-tomcat-plugin:2.0'
+        classpath 'org.gradle.api.plugins:gradle-cargo-plugin:1.5.1'
+    }
+}
+
+
+repositories {
+    mavenCentral()
+}
+ext {
+    springVersion = '4.1.1.RELEASE'
+    slf4jVersion = '1.7.7'
+    tomcatVersion = '8.0.14'
+    cargoVersion = '1.4.5'
+}
+
+war {
+    baseName = 'SSM'
+    version = ''
+}
+
+dependencies {
+    compile(
+//            spring
+            [group: 'org.springframework', name: 'spring-context', version: springVersion],
+            [group: 'org.springframework', name: 'spring-webmvc-portlet', version: springVersion],
+            [group: 'org.springframework', name: 'spring-jdbc', version: springVersion],
+            [group: 'org.springframework', name: 'spring-orm', version: springVersion],
+            [group: 'org.springframework', name: 'spring-jms', version: springVersion],
+            [group: 'org.springframework', name: 'spring-oxm', version: springVersion],
+            [group: 'org.springframework', name: 'spring-instrument', version: springVersion],
+            [group: 'org.springframework', name: 'spring-aspects', version: springVersion],
+            [group: 'org.springframework', name: 'spring-context-support', version: springVersion],
+//            database driver
+            [group: 'org.xerial', name: 'sqlite-jdbc', version: '3.8.5-pre1'],
+//            cxf
+            [group: 'org.apache.cxf', name: 'apache-cxf', version: '3.0.1'],
+//            dom4j
+            [group: 'dom4j', name: 'dom4j', version: '1.6.1'],
+//            apache
+            [group: 'org.apache.commons', name: 'commons-lang3', version: '3.3.2'],
+            [group: 'commons-io', name: 'commons-io', version: '2.4'],
+            [group: 'commons-collections', name: 'commons-collections', version: '3.2.1'],
+            [group: 'commons-codec', name: 'commons-codec', version: '1.9'],
+            [group: 'commons-beanutils', name: 'commons-beanutils', version: '1.9.2'],
+            [group: 'commons-fileupload', name: 'commons-fileupload', version: '1.3.1'],
+            [group: 'org.apache.commons', name: 'commons-math3', version: '3.3'],
+            [group: 'commons-pool', name: 'commons-pool', version: '1.6'],
+            [group: 'commons-digester', name: 'commons-digester', version: '2.1'],
+            [group: 'commons-net', name: 'commons-net', version: '3.3'],
+            [group: 'org.apache.commons', name: 'commons-email', version: '1.3.3'],
+            [group: 'commons-dbcp', name: 'commons-dbcp', version: '1.4'],
+
+//            ant
+            [group: 'org.apache.ant', name: 'ant', version: '1.9.4'],
+//            pinyin4j
+            [group: 'com.belerweb', name: 'pinyin4j', version: '2.5.0'],
+//            slf4j
+            [group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion],
+//            [group: 'org.slf4j', name: 'slf4j-log4j12', version: slf4jVersion],
+            [group: 'org.slf4j', name: 'jcl-over-slf4j', version: slf4jVersion],
+            [group: 'org.slf4j', name: 'jul-to-slf4j', version: slf4jVersion],
+//            log4j
+            [group: 'log4j', name: 'log4j', version: '1.2.17'],
+//            log4jdbc-remix
+            [group: 'org.lazyluke', name: 'log4jdbc-remix', version: '0.2.7'],
+            [group: 'org.springframework', name: 'spring-test', version: springVersion],
+            [group: 'junit', name: 'junit', version: '4.11'],
+//            mybatis
+            [group: 'org.javassist', name: 'javassist', version: '3.18.2-GA'],
+            [group: 'org.mybatis', name: 'mybatis', version: '3.2.8'],
+            [group: 'org.mybatis', name: 'mybatis-spring', version: '1.2.2'],
+            [group: 'org.mybatis.generator', name: 'mybatis-generator-core', version: '1.3.2'],
+            [group: 'asm', name: 'asm', version: '3.3.1'],
+            [group: 'org.aspectj', name: 'aspectjrt', version: '1.8.2'],
+            [group: 'cglib', name: 'cglib', version: '3.1'],
+            [group: 'org.codehaus.jackson', name: 'jackson-core-asl', version: '1.9.13'],
+            [group: 'net.sf.ehcache', name: 'ehcache-core', version: '2.6.9'],
+            [group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.4.3'],
+            [group: 'mysql', name: 'mysql-connector-java', version: '5.1.33']
+
+    )
+
+    testCompile(
+            [group: 'org.springframework', name: 'spring-test', version: springVersion],
+            [group: 'junit', name: 'junit', version: '4.11']
+    )
+
+    providedCompile(
+            [group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'],
+            [group: 'javax.servlet.jsp', name: 'javax.servlet.jsp-api', version: '2.3.1'],
+            [group: 'javax.servlet:jstl', name: 'jstl', version: '1.2'],
+            //[group: 'javax.servlet.jsp.jstl', name: 'jstl', version: '1.2'],
+            [group: 'taglibs', name: 'standard', version: '1.1.2']
+    )
+
+    tomcat(
+            [group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: tomcatVersion],
+
+            [group: 'org.apache.tomcat.embed', name: 'tomcat-embed-logging-juli', version: tomcatVersion]
+    )
+    tomcat(group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: tomcatVersion) {
+        exclude group: 'org.eclipse.jdt.core.compiler', module: 'ecj'
+    }
+
+    cargo(
+            [group: 'org.codehaus.cargo', name: 'cargo-core-uberjar', version: cargoVersion],
+            [group: 'org.codehaus.cargo', name: 'cargo-ant', version: cargoVersion],
+            [group: 'msv', name: 'msv', version: '20050913']
+    )
+}
+
+cargo {
+    containerId = 'tomcat7x'
+    port = 9090
+
+    deployable {
+        context = 'eam'
+    }
+
+    local {
+        homeDir = file('D:/Java/apache-tomcat-7.0.56')
+        outputFile = file('build/output.log')
+        timeout = 60000
+
+        containerProperties {
+            property 'cargo.tomcat.ajp.port', 9099
+        }
+    }
+}
