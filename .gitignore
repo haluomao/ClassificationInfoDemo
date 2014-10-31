@@ -1,7 +1,9 @@
 .idea/*
 .gradle/*
-build/*
+
 out/*
+build/*
+build.gradle
 
 Thumbs.db
 .DS_Store
