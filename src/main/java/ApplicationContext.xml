@@ -26,6 +26,7 @@
 	<aop:aspectj-autoproxy />  <!-- 支持aop注解 -->
 	<tx:annotation-driven />
 	<cache:annotation-driven cache-manager="cacheManager" />  <!-- 支持缓存注解 -->
+
 	
 	<bean id="mySqlDataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
@@ -59,7 +60,7 @@
 		<property name="typeAliasesPackage" value="com.student.registration.model" />
 		<property name="configLocation" value="classpath:mybatis-config.xml" />
 		<!-- 显式指定Mapper文件位置 -->
-		<property name="mapperLocations" value="classpath:com/student/registration/mapper/UserMapper.xml" />
+		<property name="mapperLocations" value="classpath:com/student/registration/mapper/*.xml" />
 	</bean>
 
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
