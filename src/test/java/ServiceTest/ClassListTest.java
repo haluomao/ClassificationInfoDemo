@@ -9,8 +9,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.util.Objects;
-import java.util.Random;
+import java.util.*;
 
 /**
  * Created by Administrator on 2014/10/30.
@@ -20,11 +19,7 @@ public class ClassListTest {
 	@Test
 	public void addClassListTest(){
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("ApplicationContext.xml");
-//		ClassListService classListService = new ClassListServiceImpl();
-//		System.out.print(ctx.getBean("ClassListServiceImpl").);
-
 		ClassListService classListService = (ClassListService)ctx.getBean("ClassListServiceImpl");
-//		UserService userService = (UserService) ctx.getBean("UserServiceImpl");
 
 		int count = 99;
 		ClassList cl;
@@ -42,6 +37,7 @@ public class ClassListTest {
 			cl.setCreateMan("创建人" + rand);
 			cl.setModifyMan("修改人" + rand);
 			cl.setClassType("t");
+			cl.setCreateDate(new Date());
 
             System.out.println(cl.getClassPid()+" "+cl.getClassName()+
                     " "+cl.getDefaultStatName()+" "+cl.getDefaultIsCheck()+" "+cl.getCreateMan());
@@ -49,6 +45,18 @@ public class ClassListTest {
 			int res =1;
             //= classListService.addClassList(cl);
             System.out.println("res:"+res);
+		}
+	}
+
+	@Test
+	public void findClassListTest(){
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("ApplicationContext.xml");
+		ClassListService classListService = (ClassListService)ctx.getBean("ClassListServiceImpl");
+		List<ClassList> cl_list = classListService.findClassList();
+		Iterator itr = cl_list.iterator();
+		while (itr.hasNext()) {
+			ClassList cl = (ClassList) itr.next();
+			System.out.println(cl.getClassName() + " | " + cl.getCreateDate() + " | " + cl.getModifyDate());
 		}
 	}
 
