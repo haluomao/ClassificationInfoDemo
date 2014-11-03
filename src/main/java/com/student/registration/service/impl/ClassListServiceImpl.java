@@ -26,8 +26,8 @@ public class ClassListServiceImpl implements ClassListService{
 	}
 
 	@Override
-	public void addClassList(ClassList cl) {
-		classListMapper.myinsert(cl);
+	public int addClassList(ClassList cl) {
+		return classListMapper.myinsert(cl);
 	}
 
 	public ClassListExample getClassListExample() {

@@ -26,24 +26,28 @@ public class ClassListTest {
 		ClassListService classListService = (ClassListService)ctx.getBean("ClassListServiceImpl");
 //		UserService userService = (UserService) ctx.getBean("UserServiceImpl");
 
-		int count = 100;
+		int count = 99;
 		ClassList cl;
 		for(int i = 0; i<count; i++)
 		{
 			Random r = new Random();
+            int rand = r.nextInt(1000000);
 			cl = new ClassList();
-			cl.setClassPid(r.nextInt());
-			cl.setClassName("名称" + r.nextInt());
-			cl.setDefaultStatName("状态名称" + r.nextInt());
+			cl.setClassPid(rand);
+			cl.setClassName("名称" + rand);
+			cl.setDefaultStatName("状态名称" + rand);
 			cl.setDefaultIsCheck("1");
-			cl.setDefaultUserYear(r.nextInt());
+			cl.setDefaultUserYear(rand);
 			cl.setDeprTypeId(1);
-			cl.setCreateMan("创建人" + r.nextInt());
-			cl.setModifyMan("修改人" + r.nextInt());
+			cl.setCreateMan("创建人" + rand);
+			cl.setModifyMan("修改人" + rand);
 			cl.setClassType("t");
 
-			classListService.addClassList(cl);
+            System.out.println(cl.getClassPid()+" "+cl.getClassName()+
+                    " "+cl.getDefaultStatName()+" "+cl.getDefaultIsCheck()+" "+cl.getCreateMan());
 
+			int res = classListService.addClassList(cl);
+            System.out.println("res:"+res);
 		}
 	}
 
