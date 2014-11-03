@@ -62,28 +62,20 @@ public class ClassListTest {
 
 	}
 	@Test
-	public void Query() throws Exception {
-//		String username = "username_2";
-//		String password = "password_2";
-//		UserService um = new UserServiceImpl();
-//		User u = new User();
-//		u.setUsername(username);
-//		u.setPassword(password);
-//		if(!um.exists(u)){
-//			um.add(u);
-//			u.setUsername(username);
-//			u.setPassword(password);
-//			boolean exists = um.exists(u);
-//			Assert.assertEquals(true,exists);   //执行测试的预期结果与实际结果是否符合
-//		}
-//		else
-//			Assert.fail("not added");
-//		//fail("Not yet implemented");
-
+	public void TestSelectByName() throws Exception {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("ApplicationContext.xml");
-		UserService userService = (UserService)ctx.getBean("UserServiceImpl");
-
-//		userService.query();
-
+		ClassListService classListService = (ClassListService)ctx.getBean("ClassListServiceImpl");
+		System.out.println(classListService.selectByName("467411"));;
 	}
+
+	@Test
+	public void TestlistByLimit() throws Exception {
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("ApplicationContext.xml");
+		ClassListService classListService = (ClassListService)ctx.getBean("ClassListServiceImpl");
+		System.out.println(classListService.listByLimit(0,1,0));;
+	}
+
+
+
+
 }

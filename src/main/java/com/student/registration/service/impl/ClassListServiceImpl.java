@@ -7,6 +7,7 @@ import com.student.registration.service.ClassListService;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,12 +33,31 @@ public class ClassListServiceImpl implements ClassListService{
 
     @Override
     public List<ClassList> listByLimit(int begin, int offset, int type) {
-        return null;
+		classListExample.setOrderByClause("desc");
+		List<ClassList> result = classListMapper.selectByExample(classListExample);
+		List<ClassList> classlist = new ArrayList<ClassList>();
+		int count = 0;
+		for(int i = begin; i<result.size(); i++)
+		{
+			if (count >= offset)
+				break;
+			else{
+				classlist.add(result.get(i));
+//				System.out.println(result.get(i));
+				count++;
+//				System.out.println("count:" + count);
+			}
+		}
+		classListExample.clear();
+		return classlist;
     }
 
     @Override
     public List<ClassList> selectByName(String name) {
-        return null;
+		classListExample.createCriteria().andClassNameLike("%" + name + "%");
+		List<ClassList> classlist = classListMapper.selectByExample(classListExample);
+		classListExample.clear();
+        return classlist;
     }
 
     public ClassListExample getClassListExample() {
