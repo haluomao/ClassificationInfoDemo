@@ -13,4 +13,20 @@ public interface ClassListService {
 
 	public int addClassList(ClassList cl);
 
+    /**
+     * 返回从begin开始，个数为offset的对象列表，type 0表示正序，1表示逆序。
+     * @param begin
+     * @param offset
+     * @param type
+     * @return
+     */
+    public List<ClassList> listByLimit(int begin, int offset, int type);
+
+    /**
+     * 查询名字为name的对象列表，可以模糊搜索。
+     * @param name
+     * @return
+     */
+    public List<ClassList> selectByName(String name);
+
 }

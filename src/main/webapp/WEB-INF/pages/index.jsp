@@ -1,5 +1,6 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="zh-cn">
 <head>
@@ -31,7 +32,7 @@
 		<div style="height:10px;"></div>
         <div id="welcome" class="container-fluid">
             <div class="row">
-                <div class="col-md-5 col-md-offset-1"><span>您好，{username}|</span>
+                <div class="col-md-5 col-md-offset-1"><span>您好，${user.username}|</span>
                     <a href="logout">注销</a></div>
                 <div class="col-md-2 col-md-offset-4">
                     <a href="#">帮助中心</a>

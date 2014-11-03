@@ -30,7 +30,19 @@ public class ClassListServiceImpl implements ClassListService{
 		return classListMapper.myinsert(cl);
 	}
 
-	public ClassListExample getClassListExample() {
+    @Override
+    public List<ClassList> listByLimit(int begin, int offset, int type) {
+        //TO DO
+        return null;
+    }
+
+    @Override
+    public List<ClassList> selectByName(String name) {
+        //TO DO
+        return null;
+    }
+
+    public ClassListExample getClassListExample() {
 		return classListExample;
 	}
 
