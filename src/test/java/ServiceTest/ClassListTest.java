@@ -58,8 +58,6 @@ public class ClassListTest {
 //			System.out.println(cl.getClassName() + " | " + cl.getCreateDate() + " | " + cl.getModifyDate());
 //		}
 
-
-
 	}
 	@Test
 	public void TestSelectByName() throws Exception {
@@ -72,10 +70,7 @@ public class ClassListTest {
 	public void TestlistByLimit() throws Exception {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("ApplicationContext.xml");
 		ClassListService classListService = (ClassListService)ctx.getBean("ClassListServiceImpl");
-		System.out.println(classListService.listByLimit(0,1,0));;
+		System.out.println(classListService.listByLimit(90,10,0));
 	}
-
-
-
 
 }

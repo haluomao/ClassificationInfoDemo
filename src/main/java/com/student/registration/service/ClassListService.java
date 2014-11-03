@@ -27,6 +27,14 @@ public interface ClassListService {
      * @param name
      * @return
      */
-    public List<ClassList> selectByName(String name);
+    public List<ClassList> selectByClassName(String name);
+
+	public int modifyOneRecord(ClassList classList);
+
+	public int deleteByClassId(int classId);
+
+	public List<ClassList> selectByClassNameAndCreateMan(String className,String createMan);
+
+
 
 }

@@ -31,44 +31,81 @@ public class ClassListServiceImpl implements ClassListService{
 		return 0;
 	}
 
-    @Override
-    public List<ClassList> listByLimit(int begin, int offset, int type) {
-	switch(type){
-		case 0:
-			classListExample.setOrderByClause("CLASS_ID");
-		case 1:
-			classListExample.setOrderByClause("CLASS_ID DESC");
-		default:
-			classListExample.setOrderByClause("CLASS_ID");
+
+//    public List<ClassList> listByLimit(int begin, int offset, int type) {
+//		switch(type){
+//			case 0:
+//				classListExample.setOrderByClause("CLASS_ID");
+//			case 1:
+//				classListExample.setOrderByClause("CLASS_ID DESC");
+//			default:
+//				classListExample.setOrderByClause("CLASS_ID");
+//		}
+//
+//		List<ClassList> result = classListMapper.selectByExample(classListExample);
+//		List<ClassList> classlist = new ArrayList<ClassList>();
+//		int count = 0;
+//		if(begin > result.size())  // 如果begin大于记录总数
+//			return classlist;
+//		for(int i = begin; i<result.size(); i++)
+//		{
+//			if (count >= offset)
+//				break;
+//			else{
+//				classlist.add(result.get(i));
+//				count++;
+//			}
+//		}
+//		classListExample.clear();
+//		return classlist;
+//    }
+	@Override
+	public List<ClassList> listByLimit(int begin, int offset, int type) {
+		switch(type){
+			case 0:
+				classListExample.setOrderByClause("CLASS_ID");
+			case 1:
+				classListExample.setOrderByClause("CLASS_ID DESC");
+			default:
+				classListExample.setOrderByClause("CLASS_ID");
+		}
+
+		classListExample.setLimit(begin);
+		classListExample.setOffset(offset);
+		List<ClassList> classlist = classListMapper.selectByExampleAndLimit(classListExample);
+		return classlist;
 	}
 
-		List<ClassList> result = classListMapper.selectByExample(classListExample);
-		List<ClassList> classlist = new ArrayList<ClassList>();
-		int count = 0;
-		for(int i = begin; i<result.size(); i++)
-		{
-			if (count >= offset)
-				break;
-			else{
-				classlist.add(result.get(i));
-//				System.out.println(result.get(i));
-				count++;
-//				System.out.println("count:" + count);
-			}
-		}
-		classListExample.clear();
-		return classlist;
-    }
 
-    @Override
-    public List<ClassList> selectByName(String name) {
+
+	@Override
+    public List<ClassList> selectByClassName(String name) {
 		classListExample.createCriteria().andClassNameLike("%" + name + "%");
 		List<ClassList> classlist = classListMapper.selectByExample(classListExample);
 		classListExample.clear();
         return classlist;
     }
 
-    public ClassListExample getClassListExample() {
+	@Override
+	public int modifyOneRecord(ClassList classList) {
+		return classListMapper.updateByPrimaryKey(classList);
+	}
+
+	@Override
+	public int deleteByClassId(int classId) {
+		return classListMapper.deleteByPrimaryKey(classId);
+	}
+
+	@Override
+	public List<ClassList> selectByClassNameAndCreateMan(String className,String createMan) {
+		classListExample.createCriteria().andClassNameLike("%" + className + "%").andClassNameLike("%" + createMan + "%");
+		List<ClassList> classlist = classListMapper.selectByExample(classListExample);
+		classListExample.clear();
+		return classlist;
+	}
+
+
+	public ClassListExample getClassListExample() {
 		return classListExample;
 	}
 
