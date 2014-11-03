@@ -19,20 +19,28 @@ public class ClassListServiceImpl implements ClassListService{
 	ClassListExample classListExample;
 	ClassListMapper classListMapper;
 
+
 	@Override
 	public List<ClassList> findClassList() {
-		List<ClassList> cl_list = classListMapper.selectByExample(classListExample);
-		classListExample.clear();
-		return cl_list;
+		return null;
 	}
 
 	@Override
 	public int addClassList(ClassList cl) {
-		return classListMapper.insert(cl);
+		return 0;
 	}
 
+    @Override
+    public List<ClassList> listByLimit(int begin, int offset, int type) {
+        return null;
+    }
 
-	public ClassListExample getClassListExample() {
+    @Override
+    public List<ClassList> selectByName(String name) {
+        return null;
+    }
+
+    public ClassListExample getClassListExample() {
 		return classListExample;
 	}
 

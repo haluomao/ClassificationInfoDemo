@@ -6,6 +6,8 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.ModelMap;
@@ -23,7 +25,7 @@ import com.student.registration.vo.UserFormBean;
 @Scope("prototype")
 //@SessionAttributes({"arg3"})
 public class UserController implements Controller{
-
+    public static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	private UserService userService;
 
 	private List<User> users;
@@ -112,6 +114,7 @@ public class UserController implements Controller{
 	public String reg4(UserFormBean userFormBean,HttpServletRequest req,ModelMap map) throws Exception {
 		System.out.println("HelloController.reg4()");
 		System.out.println(req.getRequestURI());
+        logger.info("reg4!!!!");
 		//	req.setAttribute("a", "aaaa");  //设置返回数据
 		req.setAttribute("arg1", "requestValue");
 		req.getSession().setAttribute("arg2", "sessionValue");
@@ -129,7 +132,7 @@ public class UserController implements Controller{
 			userService.add(u);
 			return "registerSuccess";  //跳转到registerSuccess.jsp;
 	}
-	
+
 	@Override  //不带参数访问时的默认方法
 	public ModelAndView handleRequest(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		// TODO Auto-generated method stub

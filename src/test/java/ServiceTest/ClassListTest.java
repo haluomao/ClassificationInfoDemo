@@ -40,7 +40,8 @@ public class ClassListTest {
             System.out.println(cl.getClassPid()+" "+cl.getClassName()+
                     " "+cl.getDefaultStatName()+" "+cl.getDefaultIsCheck()+" "+cl.getCreateMan());
 
-			int res = classListService.addClassList(cl);
+			int res =1;
+            //= classListService.addClassList(cl);
             System.out.println("res:"+res);
 		}
 	}
