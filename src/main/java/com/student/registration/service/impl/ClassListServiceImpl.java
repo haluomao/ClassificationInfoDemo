@@ -33,7 +33,15 @@ public class ClassListServiceImpl implements ClassListService{
 
     @Override
     public List<ClassList> listByLimit(int begin, int offset, int type) {
-		classListExample.setOrderByClause("desc");
+	switch(type){
+		case 0:
+			classListExample.setOrderByClause("CLASS_ID");
+		case 1:
+			classListExample.setOrderByClause("CLASS_ID DESC");
+		default:
+			classListExample.setOrderByClause("CLASS_ID");
+	}
+
 		List<ClassList> result = classListMapper.selectByExample(classListExample);
 		List<ClassList> classlist = new ArrayList<ClassList>();
 		int count = 0;
