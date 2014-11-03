@@ -579,4 +579,35 @@ public class ClassList {
 	public void setClassType(String classType) {
 		this.classType = classType;
 	}
+
+	@Override
+	public String toString() {
+		return "ClassList{" +
+				"classId=" + classId +
+				", classPid=" + classPid +
+				", classCode='" + classCode + '\'' +
+				", classNo='" + classNo + '\'' +
+				", className='" + className + '\'' +
+				", assistantSign='" + assistantSign + '\'' +
+				", defaultStatName='" + defaultStatName + '\'' +
+				", defaultIsCheck='" + defaultIsCheck + '\'' +
+				", defaultUserYear=" + defaultUserYear +
+				", defaultIsDep='" + defaultIsDep + '\'' +
+				", defaultRemainValue=" + defaultRemainValue +
+				", defaultAssetKindId=" + defaultAssetKindId +
+				", deprTypeId=" + deprTypeId +
+				", isEnabled='" + isEnabled + '\'' +
+				", createDate=" + createDate +
+				", createMan='" + createMan + '\'' +
+				", modifyDate=" + modifyDate +
+				", modifyMan='" + modifyMan + '\'' +
+				", explaination='" + explaination + '\'' +
+				", sort=" + sort +
+				", isMeasure='" + isMeasure + '\'' +
+				", isMaintain='" + isMaintain + '\'' +
+				", isOverhaul='" + isOverhaul + '\'' +
+				", isYearCheck='" + isYearCheck + '\'' +
+				", classType='" + classType + '\'' +
+				'}';
+	}
 }
