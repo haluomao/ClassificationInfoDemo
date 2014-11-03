@@ -27,10 +27,20 @@ public class ClassListServiceImpl implements ClassListService{
 
 	@Override
 	public int addClassList(ClassList cl) {
-		return classListMapper.myinsert(cl);
+		return 0;
 	}
 
-	public ClassListExample getClassListExample() {
+    @Override
+    public List<ClassList> listByLimit(int begin, int offset, int type) {
+        return null;
+    }
+
+    @Override
+    public List<ClassList> selectByName(String name) {
+        return null;
+    }
+
+    public ClassListExample getClassListExample() {
 		return classListExample;
 	}
 
