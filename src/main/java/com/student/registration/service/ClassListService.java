@@ -11,6 +11,6 @@ public interface ClassListService {
 
 	public List<ClassList> findClassList();
 
-	public void addClassList(ClassList cl);
+	public int addClassList(ClassList cl);
 
 }
