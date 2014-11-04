@@ -1,6 +1,8 @@
 package com.student.registration.controller;
 
+import com.student.registration.model.ClassList;
 import com.student.registration.model.User;
+import com.student.registration.service.ClassListService;
 import com.student.registration.service.UserService;
 import com.student.registration.vo.UserFormBean;
 import org.slf4j.Logger;
@@ -22,6 +24,18 @@ import java.util.List;
 public class AccountController {
     public static final Logger logger = LoggerFactory.getLogger(AccountController.class);
 
+    private ClassListService classListService;
+
+    @Resource(name="ClassListServiceImpl")
+    public void setClassListService(ClassListService classListService) {
+        this.classListService = classListService;
+    }
+
+    public ClassListService getClassListService() {
+        return classListService;
+    }
+
+
     private UserService userService;
 
 	public UserService getUserService() {
@@ -36,32 +50,21 @@ public class AccountController {
 	@RequestMapping("login.do")
 	public String login(UserFormBean userFormBean,HttpServletRequest req, ModelMap map) throws Exception
     {
-//		System.out.println("Login");
         logger.info("login method");
-		// System.out.println(req.getRequestURI());
-
-//		req.setAttribute("arg1", "requestValue");
-//		req.getSession().setAttribute("arg2", "sessionValue");
-//		map.addAttribute("arg3", "ModelMapValue3");
-//		map.addAttribute("arg4", "ModelMapValue4");
-
 
         //获取
         User u= new User();
         u.setUsername(userFormBean.getUsername());
         u.setPassword(userFormBean.getPassword());
 
-
-
         System.out.println("username:" + userFormBean.getUsername());
         System.out.println("password:" + userFormBean.getPassword());
 
         if(userService.exists(u)){
-            System.out.println("user exist.");
             logger.info("user exist.");
             map.put("user", u);
-            //List<>
-            //map.put("objList", objList);
+            List<ClassList> objList =classListService.listByLimit(0,20,0);
+            map.put("objList", objList);
             return "index";
         }
 

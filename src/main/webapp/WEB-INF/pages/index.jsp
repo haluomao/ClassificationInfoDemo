@@ -26,14 +26,14 @@
 	</style>
 </head>
 
-<body>
+<body style="overflow:auto;">
     <!-- User information part -->
 	<div id="userinfo">
 		<div style="height:10px;"></div>
         <div id="welcome" class="container-fluid">
             <div class="row">
                 <div class="col-md-5 col-md-offset-1"><span>您好，${user.username}|</span>
-                    <a href="logout">注销</a></div>
+                    <a href="#">注销</a></div>
                 <div class="col-md-2 col-md-offset-4">
                     <a href="#">帮助中心</a>
                 </div>
@@ -62,16 +62,28 @@
         <br>
         <div class="row"><div class="col-md-10 col-md-offset-1"><label>检索条件</label></div></div>
         <div class="row">
+            <form method="post" action="searchAction">
             <div class="col-md-11 col-md-offset-1">
-                <form>
-                    资产分类：<input type="text" />
-                    保管人：<input type="text" />
+
+                    资产分类：<input type="text" name="className"/>
+                    保管人：<input type="text" name="createMan" />
                     <button type="submit">检索</button>
                     <button type="reset">重置</button>
-                </form>
                 <br><br>
                 </div>
+            </form>
             </div>
+        <div class="row"><div class="col-md-10 col-md-offset-1"><label>测试Ajax</label></div></div>
+        <div class="row">
+            <div class="col-md-11 col-md-offset-1">
+                资产分类：<input type="text" id="classNameAjax"/>
+                保管人：<input type="text" name="createMan" />
+                <button onclick="sendAjaxSearch('ajaxSearchAction', 'classNameAjax','ajaxRes')">检索</button>
+                <br>
+                <div id="ajaxRes"></div>
+                <br>
+            </div>
+        </div>
 	</div>
 	<div id="resultDiv" class="container-fluid">
         <div class="col-md-10 col-md-offset-1">
@@ -132,48 +144,74 @@
 						<div class="widget-body-toolbar">
 
 						</div>
-						<div id="datatable_tabletools_wrapper" class="dataTables_wrapper form-inline" role="grid"><div class="dt-top-row"><div class="DTTT btn-group"><a class="btn btn-default btn-sm DTTT_button_copy" id="ToolTables_datatable_tabletools_0"><span>Copy</span><div style="position: absolute; left: 0px; top: 0px; width: 50px; height: 31px; z-index: 99;"><embed id="ZeroClipboard_TableToolsMovie_5" src="js/plugin/datatables/media/swf/copy_csv_xls_pdf.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="50" height="31" name="ZeroClipboard_TableToolsMovie_5" align="middle" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=5&amp;width=50&amp;height=31" wmode="transparent"></div></a><a class="btn btn-default btn-sm DTTT_button_print" id="ToolTables_datatable_tabletools_1" title="View print view"><span>Print</span></a><a class="btn btn-default btn-sm DTTT_button_collection" id="ToolTables_datatable_tabletools_2"><span>Save <span class="caret"></span></span></a></div><div id="datatable_tabletools_length" class="dataTables_length"><span class="smart-form"><label class="select" style="width:60px"><select size="1" name="datatable_tabletools_length" aria-controls="datatable_tabletools"><option value="10" selected="selected">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select><i></i></label></span></div><div class="dataTables_filter" id="datatable_tabletools_filter"><div class="input-group"><span class="input-group-addon"><i class="fa fa-search"></i></span><input class="form-control" placeholder="Filter" type="text" aria-controls="datatable_tabletools"></div></div></div><div class="dt-wrapper"><table id="datatable_tabletools" class="table table-striped table-hover dataTable" aria-describedby="datatable_tabletools_info">
+						<div id="datatable_tabletools_wrapper" class="dataTables_wrapper form-inline" role="grid"><div class="dt-top-row"><div class="DTTT btn-group"><a class="btn btn-default btn-sm DTTT_button_copy" id="ToolTables_datatable_tabletools_0"><span>Copy</span>
+                            <div style="position: absolute; left: 0px; top: 0px; width: 50px; height: 31px; z-index: 99;"><embed id="ZeroClipboard_TableToolsMovie_5" src="js/plugin/datatables/media/swf/copy_csv_xls_pdf.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="50" height="31" name="ZeroClipboard_TableToolsMovie_5" align="middle" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=5&amp;width=50&amp;height=31" wmode="transparent"></div></a>
+                            <a class="btn btn-default btn-sm DTTT_button_print" id="ToolTables_datatable_tabletools_1" title="View print view"><span>Print</span></a>
+                            <a class="btn btn-default btn-sm DTTT_button_collection" id="ToolTables_datatable_tabletools_2"><span>Save <span class="caret"></span></span></a></div>
+                            <div id="datatable_tabletools_length" class="dataTables_length"><span class="smart-form"><label class="select" style="width:60px"><select size="1" name="datatable_tabletools_length" aria-controls="datatable_tabletools">
+                                <option value="10" selected="selected">10</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option></select><i></i></label></span></div>
+                            <div class="dataTables_filter" id="datatable_tabletools_filter">
+                                <div class="input-group"><span class="input-group-addon"><i class="fa fa-search"></i></span><input class="form-control" placeholder="Filter" type="text" aria-controls="datatable_tabletools">
+                                </div></div></div>
+                            <div class="dt-wrapper">
+                            <table id="datatable_tabletools" class="table table-striped table-hover dataTable" aria-describedby="datatable_tabletools_info">
 							<thead>
-								<tr role="row"><th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="datatable_tabletools" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column descending" style="width: 53px;">ID</th>
+								<tr role="row">
+                                    <th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="datatable_tabletools" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column descending" style="width: 53px;">ID</th>
                                     <th class="sorting" role="columnheader" tabindex="0" aria-controls="datatable_tabletools" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 145px;">Name</th>
-                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="datatable_tabletools" rowspan="1" colspan="1" aria-label="Phone: activate to sort column ascending" style="width: 194px;">Phone</th>
-                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="datatable_tabletools" rowspan="1" colspan="1" aria-label="Company: activate to sort column ascending" style="width: 469px;">Company</th>
-                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="datatable_tabletools" rowspan="1" colspan="1" aria-label="Zip: activate to sort column ascending" style="width: 133px;">Zip</th><th class="sorting" role="columnheader" tabindex="0" aria-controls="datatable_tabletools" rowspan="1" colspan="1" aria-label="City: activate to sort column ascending" style="width: 292px;">City</th><th class="sorting" role="columnheader" tabindex="0" aria-controls="datatable_tabletools" rowspan="1" colspan="1" aria-label="Date: activate to sort column ascending" style="width: 109px;">Date</th></tr>
+                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="datatable_tabletools" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 194px;">Status</th>
+                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="datatable_tabletools" rowspan="1" colspan="1" aria-label="Creator: activate to sort column ascending" style="width: 133px;">Creator</th>
+                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="datatable_tabletools" rowspan="1" colspan="1" aria-label="Date: activate to sort column ascending" style="width: 109px;">Date</th></tr>
 							</thead>
 							
-						<tbody role="alert" aria-live="polite" aria-relevant="all"><tr class="odd">
-									<td class=" sorting_1">1</td>
-									<td class=" ">Jennifer</td>
-									<td class=" ">1-342-463-8341</td>
-									<td class=" ">Et Rutrum Non Associates</td>
-									<td class=" ">35728</td>
-									<td class=" ">Fogo</td>
-									<td class=" ">03/04/14</td>
-								</tr><tr class="even">
-									<td class=" sorting_1">2</td>
-									<td class=" ">Clark</td>
-									<td class=" ">1-516-859-1120</td>
-									<td class=" ">Nam Ac Inc.</td>
-									<td class=" ">7162</td>
-									<td class=" ">Machelen</td>
-									<td class=" ">03/23/13</td>
-								</tr><tr class="odd">
-									<td class=" sorting_1">3</td>
-									<td class=" ">Brendan</td>
-									<td class=" ">1-724-406-2487</td>
-									<td class=" ">Enim Commodo Limited</td>
-									<td class=" ">98611</td>
-									<td class=" ">Norman</td>
-									<td class=" ">02/13/14</td>
-								</tr><tr class="even">
-									<td class=" sorting_1">4</td>
-									<td class=" ">Warren</td>
-									<td class=" ">1-412-485-9725</td>
-									<td class=" ">Odio Etiam Institute</td>
-									<td class=" ">10312</td>
-									<td class=" ">Sautin</td>
-									<td class=" ">01/01/13</td>
-								</tr></tbody></table></div>
+						<tbody role="alert" aria-live="polite" aria-relevant="all">
+                        <c:forEach items="${objList}" var="obj">
+                            <tr class="odd">
+                                <td class=" sorting_1">${obj.classId}</td>
+                                <td class=" ">${obj.className}</td>
+                                <td class=" ">${obj.defaultStatName}</td>
+                                <td class=" ">${obj.createMan}</td>
+                                <td class=" ">${obj.createDate}</td>
+                            </tr>
+                        </c:forEach>
+                            <%--<tr class="odd">--%>
+									<%--<td class=" sorting_1">${obj.classId}</td>--%>
+									<%--<td class=" ">Jennifer</td>--%>
+									<%--<td class=" ">1-342-463-8341</td>--%>
+									<%--<td class=" ">Et Rutrum Non Associates</td>--%>
+									<%--<td class=" ">35728</td>--%>
+									<%--<td class=" ">Fogo</td>--%>
+									<%--<td class=" ">03/04/14</td>--%>
+								<%--</tr><tr class="even">--%>
+									<%--<td class=" sorting_1">2</td>--%>
+									<%--<td class=" ">Clark</td>--%>
+									<%--<td class=" ">1-516-859-1120</td>--%>
+									<%--<td class=" ">Nam Ac Inc.</td>--%>
+									<%--<td class=" ">7162</td>--%>
+									<%--<td class=" ">Machelen</td>--%>
+									<%--<td class=" ">03/23/13</td>--%>
+								<%--</tr><tr class="odd">--%>
+									<%--<td class=" sorting_1">3</td>--%>
+									<%--<td class=" ">Brendan</td>--%>
+									<%--<td class=" ">1-724-406-2487</td>--%>
+									<%--<td class=" ">Enim Commodo Limited</td>--%>
+									<%--<td class=" ">98611</td>--%>
+									<%--<td class=" ">Norman</td>--%>
+									<%--<td class=" ">02/13/14</td>--%>
+								<%--</tr><tr class="even">--%>
+									<%--<td class=" sorting_1">4</td>--%>
+									<%--<td class=" ">Warren</td>--%>
+									<%--<td class=" ">1-412-485-9725</td>--%>
+									<%--<td class=" ">Odio Etiam Institute</td>--%>
+									<%--<td class=" ">10312</td>--%>
+									<%--<td class=" ">Sautin</td>--%>
+									<%--<td class=" ">01/01/13</td>--%>
+								<%--</tr>--%>
+                        </tbody>
+                            </table></div>
                             <div class="dt-row dt-bottom-row"><div class="row"><div class="col-sm-6"><div class="dataTables_info" id="datatable_tabletools_info">Showing 1 to 10 of 100 entries</div></div>
                                 <div class="col-sm-6 text-right"><div class="dataTables_paginate paging_bootstrap">
                                 <ul class="pagination"><li class="prev disabled"><a href="#">Previous</a></li><li class="active"><a href="#">1</a></li><li><a href="#">2</a></li><li><a href="#">3</a></li><li><a href="#">4</a></li>
@@ -194,7 +232,7 @@
                 </div>
         </div>
         <div class="row">
-            <div class="col-md-4 col-md-offset-4">
+            <div class="col-md-9 col-md-offset-4">
 		<span>Copyright @1997-2011上海佳克计算机软件有限公司  版权所有</span>
                 </div>
             </div>
@@ -202,11 +240,30 @@
 
 
 	<script src="js/jquery-ui.js"></script>
+    <script src="js/jquery-2.1.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
+    <script src="js/classListAjax.js"></script>
 	<script>
-	$(function() {
-	})
-	</script>
+        function sendAjaxSearch(url,objectID, resObjID) {
+            createXMLHttpRequest();                                //创建XMLHttpRequest对象
+            var object1 = document.getElementById(objectID);
+            var object2 = document.getElementById(resObjID);
+            XMLHttpReq.open('POST', url, true);
+            XMLHttpReq.onreadystatechange = processResponseAjax;
+            XMLHttpReq.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            XMLHttpReq.send("className="+object1.value);//+object1.value
+        }
+
+        function processResponseAjax(){
+            if (XMLHttpReq.readyState == 4) {
+                if (XMLHttpReq.status == 200) {
+                    alert("success");
+                    document.getElementById("ajaxRes").innerHTML=XMLHttpReq.responseText;
+                }
+            }
+        }
+
+    </script>
 	
 </body>
 </html>
