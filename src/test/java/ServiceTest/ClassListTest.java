@@ -60,17 +60,42 @@ public class ClassListTest {
 
 	}
 	@Test
-	public void TestSelectByName() throws Exception {
+	public void TestSelectByClassName() throws Exception {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("ApplicationContext.xml");
 		ClassListService classListService = (ClassListService)ctx.getBean("ClassListServiceImpl");
-		System.out.println(classListService.selectByClassName("467411"));
+		System.out.println(classListService.selectByClassName("09"));
 	}
 
 	@Test
 	public void TestlistByLimit() throws Exception {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("ApplicationContext.xml");
 		ClassListService classListService = (ClassListService)ctx.getBean("ClassListServiceImpl");
-		System.out.println(classListService.listByLimit(90,10,0));
+		System.out.println(classListService.listByLimit(90, 10, 0));
 	}
 
+	@Test
+	public void TestmodifyOneRecord() throws Exception {
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("ApplicationContext.xml");
+		ClassListService classListService = (ClassListService)ctx.getBean("ClassListServiceImpl");
+		List<ClassList> classList = classListService.selectByClassName("名称_813115");
+//		classList.setClassId(16);
+		classList.get(0).setClassPid(111114);
+//		classList.setCreateDate(new Date());
+		System.out.println(classList.get(0).getClassPid());
+		System.out.println(classListService.modifyOneRecord(classList.get(0)));
+	}
+
+	@Test
+	public void TestdeleteByClassId() throws Exception {
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("ApplicationContext.xml");
+		ClassListService classListService = (ClassListService)ctx.getBean("ClassListServiceImpl");
+		System.out.println(classListService.deleteByClassId(24));
+	}
+
+	@Test
+	public void TestselectByClassNameAndCreateMan() throws Exception {
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("ApplicationContext.xml");
+		ClassListService classListService = (ClassListService)ctx.getBean("ClassListServiceImpl");
+		System.out.println(classListService.selectByClassNameAndCreateMan("24", "9"));
+	}
 }

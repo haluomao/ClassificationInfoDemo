@@ -75,10 +75,12 @@ public class ClassListServiceImpl implements ClassListService{
 		List<ClassList> classlist = classListMapper.selectByExampleAndLimit(classListExample);
 		return classlist;
 	}
- 
+
 	@Override
-    public List<ClassList> selectByClassName(String name) {
-		classListExample.createCriteria().andClassNameLike("%" + name + "%");
+    public List<ClassList> selectByClassName(String classname) {
+		if(classname == null)
+			classname = "";
+		classListExample.createCriteria().andClassNameLike("%" + classname + "%");
 		List<ClassList> classlist = classListMapper.selectByExample(classListExample);
 		classListExample.clear();
         return classlist;
@@ -96,6 +98,10 @@ public class ClassListServiceImpl implements ClassListService{
 
 	@Override
 	public List<ClassList> selectByClassNameAndCreateMan(String classname,String createman) {
+		if(classname == null)
+			classname = "";
+		if(createman == null)
+			createman = "";
 		classListExample.createCriteria().andClassNameLike("%" + classname + "%").andCreateManLike("%" + createman + "%");
 		List<ClassList> classlist = classListMapper.selectByExample(classListExample);
 		classListExample.clear();
