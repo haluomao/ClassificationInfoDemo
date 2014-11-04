@@ -27,38 +27,17 @@ public class ClassListServiceImpl implements ClassListService{
 	}
 
 	@Override
+	public int countClassList() {
+		return classListMapper.countByExample(classListExample);
+	}
+
+	@Override
 	public int addClassList(ClassList cl) {
-		return 0;
+		return classListMapper.insert(cl);
 	}
 
 
-//    public List<ClassList> listByLimit(int begin, int offset, int type) {
-//		switch(type){
-//			case 0:
-//				classListExample.setOrderByClause("CLASS_ID");
-//			case 1:
-//				classListExample.setOrderByClause("CLASS_ID DESC");
-//			default:
-//				classListExample.setOrderByClause("CLASS_ID");
-//		}
 //
-//		List<ClassList> result = classListMapper.selectByExample(classListExample);
-//		List<ClassList> classlist = new ArrayList<ClassList>();
-//		int count = 0;
-//		if(begin > result.size())  // 如果begin大于记录总数
-//			return classlist;
-//		for(int i = begin; i<result.size(); i++)
-//		{
-//			if (count >= offset)
-//				break;
-//			else{
-//				classlist.add(result.get(i));
-//				count++;
-//			}
-//		}
-//		classListExample.clear();
-//		return classlist;
-//    }
 	@Override
 	public List<ClassList> listByLimit(int begin, int offset, int type) {
 		switch(type){

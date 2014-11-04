@@ -35,6 +35,6 @@ public interface ClassListService {
 
 	public List<ClassList> selectByClassNameAndCreateMan(String className,String createMan);
 
-
+	public int countClassList();
 
 }

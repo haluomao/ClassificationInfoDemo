@@ -19,12 +19,12 @@ public class ClassListTest {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("ApplicationContext.xml");
 		ClassListService classListService = (ClassListService)ctx.getBean("ClassListServiceImpl");
 
-		int count = 100;
+		int count = 500;
 		ClassList cl;
 		for(int i = 0; i<count; i++)
 		{
 			Random r = new Random();
-            int rand = r.nextInt(1000000);
+            int rand = r.nextInt(100000000);
 			cl = new ClassList();
 			cl.setClassPid(rand);
 			cl.setClassName("名称_" + rand);
@@ -37,12 +37,8 @@ public class ClassListTest {
 			cl.setClassType("t");
 			cl.setCreateDate(new Date());
 
-            System.out.println(cl.getClassPid()+" "+cl.getClassName()+
-                    " "+cl.getDefaultStatName()+" "+cl.getDefaultIsCheck()+" "+cl.getCreateMan());
-
-			int res =1;
-            //= classListService.addClassList(cl);
-            System.out.println("res:"+res);
+            classListService.addClassList(cl);
+//          System.out.println("res:"+res);
 		}
 	}
 
@@ -60,21 +56,21 @@ public class ClassListTest {
 
 	}
 	@Test
-	public void TestSelectByClassName() throws Exception {
+	public void SelectByClassNameTest() throws Exception {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("ApplicationContext.xml");
 		ClassListService classListService = (ClassListService)ctx.getBean("ClassListServiceImpl");
 		System.out.println(classListService.selectByClassName("09"));
 	}
 
 	@Test
-	public void TestlistByLimit() throws Exception {
+	public void listByLimitTest() throws Exception {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("ApplicationContext.xml");
 		ClassListService classListService = (ClassListService)ctx.getBean("ClassListServiceImpl");
 		System.out.println(classListService.listByLimit(90, 10, 0));
 	}
 
 	@Test
-	public void TestmodifyOneRecord() throws Exception {
+	public void modifyOneRecordTest() throws Exception {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("ApplicationContext.xml");
 		ClassListService classListService = (ClassListService)ctx.getBean("ClassListServiceImpl");
 		List<ClassList> classList = classListService.selectByClassName("名称_813115");
@@ -86,14 +82,14 @@ public class ClassListTest {
 	}
 
 	@Test
-	public void TestdeleteByClassId() throws Exception {
+	public void deleteByClassIdTest() throws Exception {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("ApplicationContext.xml");
 		ClassListService classListService = (ClassListService)ctx.getBean("ClassListServiceImpl");
 		System.out.println(classListService.deleteByClassId(24));
 	}
 
 	@Test
-	public void TestselectByClassNameAndCreateMan() throws Exception {
+	public void selectByClassNameAndCreateManTest() throws Exception {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("ApplicationContext.xml");
 		ClassListService classListService = (ClassListService)ctx.getBean("ClassListServiceImpl");
 		System.out.println(classListService.selectByClassNameAndCreateMan("24", "9"));

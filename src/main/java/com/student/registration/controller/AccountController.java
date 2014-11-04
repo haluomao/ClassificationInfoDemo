@@ -1,7 +1,10 @@
 package com.student.registration.controller;
 
+import com.student.registration.model.ClassList;
 import com.student.registration.model.User;
+import com.student.registration.service.ClassListService;
 import com.student.registration.service.UserService;
+import com.student.registration.vo.ClassListFormBean;
 import com.student.registration.vo.UserFormBean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,18 +12,31 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 @Scope("prototype")
-@Controller
+@Controller("AccountController")
 public class AccountController {
     public static final Logger logger = LoggerFactory.getLogger(AccountController.class);
 
     private UserService userService;
+
+	private ClassListService classListService;
+
+	public ClassListService getClassListService() {
+		return classListService;
+	}
+
+	@Resource(name="ClassListServiceImpl")
+	public void setClassListService(ClassListService classListService) {
+		this.classListService = classListService;
+	}
 
 	public UserService getUserService() {
 		return userService;
@@ -66,6 +82,40 @@ public class AccountController {
         userService.add(u);
         return "register";
 	}
+
+	/* 此方法实现网页分页机制 */
+	/* 参数：
+		page:需要访问的页数（如需要访问第1页，则输入1。规定首页为0，末页为-1）
+		offset:每页显示的记录条数*/
+	@RequestMapping("/pagelist")
+	public @ResponseBody ClassListFormBean pageList(int page,int offset) throws Exception
+	{
+		ClassListFormBean classListFormBean = new ClassListFormBean();
+
+		if(offset <= 0)
+			offset = 10;
+		if(page <= 1 && page != -1) //访问首页
+		{
+			classListFormBean.setHasNext(false);
+			page = 1;
+		}
+
+		if(page == -1)  //访问末页
+		{
+			classListFormBean.setHasPrev(false);
+			int count = classListService.countClassList();  //获取数据库中记录总条数
+			page = (int)Math.ceil(count / (float)offset);  //计算page，向上取整
+		}
+
+		List<ClassList> classLists = classListService.listByLimit((page-1) * offset,offset,0);  //根据page，offset查询对应的记录
+
+		classListFormBean.setClassLists(classLists);
+		classListFormBean.setOffset(offset);
+		classListFormBean.setCurrentpage(page);
+
+		return classListFormBean;
+	}
+
 
 	//@Override  //不带参数访问时的默认方法
 	public ModelAndView handleRequest(HttpServletRequest req, HttpServletResponse resp) throws Exception {
