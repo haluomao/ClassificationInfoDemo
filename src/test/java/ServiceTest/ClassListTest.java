@@ -3,6 +3,7 @@ package ServiceTest;
 import com.student.registration.model.ClassList;
 import com.student.registration.service.ClassListService;
 import com.student.registration.service.UserService;
+import com.student.registration.vo.ClassListFormBean;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -92,6 +93,13 @@ public class ClassListTest {
 	public void selectByClassNameAndCreateManTest() throws Exception {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("ApplicationContext.xml");
 		ClassListService classListService = (ClassListService)ctx.getBean("ClassListServiceImpl");
-		System.out.println(classListService.selectByClassNameAndCreateMan("24", "9"));
+
+		ClassListFormBean clfb = new ClassListFormBean();
+		clfb.setCreateman("22");
+		clfb.setClassname("8");
+		clfb.setOffset(10);
+		clfb.setPage(2);
+
+		System.out.println(classListService.selectByClassNameAndCreateManAndLimit(clfb));
 	}
 }

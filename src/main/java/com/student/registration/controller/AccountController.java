@@ -86,32 +86,35 @@ public class AccountController {
 	/* 此方法实现网页分页机制 */
 	/* 参数：
 		page:需要访问的页数（如需要访问第1页，则输入1。规定首页为0，末页为-1）
-		offset:每页显示的记录条数*/
+		offset:每页显示的记录条数
+		classname
+		createman
+	*/
 	@RequestMapping("/pagelist")
-	public @ResponseBody ClassListFormBean pageList(int page,int offset) throws Exception
+	public @ResponseBody ClassListFormBean pageList(ClassListFormBean classListFormBean) throws Exception
 	{
-		ClassListFormBean classListFormBean = new ClassListFormBean();
+//		ClassListFormBean classListFormBean = new ClassListFormBean();
 
-		if(offset <= 0)
-			offset = 10;
-		if(page <= 1 && page != -1) //访问首页
-		{
-			classListFormBean.setHasNext(false);
-			page = 1;
-		}
-
-		if(page == -1)  //访问末页
+		if(classListFormBean.getOffset() <= 0)
+			classListFormBean.setOffset(10);
+		if(classListFormBean.getPage() <= 1 && classListFormBean.getPage() != -1) //如果访问首页
 		{
 			classListFormBean.setHasPrev(false);
-			int count = classListService.countClassList();  //获取数据库中记录总条数
-			page = (int)Math.ceil(count / (float)offset);  //计算page，向上取整
+			classListFormBean.setPage(1);
 		}
 
-		List<ClassList> classLists = classListService.listByLimit((page-1) * offset,offset,0);  //根据page，offset查询对应的记录
+		int count = classListService.countClassListByClassNameAndCreateMan(classListFormBean);  //获取数据库中记录总条数
+//		System.out.println("count:" + count);
+		classListFormBean.setTotalpage((int)Math.ceil(count / (float)classListFormBean.getOffset()));  //计算总页数
 
-		classListFormBean.setClassLists(classLists);
-		classListFormBean.setOffset(offset);
-		classListFormBean.setCurrentpage(page);
+		if(classListFormBean.getPage() == -1 || (int)Math.ceil(count / (float)classListFormBean.getOffset()) == classListFormBean.getPage())  //如果访问末页
+		{
+			classListFormBean.setHasNext(false);  //如果是末页则不可继续访问下一页
+			classListFormBean.setPage((int)Math.ceil(count / (float)classListFormBean.getOffset()));  //计算page，向上取整
+		}
+
+		List<ClassList> classLists = classListService.selectByClassNameAndCreateManAndLimit(classListFormBean);  //根据page，offset查询对应的记录
+		classListFormBean.setClassLists(classLists); //将结果返回给Bean
 
 		return classListFormBean;
 	}

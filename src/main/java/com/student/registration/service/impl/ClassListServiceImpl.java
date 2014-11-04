@@ -4,6 +4,7 @@ import com.student.registration.dao.ClassListMapper;
 import com.student.registration.model.ClassList;
 import com.student.registration.model.ClassListExample;
 import com.student.registration.service.ClassListService;
+import com.student.registration.vo.ClassListFormBean;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -28,6 +29,16 @@ public class ClassListServiceImpl implements ClassListService{
 
 	@Override
 	public int countClassList() {
+		return classListMapper.countByExample(classListExample);
+	}
+
+	@Override
+	public int countClassListByClassNameAndCreateMan(ClassListFormBean classListFormBean) {
+		if(classListFormBean.getClassname() == null)
+			classListFormBean.setClassname("");
+		if(classListFormBean.getCreateman() == null)
+			classListFormBean.setCreateman("");
+		classListExample.createCriteria().andClassNameLike("%" + classListFormBean.getClassname() + "%").andCreateManLike("%" + classListFormBean.getCreateman() + "%");
 		return classListMapper.countByExample(classListExample);
 	}
 
@@ -76,13 +87,15 @@ public class ClassListServiceImpl implements ClassListService{
 	}
 
 	@Override
-	public List<ClassList> selectByClassNameAndCreateMan(String classname,String createman) {
-		if(classname == null)
-			classname = "";
-		if(createman == null)
-			createman = "";
-		classListExample.createCriteria().andClassNameLike("%" + classname + "%").andCreateManLike("%" + createman + "%");
-		List<ClassList> classlist = classListMapper.selectByExample(classListExample);
+	public List<ClassList> selectByClassNameAndCreateManAndLimit(ClassListFormBean classListFormBean) {
+		if(classListFormBean.getClassname() == null)
+			classListFormBean.setClassname("");
+		if(classListFormBean.getCreateman() == null)
+			classListFormBean.setCreateman("");
+		classListExample.setLimit((classListFormBean.getPage()-1) * classListFormBean.getOffset());
+		classListExample.setOffset(classListFormBean.getOffset());
+		classListExample.createCriteria().andClassNameLike("%" + classListFormBean.getClassname() + "%").andCreateManLike("%" + classListFormBean.getCreateman() + "%");
+		List<ClassList> classlist = classListMapper.selectByExampleAndLimit(classListExample);
 		classListExample.clear();
 		return classlist;
 	}

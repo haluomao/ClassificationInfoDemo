@@ -3,6 +3,7 @@ package ControllerTest;
 import com.student.registration.controller.AccountController;
 import com.student.registration.model.ClassList;
 import com.student.registration.service.ClassListService;
+import com.student.registration.vo.ClassListFormBean;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -21,6 +22,12 @@ public class AccountControllerTest {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("ApplicationContext.xml");
 		AccountController accountController = (AccountController)ctx.getBean("AccountController");
 
-		System.out.println(accountController.pageList(-1,10));
+		ClassListFormBean clfb = new ClassListFormBean();
+		clfb.setCreateman("22");
+		clfb.setClassname("8");
+		clfb.setOffset(10);
+		clfb.setPage(0);
+
+		System.out.println(accountController.pageList(clfb));
 	}
 }
