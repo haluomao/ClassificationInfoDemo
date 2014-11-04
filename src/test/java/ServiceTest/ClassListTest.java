@@ -3,6 +3,7 @@ package ServiceTest;
 import com.student.registration.model.ClassList;
 import com.student.registration.service.ClassListService;
 import com.student.registration.service.UserService;
+import com.student.registration.vo.ClassListFormBean;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -19,12 +20,12 @@ public class ClassListTest {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("ApplicationContext.xml");
 		ClassListService classListService = (ClassListService)ctx.getBean("ClassListServiceImpl");
 
-		int count = 100;
+		int count = 500;
 		ClassList cl;
 		for(int i = 0; i<count; i++)
 		{
 			Random r = new Random();
-            int rand = r.nextInt(1000000);
+            int rand = r.nextInt(100000000);
 			cl = new ClassList();
 			cl.setClassPid(rand);
 			cl.setClassName("名称_" + rand);
@@ -37,12 +38,8 @@ public class ClassListTest {
 			cl.setClassType("t");
 			cl.setCreateDate(new Date());
 
-            System.out.println(cl.getClassPid()+" "+cl.getClassName()+
-                    " "+cl.getDefaultStatName()+" "+cl.getDefaultIsCheck()+" "+cl.getCreateMan());
-
-			int res =1;
-            //= classListService.addClassList(cl);
-            System.out.println("res:"+res);
+            classListService.addClassList(cl);
+//          System.out.println("res:"+res);
 		}
 	}
 
@@ -58,24 +55,51 @@ public class ClassListTest {
 //			System.out.println(cl.getClassName() + " | " + cl.getCreateDate() + " | " + cl.getModifyDate());
 //		}
 
-
-
 	}
 	@Test
-	public void TestSelectByName() throws Exception {
+	public void SelectByClassNameTest() throws Exception {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("ApplicationContext.xml");
 		ClassListService classListService = (ClassListService)ctx.getBean("ClassListServiceImpl");
-		System.out.println(classListService.selectByName("467411"));;
+		System.out.println(classListService.selectByClassName("09"));
 	}
 
 	@Test
-	public void TestlistByLimit() throws Exception {
+	public void listByLimitTest() throws Exception {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("ApplicationContext.xml");
 		ClassListService classListService = (ClassListService)ctx.getBean("ClassListServiceImpl");
-		System.out.println(classListService.listByLimit(0,1,0));;
+		System.out.println(classListService.listByLimit(90, 10, 0));
 	}
 
+	@Test
+	public void modifyOneRecordTest() throws Exception {
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("ApplicationContext.xml");
+		ClassListService classListService = (ClassListService)ctx.getBean("ClassListServiceImpl");
+		List<ClassList> classList = classListService.selectByClassName("名称_813115");
+//		classList.setClassId(16);
+		classList.get(0).setClassPid(111114);
+//		classList.setCreateDate(new Date());
+		System.out.println(classList.get(0).getClassPid());
+		System.out.println(classListService.modifyOneRecord(classList.get(0)));
+	}
 
+	@Test
+	public void deleteByClassIdTest() throws Exception {
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("ApplicationContext.xml");
+		ClassListService classListService = (ClassListService)ctx.getBean("ClassListServiceImpl");
+		System.out.println(classListService.deleteByClassId(24));
+	}
 
+	@Test
+	public void selectByClassNameAndCreateManTest() throws Exception {
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("ApplicationContext.xml");
+		ClassListService classListService = (ClassListService)ctx.getBean("ClassListServiceImpl");
 
+		ClassListFormBean clfb = new ClassListFormBean();
+		clfb.setCreateman("22");
+		clfb.setClassname("8");
+		clfb.setOffset(10);
+		clfb.setPage(2);
+
+		System.out.println(classListService.selectByClassNameAndCreateManAndLimit(clfb));
+	}
 }

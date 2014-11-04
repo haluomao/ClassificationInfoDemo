@@ -4,6 +4,7 @@ import com.student.registration.dao.ClassListMapper;
 import com.student.registration.model.ClassList;
 import com.student.registration.model.ClassListExample;
 import com.student.registration.service.ClassListService;
+import com.student.registration.vo.ClassListFormBean;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -27,48 +28,79 @@ public class ClassListServiceImpl implements ClassListService{
 	}
 
 	@Override
+	public int countClassList() {
+		return classListMapper.countByExample(classListExample);
+	}
+
+	@Override
+	public int countClassListByClassNameAndCreateMan(ClassListFormBean classListFormBean) {
+		if(classListFormBean.getClassname() == null)
+			classListFormBean.setClassname("");
+		if(classListFormBean.getCreateman() == null)
+			classListFormBean.setCreateman("");
+		classListExample.createCriteria().andClassNameLike("%" + classListFormBean.getClassname() + "%").andCreateManLike("%" + classListFormBean.getCreateman() + "%");
+		return classListMapper.countByExample(classListExample);
+	}
+
+	@Override
 	public int addClassList(ClassList cl) {
-		return 0;
+		return classListMapper.insert(cl);
 	}
 
-    @Override
-    public List<ClassList> listByLimit(int begin, int offset, int type) {
-	switch(type){
-		case 0:
-			classListExample.setOrderByClause("CLASS_ID");
-		case 1:
-			classListExample.setOrderByClause("CLASS_ID DESC");
-		default:
-			classListExample.setOrderByClause("CLASS_ID");
-	}
 
-		List<ClassList> result = classListMapper.selectByExample(classListExample);
-		List<ClassList> classlist = new ArrayList<ClassList>();
-		int count = 0;
-		for(int i = begin; i<result.size(); i++)
-		{
-			if (count >= offset)
-				break;
-			else{
-				classlist.add(result.get(i));
-//				System.out.println(result.get(i));
-				count++;
-//				System.out.println("count:" + count);
-			}
+//
+	@Override
+	public List<ClassList> listByLimit(int begin, int offset, int type) {
+		switch(type){
+			case 0:
+				classListExample.setOrderByClause("CLASS_ID");
+			case 1:
+				classListExample.setOrderByClause("CLASS_ID DESC");
+			default:
+				classListExample.setOrderByClause("CLASS_ID");
 		}
-		classListExample.clear();
-		return classlist;
-    }
 
-    @Override
-    public List<ClassList> selectByName(String name) {
-		classListExample.createCriteria().andClassNameLike("%" + name + "%");
+		classListExample.setLimit(begin);
+		classListExample.setOffset(offset);
+		List<ClassList> classlist = classListMapper.selectByExampleAndLimit(classListExample);
+		return classlist;
+	}
+
+	@Override
+    public List<ClassList> selectByClassName(String classname) {
+		if(classname == null)
+			classname = "";
+		classListExample.createCriteria().andClassNameLike("%" + classname + "%");
 		List<ClassList> classlist = classListMapper.selectByExample(classListExample);
 		classListExample.clear();
         return classlist;
     }
 
-    public ClassListExample getClassListExample() {
+	@Override
+	public int modifyOneRecord(ClassList classList) {
+		return classListMapper.updateByPrimaryKey(classList);
+	}
+
+	@Override
+	public int deleteByClassId(int classId) {
+		return classListMapper.deleteByPrimaryKey(classId);
+	}
+
+	@Override
+	public List<ClassList> selectByClassNameAndCreateManAndLimit(ClassListFormBean classListFormBean) {
+		if(classListFormBean.getClassname() == null)
+			classListFormBean.setClassname("");
+		if(classListFormBean.getCreateman() == null)
+			classListFormBean.setCreateman("");
+		classListExample.setLimit((classListFormBean.getPage()-1) * classListFormBean.getOffset());
+		classListExample.setOffset(classListFormBean.getOffset());
+		classListExample.createCriteria().andClassNameLike("%" + classListFormBean.getClassname() + "%").andCreateManLike("%" + classListFormBean.getCreateman() + "%");
+		List<ClassList> classlist = classListMapper.selectByExampleAndLimit(classListExample);
+		classListExample.clear();
+		return classlist;
+	}
+
+	public ClassListExample getClassListExample() {
 		return classListExample;
 	}
 
