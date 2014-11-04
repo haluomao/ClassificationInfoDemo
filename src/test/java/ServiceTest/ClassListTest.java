@@ -63,7 +63,7 @@ public class ClassListTest {
 	public void TestSelectByName() throws Exception {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("ApplicationContext.xml");
 		ClassListService classListService = (ClassListService)ctx.getBean("ClassListServiceImpl");
-		System.out.println(classListService.selectByName("467411"));;
+		System.out.println(classListService.selectByClassName("467411"));
 	}
 
 	@Test
