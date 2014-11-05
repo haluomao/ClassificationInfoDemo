@@ -12,7 +12,7 @@
         <!--
         body {
             background-image: url(./images/background.png);
-            background-repeat: repeat-x;
+            /*background-repeat: repeat-x;*/
         }
         -->
     </style>
@@ -28,7 +28,7 @@
         <td><div align="center"><img src="images/logo_login.png" width="482" height="89" alt="img" /></div></td>
     </tr>
 </table>
-<table width="320" height="283" align="center" cellspacing="0" class="LoginTable">
+<table width="350" height="290" align="center" cellspacing="0" class="LoginTable">
     <tr>
         <td height="230">
             <form id="loginform" name="loginform" method="post" action="login.do">
@@ -44,7 +44,7 @@
                     <tr>
                         <td width="239"><span id="tips" class="tips"></span>
                             <input name="login" type="submit" value = "提交" width="60" height="30"/></td>
-                        <td width="65"><input name="login" type="image" src="./images/login.png" width="60" height="30" onclick="javascript:sendlogin()"/></td>
+                        <td width="65"><input name="login" type="image" src="./images/login.png" width="80" height="40" onclick="javascript:sendlogin()"/></td>
                     </tr>
                 </table>
             </form>
@@ -59,17 +59,17 @@
 
 <script>
     function sendlogin() {
-        alert($("#username").val());
-        if ($("#username").length < 1) {
-            $("#tips").css('color', 'red');
-            $("#tips").val("用户名不可为空");
+        alert($('#username').val());
+        if ($('#username').length < 1) {
+            $('#tips').css('color', 'red');
+            $('#tips').val("用户名不可为空");
         }
-        else if ($("#password").length < 1) {
-            $("#tips").css('color', 'red');
-            $("#tips").val("密码不可为空");
+        else if ($('#password').length < 1) {
+            $('#tips').css('color', 'red');
+            $('#tips').val("密码不可为空");
         }
         else{
-            $("#tips").val("正在登录...");
+            $('#tips').val("正在登录...");
         }
     }
 </script>
