@@ -25,18 +25,6 @@ import java.util.List;
 public class AccountController {
     public static final Logger logger = LoggerFactory.getLogger(AccountController.class);
 
-    private ClassListService classListService;
-
-    @Resource(name="ClassListServiceImpl")
-    public void setClassListService(ClassListService classListService) {
-        this.classListService = classListService;
-    }
-
-    public ClassListService getClassListService() {
-        return classListService;
-    }
-
-
     private UserService userService;
 
 	private ClassListService classListService;
@@ -106,7 +94,7 @@ public class AccountController {
 
 		int count = classListService.countClassListByClassNameAndCreateMan(classListFormBean);  //获取数据库中记录总条数
 //		System.out.println("count:" + count);
-		classListFormBean.setTotalpage((int)Math.ceil(count / (float)classListFormBean.getOffset()));  //计算总页数
+		classListFormBean.setTotalPage((int)Math.ceil(count / (float)classListFormBean.getOffset()));  //计算总页数
 
 		if(classListFormBean.getPage() == -1 || (int)Math.ceil(count / (float)classListFormBean.getOffset()) == classListFormBean.getPage())  //如果访问末页
 		{

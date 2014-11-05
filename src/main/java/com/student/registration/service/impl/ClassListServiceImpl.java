@@ -34,11 +34,11 @@ public class ClassListServiceImpl implements ClassListService{
 
 	@Override
 	public int countClassListByClassNameAndCreateMan(ClassListFormBean classListFormBean) {
-		if(classListFormBean.getClassname() == null)
-			classListFormBean.setClassname("");
-		if(classListFormBean.getCreateman() == null)
-			classListFormBean.setCreateman("");
-		classListExample.createCriteria().andClassNameLike("%" + classListFormBean.getClassname() + "%").andCreateManLike("%" + classListFormBean.getCreateman() + "%");
+		if(classListFormBean.getClassName() == null)
+			classListFormBean.setClassName("");
+		if(classListFormBean.getCreateMan() == null)
+			classListFormBean.setCreateMan("");
+		classListExample.createCriteria().andClassNameLike("%" + classListFormBean.getClassName() + "%").andCreateManLike("%" + classListFormBean.getCreateMan() + "%");
 		return classListMapper.countByExample(classListExample);
 	}
 
@@ -88,13 +88,13 @@ public class ClassListServiceImpl implements ClassListService{
 
 	@Override
 	public List<ClassList> selectByClassNameAndCreateManAndLimit(ClassListFormBean classListFormBean) {
-		if(classListFormBean.getClassname() == null)
-			classListFormBean.setClassname("");
-		if(classListFormBean.getCreateman() == null)
-			classListFormBean.setCreateman("");
+		if(classListFormBean.getClassName() == null)
+			classListFormBean.setClassName("");
+		if(classListFormBean.getCreateMan() == null)
+			classListFormBean.setCreateMan("");
 		classListExample.setLimit((classListFormBean.getPage()-1) * classListFormBean.getOffset());
 		classListExample.setOffset(classListFormBean.getOffset());
-		classListExample.createCriteria().andClassNameLike("%" + classListFormBean.getClassname() + "%").andCreateManLike("%" + classListFormBean.getCreateman() + "%");
+		classListExample.createCriteria().andClassNameLike("%" + classListFormBean.getClassName() + "%").andCreateManLike("%" + classListFormBean.getCreateMan() + "%");
 		List<ClassList> classlist = classListMapper.selectByExampleAndLimit(classListExample);
 		classListExample.clear();
 		return classlist;

@@ -28,8 +28,8 @@ public class ClassListTest {
             int rand = r.nextInt(100000000);
 			cl = new ClassList();
 			cl.setClassPid(rand);
-			cl.setClassName("名称_" + rand);
-			cl.setDefaultStatName("状态名称_" + rand);
+			cl.setClassName("资产分类_" + rand);
+			cl.setDefaultStatName("资产状态_" + rand);
 			cl.setDefaultIsCheck("1");
 			cl.setDefaultUserYear(rand);
 			cl.setDeprTypeId(1);
@@ -95,8 +95,8 @@ public class ClassListTest {
 		ClassListService classListService = (ClassListService)ctx.getBean("ClassListServiceImpl");
 
 		ClassListFormBean clfb = new ClassListFormBean();
-		clfb.setCreateman("22");
-		clfb.setClassname("8");
+		clfb.setCreateMan("22");
+		clfb.setClassName("8");
 		clfb.setOffset(10);
 		clfb.setPage(2);
 

@@ -10,9 +10,10 @@ public class ClassListFormBean {
 	private int page;    //当前页数
 	private boolean hasNext = true;   //是否可以继续访问下一页，即是否末页
 	private boolean hasPrev = true;   //是否可以继续访问上一页，即是否首页
-	private String classname;
-	private String createman;
-	private int totalpage;  //根据当前步长计算的页数总数
+	private String className;
+	private String createMan;
+	private int totalPage;  //根据当前步长计算的页数总数
+	private int totalCount;
 
 	@Override
 	public String toString() {
@@ -22,9 +23,10 @@ public class ClassListFormBean {
 				", page=" + page +
 				", hasNext=" + hasNext +
 				", hasPrev=" + hasPrev +
-				", classname='" + classname + '\'' +
-				", createman='" + createman + '\'' +
-				", totalpage=" + totalpage +
+				", className='" + className + '\'' +
+				", createMan='" + createMan + '\'' +
+				", totalPage=" + totalPage +
+				", totalCount=" + totalCount +
 				'}';
 	}
 
@@ -68,27 +70,35 @@ public class ClassListFormBean {
 		this.hasPrev = hasPrev;
 	}
 
-	public String getClassname() {
-		return classname;
+	public String getClassName() {
+		return className;
 	}
 
-	public void setClassname(String classname) {
-		this.classname = classname;
+	public void setClassName(String className) {
+		this.className = className;
 	}
 
-	public String getCreateman() {
-		return createman;
+	public String getCreateMan() {
+		return createMan;
 	}
 
-	public void setCreateman(String createman) {
-		this.createman = createman;
+	public void setCreateMan(String createMan) {
+		this.createMan = createMan;
 	}
 
-	public int getTotalpage() {
-		return totalpage;
+	public int getTotalPage() {
+		return totalPage;
 	}
 
-	public void setTotalpage(int totalpage) {
-		this.totalpage = totalpage;
+	public void setTotalPage(int totalPage) {
+		this.totalPage = totalPage;
+	}
+
+	public int getTotalCount() {
+		return totalCount;
+	}
+
+	public void setTotalCount(int totalCount) {
+		this.totalCount = totalCount;
 	}
 }

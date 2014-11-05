@@ -76,14 +76,15 @@
         <div class="row"><div class="col-md-10 col-md-offset-1"><label>测试Ajax</label></div></div>
         <div class="row">
             <div class="col-md-11 col-md-offset-1">
-                资产分类：<input type="text" id="classNameAjax"/>
-                保管人：<input type="text" name="createMan" />
-                <button onclick="sendAjaxSearch('ajaxSearchAction', 'classNameAjax','ajaxRes')">检索</button>
+                资产分类：<input type="text" id="classNameAjax" name="classNameAjax"/>
+                保管人：<input type="text" id="createManAjax" name="createManAjax" />
+                <button onclick="sendAjaxSearch('ajaxSearchAction',1)">检索</button>
                 <br>
                 <div id="ajaxRes"></div>
                 <br>
             </div>
         </div>
+        <div class="row"><div class="col-md-10 col-md-offset-1"><label id = "TotalCount"></label></div></div>
 	</div>
 	<div id="resultDiv" class="container-fluid">
         <div class="col-md-10 col-md-offset-1">
@@ -148,7 +149,7 @@
                             <div style="position: absolute; left: 0px; top: 0px; width: 50px; height: 31px; z-index: 99;"><embed id="ZeroClipboard_TableToolsMovie_5" src="js/plugin/datatables/media/swf/copy_csv_xls_pdf.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="50" height="31" name="ZeroClipboard_TableToolsMovie_5" align="middle" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=5&amp;width=50&amp;height=31" wmode="transparent"></div></a>
                             <a class="btn btn-default btn-sm DTTT_button_print" id="ToolTables_datatable_tabletools_1" title="View print view"><span>Print</span></a>
                             <a class="btn btn-default btn-sm DTTT_button_collection" id="ToolTables_datatable_tabletools_2"><span>Save <span class="caret"></span></span></a></div>
-                            <div id="datatable_tabletools_length" class="dataTables_length"><span class="smart-form"><label class="select" style="width:60px"><select size="1" name="datatable_tabletools_length" aria-controls="datatable_tabletools">
+                            <div id="datatable_tabletools_length" class="dataTables_length"><span class="smart-form"><label class="select" style="width:60px"><select id ="datatable_offset" size="1" name="datatable_tabletools_length" aria-controls="datatable_tabletools">
                                 <option value="10" selected="selected">10</option>
                                 <option value="25">25</option>
                                 <option value="50">50</option>
@@ -161,10 +162,10 @@
 							<thead>
 								<tr role="row">
                                     <th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="datatable_tabletools" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column descending" style="width: 53px;">ID</th>
-                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="datatable_tabletools" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 145px;">Name</th>
-                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="datatable_tabletools" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 194px;">Status</th>
-                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="datatable_tabletools" rowspan="1" colspan="1" aria-label="Creator: activate to sort column ascending" style="width: 133px;">Creator</th>
-                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="datatable_tabletools" rowspan="1" colspan="1" aria-label="Date: activate to sort column ascending" style="width: 109px;">Date</th></tr>
+                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="datatable_tabletools" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 145px;">资产分类</th>
+                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="datatable_tabletools" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 194px;">资产状态</th>
+                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="datatable_tabletools" rowspan="1" colspan="1" aria-label="Creator: activate to sort column ascending" style="width: 133px;">创建者</th>
+                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="datatable_tabletools" rowspan="1" colspan="1" aria-label="Date: activate to sort column ascending" style="width: 109px;">创建日期</th></tr>
 							</thead>
 							
 						<tbody role="alert" aria-live="polite" aria-relevant="all">
@@ -239,30 +240,58 @@
 	</div>
 
 
-	<script src="js/jquery-ui.js"></script>
-    <script src="js/jquery-2.1.1.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-    <script src="js/classListAjax.js"></script>
+	<script type="text/javascript" src="js/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/classListAjax.js"></script>
 	<script>
-        function sendAjaxSearch(url,objectID, resObjID) {
+        function sendAjaxSearch(url,page) {
             createXMLHttpRequest();                                //创建XMLHttpRequest对象
-            var object1 = document.getElementById(objectID);
-            var object2 = document.getElementById(resObjID);
+            //var object1 = document.getElementById(objectID);
+            var classNameAjax_value = $('#classNameAjax').val();
+            var createManAjax_value = $('#createManAjax').val();
+            var offset = $('#datatable_offset').val();
+
             XMLHttpReq.open('POST', url, true);
-            XMLHttpReq.onreadystatechange = processResponseAjax;
+
+
             XMLHttpReq.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            XMLHttpReq.send("className="+object1.value);//+object1.value
+            XMLHttpReq.send("className="+classNameAjax_value
+                    + "&" + "createMan=" + createManAjax_value
+                    + "&" + "page=" + page
+                    + "&" + "offset=" + offset);//+object1.value
+
+            XMLHttpReq.onreadystatechange = processResponseAjax;
         }
 
+        //执行获取Json数据后的操作
         function processResponseAjax(){
             if (XMLHttpReq.readyState == 4) {
                 if (XMLHttpReq.status == 200) {
-                    alert("success");
-                    document.getElementById("ajaxRes").innerHTML=XMLHttpReq.responseText;
+//                    alert("success");
+                    $('tbody').empty();
+//                    tbody.empty;
+                    var result = XMLHttpReq.responseText;
+                    var json = eval("(" + result + ")");
+//                    document.getElementById("ajaxRes").innerHTML = json;
+//                    document.getElementById("ajaxRes").innerHTML = json.classLists[0].className;
+
+                    $('#TotalCount').val(json.classLists)
+
+                    $('tbody')
+                    for(var i = 0; i < json.classLists.length; i++)
+                    {
+                        $('tbody').append('<tr class="odd"></tr>');
+                        $('tbody>tr:last-child').append('<td class=" sorting_1">' + json.classLists[i].classId + '</td>')
+                        $('tbody>tr:last-child').append('<td class=" sorting_1">' + json.classLists[i].className + '</td>')
+                        $('tbody>tr:last-child').append('<td class=" sorting_1">' + json.classLists[i].defaultStatName + '</td>')
+                        $('tbody>tr:last-child').append('<td class=" sorting_1">' + json.classLists[i].createMan + '</td>')
+                        $('tbody>tr:last-child').append('<td class=" sorting_1">' + json.classLists[i].createDate + '</td>')
+                    }
+
                 }
             }
         }
-
     </script>
 	
 </body>

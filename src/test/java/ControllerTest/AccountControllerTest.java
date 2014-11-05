@@ -23,8 +23,8 @@ public class AccountControllerTest {
 		AccountController accountController = (AccountController)ctx.getBean("AccountController");
 
 		ClassListFormBean clfb = new ClassListFormBean();
-		clfb.setCreateman("22");
-		clfb.setClassname("8");
+		clfb.setCreateMan("22");
+		clfb.setClassName("8");
 		clfb.setOffset(10);
 		clfb.setPage(0);
 
