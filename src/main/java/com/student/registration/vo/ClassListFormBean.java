@@ -6,25 +6,26 @@ import java.util.List;
 
 public class ClassListFormBean {
 	private List<ClassList> classLists;   //classlist结果集
-	private int offset;   //当前步长
-	private int page;    //当前页数
+	//private int offset;   //当前步长
+	//private int page;    //当前页数
 	private boolean hasNext = true;   //是否可以继续访问下一页，即是否末页
 	private boolean hasPrev = true;   //是否可以继续访问上一页，即是否首页
 	private String classname;
 	private String createman;
-	private int totalpage;  //根据当前步长计算的页数总数
+	//private int totalpage;  //根据当前步长计算的页数总数
+    private PageListBean pageBean;
 
 	@Override
 	public String toString() {
 		return "ClassListFormBean{" +
 				"classLists=" + classLists +
-				", offset=" + offset +
-				", page=" + page +
+				", offset=" + pageBean.getCacheSize() +
+				", page=" + pageBean.getCurrentPage() +
 				", hasNext=" + hasNext +
 				", hasPrev=" + hasPrev +
 				", classname='" + classname + '\'' +
 				", createman='" + createman + '\'' +
-				", totalpage=" + totalpage +
+				", totalpage=" + pageBean.getTotalPages() +
 				'}';
 	}
 
@@ -36,21 +37,25 @@ public class ClassListFormBean {
 		this.classLists = classLists;
 	}
 
-	public int getOffset() {
-		return offset;
-	}
+    public  PageListBean getPageBean(){return pageBean;}
 
-	public void setOffset(int offset) {
-		this.offset = offset;
-	}
+    public void setPageBean(PageListBean pageBean){this.pageBean=pageBean;}
 
-	public int getPage() {
-		return page;
-	}
-
-	public void setPage(int page) {
-		this.page = page;
-	}
+//	public int getOffset() {
+//		return offset;
+//	}
+//
+//	public void setOffset(int offset) {
+//		this.offset = offset;
+//	}
+//
+//	public int getPage() {
+//		return page;
+//	}
+//
+//	public void setPage(int page) {
+//		this.page = page;
+//	}
 
 	public boolean isHasNext() {
 		return hasNext;
@@ -84,11 +89,11 @@ public class ClassListFormBean {
 		this.createman = createman;
 	}
 
-	public int getTotalpage() {
-		return totalpage;
-	}
-
-	public void setTotalpage(int totalpage) {
-		this.totalpage = totalpage;
-	}
+//	public int getTotalpage() {
+//		return totalpage;
+//	}
+//
+//	public void setTotalpage(int totalpage) {
+//		this.totalpage = totalpage;
+//	}
 }

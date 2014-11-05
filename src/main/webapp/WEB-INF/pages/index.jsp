@@ -125,7 +125,7 @@
                         <li><span class="bg-color-white" data-widget-setstyle="jarviswidget-color-white" rel="tooltip" data-placement="right" data-original-title="Purity"></span></li>
                         <li><a href="javascript:void(0);" class="jarviswidget-remove-colors" data-widget-setstyle="" rel="tooltip" data-placement="bottom" data-original-title="Reset widget color to default">Remove</a></li></ul></div>
 					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
-					<h2>Export to PDF / Excel</h2>
+					<h2>Result List</h2>
 
 				<span class="jarviswidget-loader"><i class="fa fa-refresh fa-spin"></i></span></header>
 
@@ -144,18 +144,24 @@
 						<div class="widget-body-toolbar">
 
 						</div>
-						<div id="datatable_tabletools_wrapper" class="dataTables_wrapper form-inline" role="grid"><div class="dt-top-row"><div class="DTTT btn-group"><a class="btn btn-default btn-sm DTTT_button_copy" id="ToolTables_datatable_tabletools_0"><span>Copy</span>
-                            <div style="position: absolute; left: 0px; top: 0px; width: 50px; height: 31px; z-index: 99;"><embed id="ZeroClipboard_TableToolsMovie_5" src="js/plugin/datatables/media/swf/copy_csv_xls_pdf.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="50" height="31" name="ZeroClipboard_TableToolsMovie_5" align="middle" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=5&amp;width=50&amp;height=31" wmode="transparent"></div></a>
+						<div id="datatable_tabletools_wrapper" class="dataTables_wrapper form-inline" role="grid"><div class="dt-top-row"><div class="DTTT btn-group">
+                            <a class="btn btn-default btn-sm DTTT_button_copy" id="ToolTables_datatable_tabletools_0"><span>Copy</span>
+                            <div style="position: absolute; left: 0px; top: 0px; width: 50px; height: 31px; z-index: 99;">
+                                <embed id="ZeroClipboard_TableToolsMovie_5" src="js/plugin/datatables/media/swf/copy_csv_xls_pdf.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="50" height="31" name="ZeroClipboard_TableToolsMovie_5" align="middle" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=5&amp;width=50&amp;height=31" wmode="transparent"></div></a>
                             <a class="btn btn-default btn-sm DTTT_button_print" id="ToolTables_datatable_tabletools_1" title="View print view"><span>Print</span></a>
                             <a class="btn btn-default btn-sm DTTT_button_collection" id="ToolTables_datatable_tabletools_2"><span>Save <span class="caret"></span></span></a></div>
-                            <div id="datatable_tabletools_length" class="dataTables_length"><span class="smart-form"><label class="select" style="width:60px"><select size="1" name="datatable_tabletools_length" aria-controls="datatable_tabletools">
-                                <option value="10" selected="selected">10</option>
-                                <option value="25">25</option>
-                                <option value="50">50</option>
-                                <option value="100">100</option></select><i></i></label></span></div>
-                            <div class="dataTables_filter" id="datatable_tabletools_filter">
-                                <div class="input-group"><span class="input-group-addon"><i class="fa fa-search"></i></span><input class="form-control" placeholder="Filter" type="text" aria-controls="datatable_tabletools">
-                                </div></div></div>
+                            <!---->
+                            <div id="datatable_tabletools_length" class="dataTables_length"><span class="smart-form">
+                                <label class="select" style="width:60px">
+                                <select size="1" name="datatable_tabletools_length" aria-controls="datatable_tabletools" id="selectListNumber"
+                                        onchange="countSelect('pageUpdateAction', ${pageBean.currentPage}, ${pageBean.totalPages}, ${pageBean.listCount}, ${pageBean.cacheBegin})">
+                                        <%--onchange="countSelect('pageUpdateAction', '${pageBean.currentPage}', '${pageBean.totalPages}', '${pageBean.listCount}', '${pageBean.cacheBegin}')">--%>
+                                    <option value="10" selected="selected">10</option>
+                                    <option value="25">25</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                </select><i></i></label></span></div>
+                            </div>
                             <div class="dt-wrapper">
                             <table id="datatable_tabletools" class="table table-striped table-hover dataTable" aria-describedby="datatable_tabletools_info">
 							<thead>
@@ -167,7 +173,14 @@
                                     <th class="sorting" role="columnheader" tabindex="0" aria-controls="datatable_tabletools" rowspan="1" colspan="1" aria-label="Date: activate to sort column ascending" style="width: 109px;">Date</th></tr>
 							</thead>
 							
-						<tbody role="alert" aria-live="polite" aria-relevant="all">
+						<tbody role="alert" aria-live="polite" aria-relevant="all" id="tablebody">
+                        <tr class="odd">
+                            <td class=" ">obj.classId}</td>
+                            <td class=" ">obj.className}</td>
+                            <td class=" ">obj.defaultStatName}</td>
+                            <td class=" ">{obj.createMan}</td>
+                            <td class=" ">{obj.createDate}</td>
+                        </tr>
                         <c:forEach items="${objList}" var="obj">
                             <tr class="odd">
                                 <td class=" sorting_1">${obj.classId}</td>
@@ -177,45 +190,24 @@
                                 <td class=" ">${obj.createDate}</td>
                             </tr>
                         </c:forEach>
-                            <%--<tr class="odd">--%>
-									<%--<td class=" sorting_1">${obj.classId}</td>--%>
-									<%--<td class=" ">Jennifer</td>--%>
-									<%--<td class=" ">1-342-463-8341</td>--%>
-									<%--<td class=" ">Et Rutrum Non Associates</td>--%>
-									<%--<td class=" ">35728</td>--%>
-									<%--<td class=" ">Fogo</td>--%>
-									<%--<td class=" ">03/04/14</td>--%>
-								<%--</tr><tr class="even">--%>
-									<%--<td class=" sorting_1">2</td>--%>
-									<%--<td class=" ">Clark</td>--%>
-									<%--<td class=" ">1-516-859-1120</td>--%>
-									<%--<td class=" ">Nam Ac Inc.</td>--%>
-									<%--<td class=" ">7162</td>--%>
-									<%--<td class=" ">Machelen</td>--%>
-									<%--<td class=" ">03/23/13</td>--%>
-								<%--</tr><tr class="odd">--%>
-									<%--<td class=" sorting_1">3</td>--%>
-									<%--<td class=" ">Brendan</td>--%>
-									<%--<td class=" ">1-724-406-2487</td>--%>
-									<%--<td class=" ">Enim Commodo Limited</td>--%>
-									<%--<td class=" ">98611</td>--%>
-									<%--<td class=" ">Norman</td>--%>
-									<%--<td class=" ">02/13/14</td>--%>
-								<%--</tr><tr class="even">--%>
-									<%--<td class=" sorting_1">4</td>--%>
-									<%--<td class=" ">Warren</td>--%>
-									<%--<td class=" ">1-412-485-9725</td>--%>
-									<%--<td class=" ">Odio Etiam Institute</td>--%>
-									<%--<td class=" ">10312</td>--%>
-									<%--<td class=" ">Sautin</td>--%>
-									<%--<td class=" ">01/01/13</td>--%>
-								<%--</tr>--%>
                         </tbody>
                             </table></div>
-                            <div class="dt-row dt-bottom-row"><div class="row"><div class="col-sm-6"><div class="dataTables_info" id="datatable_tabletools_info">Showing 1 to 10 of 100 entries</div></div>
+                            <div class="dt-row dt-bottom-row">
+                                <div class="row"><div class="col-sm-6">
+                                <div class="dataTables_info" id="datatable_tabletools_info">Showing 1 to 10 of 100 entries</div></div>
                                 <div class="col-sm-6 text-right"><div class="dataTables_paginate paging_bootstrap">
-                                <ul class="pagination"><li class="prev disabled"><a href="#">Previous</a></li><li class="active"><a href="#">1</a></li><li><a href="#">2</a></li><li><a href="#">3</a></li><li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li><li class="next"><a href="#">Next</a></li></ul></div></div></div></div></div>
+
+                                <ul class="pagination">
+                                    <li class="prev disabled"><a href="#">Previous</a></li>
+                                    <li class="active"><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                    <li><a href="#">5</a></li>
+                                    <li class="next"><a href="#">Next</a></li>
+                                </ul>
+
+                                </div></div></div></div></div>
 
 					</div>
 					<!-- end widget content -->
@@ -244,6 +236,60 @@
 	<script src="js/bootstrap.min.js"></script>
     <script src="js/classListAjax.js"></script>
 	<script>
+        function countSelect(url, currentPage, totalPages, listCount, cacheBegin){
+            document.getElementById("ajaxRes").innerHTML="<p>currentPage="+currentPage+"</p>";
+            createXMLHttpRequest();
+            XMLHttpReq.open('POST', url, true);
+            XMLHttpReq.onreadystatechange = processResponseToPage;
+            XMLHttpReq.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
+            XMLHttpReq.send("currentPage="+currentPage+"&totalPages="+totalPages
+                    +"&listCount="+listCount+"&cacheBegin="+cacheBegin);
+        }
+
+        function processResponseToPage(){
+            if (XMLHttpReq.readyState == 4) {
+                if (XMLHttpReq.status == 200) {
+                    alert("success");
+                    var dataObj = eval("("+XMLHttpReq.responseText+")");
+                    var inHtml ="";
+                    var tablebody =document.getElementById("tablebody");
+                    tablebody.innerHTML="";
+                    for(var i=0;i<dataObj.length;i++){
+                        var obj = dataObj[i];
+                        if(i<10) {
+                            var tr=document.createElement("tr");
+                            var td=new Array();
+                            for(var j=0; j<5; j++){td[j]= document.createElement("td");}
+                            td[0].innerHTML=obj.classId;
+                            td[1].innerHTML=obj.className;
+                            td[2].innerHTML=obj.defaultStatName;
+                            td[3].innerHTML=obj.createMan;
+                            td[4].innerHTML=obj.createDate;
+                            for(var j=0; j<5; j++){tr.appendChild(td[j]);}
+
+                            tablebody.appendChild(tr);
+                        }
+                    }
+//                    $.each(dataObj,function(idx, obj){
+//                        if(obj==null){}
+//                        else if(idx<10) {
+//                            inHtml += '<tr class="odd">';
+//                            inHtml += '<td>' + obj.classId + '</td>';
+//                            inHtml += '<td>' + obj.className + '</td>';
+//                            inHtml += '<td>' + obj.defaultStatName + '</td>';
+//                            inHtml += '<td>' + obj.createMan + '</td>';
+//                            inHtml += '<td>' + obj.createDate + '</td>';
+//                            inHtml += '</tr>';
+//                        }
+//                    })
+//                    document.getElementById("tbody").innerHTML=inHtml;
+                    //alert(document.getElementById("tablebody").innerHTML);
+                    //
+                    //document.getElementById("ajaxRes").innerHTML=XMLHttpReq.responseText;
+                }
+            }
+        }
+
         function sendAjaxSearch(url,objectID, resObjID) {
             createXMLHttpRequest();                                //创建XMLHttpRequest对象
             var object1 = document.getElementById(objectID);

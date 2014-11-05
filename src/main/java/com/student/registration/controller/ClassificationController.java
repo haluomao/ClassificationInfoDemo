@@ -6,6 +6,8 @@ import com.student.registration.model.User;
 import com.student.registration.service.ClassListService;
 import com.student.registration.service.UserService;
 import com.student.registration.util.JsonUtil;
+import com.student.registration.vo.ClassListFormBean;
+import com.student.registration.vo.PageListBean;
 import com.student.registration.vo.UserFormBean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -56,7 +58,7 @@ public class ClassificationController {
         logger.info("className:" + className);
         logger.info("createMan:" + createMan);
 
-        List<ClassList> objList =classListService.selectByName(className);
+        List<ClassList> objList =classListService.selectByClassName(className);
         map.put("objList", objList);
         return "index";
     }
@@ -68,7 +70,7 @@ public class ClassificationController {
         String className = req.getParameter("className");
         logger.info("classNameAjax:" + className);
 
-        List<ClassList> objList = classListService.selectByName(className);
+        List<ClassList> objList = classListService.selectByClassName(className);
         String jsonString = JsonUtil.getMapper().writeValueAsString(objList);
         logger.info("Json result", jsonString);
         PrintWriter printWriter = response.getWriter();
@@ -84,9 +86,35 @@ public class ClassificationController {
         String className = req.getParameter("classNameAjax");
         logger.info("classNameAjax:" + classNameAjax);
 
-        List<ClassList> objList = classListService.selectByName(classNameAjax);
+        List<ClassList> objList = classListService.selectByClassName(classNameAjax);
         String jsonString = JsonUtil.getMapper().writeValueAsString(objList);
         logger.info("Json result", jsonString);
+        printWriter.write(jsonString);
+        printWriter.flush();
+        printWriter.close();
+    }
+
+    @RequestMapping(value = "pageUpdateAction", method = RequestMethod.POST)
+    public void pageUpdateAction(HttpServletRequest req,
+                                 HttpServletResponse response) throws Exception {
+        logger.info("pageUpdateAction method(post)~");
+        String className = req.getParameter("className");
+        PageListBean pageListBean = new PageListBean();
+        pageListBean.setCacheBegin(Integer.valueOf(req.getParameter("cacheBegin")));
+        pageListBean.setCurrentPage(Integer.valueOf(req.getParameter("currentPage")));
+        pageListBean.setTotalPages(Integer.valueOf(req.getParameter("totalPages")));
+        pageListBean.setListCount(Integer.valueOf(req.getParameter("listCount")));
+        logger.info("currentPage:" + req.getParameter("currentPage"));
+
+        ClassListFormBean classListFormBean = new ClassListFormBean();
+        classListFormBean.setPageBean(pageListBean);
+
+        List<ClassList> objList = classListService.selectByClassNameAndCreateManAndLimit(classListFormBean);
+
+        String jsonString = JsonUtil.getMapper().writeValueAsString(objList);
+        logger.info("Json result:"+jsonString);
+        response.setCharacterEncoding("UTF-8");
+        PrintWriter printWriter = response.getWriter();
         printWriter.write(jsonString);
         printWriter.flush();
         printWriter.close();

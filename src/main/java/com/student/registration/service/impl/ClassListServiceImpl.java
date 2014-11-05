@@ -5,6 +5,7 @@ import com.student.registration.model.ClassList;
 import com.student.registration.model.ClassListExample;
 import com.student.registration.service.ClassListService;
 import com.student.registration.vo.ClassListFormBean;
+import com.student.registration.vo.PageListBean;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -92,8 +93,9 @@ public class ClassListServiceImpl implements ClassListService{
 			classListFormBean.setClassname("");
 		if(classListFormBean.getCreateman() == null)
 			classListFormBean.setCreateman("");
-		classListExample.setLimit((classListFormBean.getPage()-1) * classListFormBean.getOffset());
-		classListExample.setOffset(classListFormBean.getOffset());
+        PageListBean pageListBean = classListFormBean.getPageBean();
+		classListExample.setLimit(pageListBean.getCacheBegin());
+		classListExample.setOffset(pageListBean.getCacheSize());
 		classListExample.createCriteria().andClassNameLike("%" + classListFormBean.getClassname() + "%").andCreateManLike("%" + classListFormBean.getCreateman() + "%");
 		List<ClassList> classlist = classListMapper.selectByExampleAndLimit(classListExample);
 		classListExample.clear();
