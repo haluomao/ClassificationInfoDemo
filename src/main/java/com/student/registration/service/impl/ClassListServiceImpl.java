@@ -5,10 +5,13 @@ import com.student.registration.model.ClassList;
 import com.student.registration.model.ClassListExample;
 import com.student.registration.service.ClassListService;
 import com.student.registration.vo.ClassListFormBean;
+import com.student.registration.vo.PageListBean;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -87,15 +90,16 @@ public class ClassListServiceImpl implements ClassListService{
 	}
 
 	@Override
-	public List<ClassList> selectByClassNameAndCreateManAndLimit(ClassListFormBean classListFormBean) {
+	public List<ClassList> selectByClassNameAndCreateManAndLimit(ClassListFormBean classListFormBean,PageListBean pageListBean) {
 		if(classListFormBean.getClassName() == null)
 			classListFormBean.setClassName("");
 		if(classListFormBean.getCreateMan() == null)
 			classListFormBean.setCreateMan("");
-		classListExample.setLimit((classListFormBean.getPage()-1) * classListFormBean.getOffset());
-		classListExample.setOffset(classListFormBean.getOffset());
+		classListExample.setLimit((pageListBean.getPage()-1) * pageListBean.getOffset());
+		classListExample.setOffset(pageListBean.getOffset());
 		classListExample.createCriteria().andClassNameLike("%" + classListFormBean.getClassName() + "%").andCreateManLike("%" + classListFormBean.getCreateMan() + "%");
 		List<ClassList> classlist = classListMapper.selectByExampleAndLimit(classListExample);
+
 		classListExample.clear();
 		return classlist;
 	}

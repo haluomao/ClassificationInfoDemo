@@ -273,21 +273,30 @@
 //                    tbody.empty;
                     var result = XMLHttpReq.responseText;
                     var json = eval("(" + result + ")");
-//                    document.getElementById("ajaxRes").innerHTML = json;
-//                    document.getElementById("ajaxRes").innerHTML = json.classLists[0].className;
+//                  alert($("pageListBean"));
+//                  document.getElementById("ajaxRes").innerHTML = $("pageListBean") + $("classListFormBean");
+//                  document.getElementById("ajaxRes").innerHTML = XMLHttpReq.responseText;
+//                  document.getElementById("ajaxRes").innerHTML = json.classLists[0].className;
 
-                    $('#TotalCount').val(json.classLists)
+                 //   $('#TotalCount').val(json.classLists)
 
                     $('tbody')
-                    for(var i = 0; i < json.classLists.length; i++)
+                    for(var i = 0; i < json.classListFormBean.classLists.length; i++)
                     {
                         $('tbody').append('<tr class="odd"></tr>');
-                        $('tbody>tr:last-child').append('<td class=" sorting_1">' + json.classLists[i].classId + '</td>')
-                        $('tbody>tr:last-child').append('<td class=" sorting_1">' + json.classLists[i].className + '</td>')
-                        $('tbody>tr:last-child').append('<td class=" sorting_1">' + json.classLists[i].defaultStatName + '</td>')
-                        $('tbody>tr:last-child').append('<td class=" sorting_1">' + json.classLists[i].createMan + '</td>')
-                        $('tbody>tr:last-child').append('<td class=" sorting_1">' + json.classLists[i].createDate + '</td>')
+                        $('tbody>tr:last-child').append('<td class=" sorting_1">' + json.classListFormBean.classLists[i].classId + '</td>')
+                        $('tbody>tr:last-child').append('<td class=" sorting_1">' + json.classListFormBean.classLists[i].className + '</td>')
+                        $('tbody>tr:last-child').append('<td class=" sorting_1">' + json.classListFormBean.classLists[i].defaultStatName + '</td>')
+                        $('tbody>tr:last-child').append('<td class=" sorting_1">' + json.classListFormBean.classLists[i].createMan + '</td>')
+                        $('tbody>tr:last-child').append('<td class=" sorting_1">' + json.classListFormBean.classLists[i].createDate + '</td>')
                     }
+
+//                    json.pageListBean.offset  //获取步长
+//                    json.pageListBean.page
+//                    json.pageListBean.hasNext
+//                    json.pageListBean.totalPage
+//                    json.pageListBean.totalCount
+
 
                 }
             }

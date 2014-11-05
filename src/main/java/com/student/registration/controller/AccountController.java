@@ -79,34 +79,34 @@ public class AccountController {
 		classname
 		createman
 	*/
-	@RequestMapping("/pagelist")
-	public @ResponseBody ClassListFormBean pageList(ClassListFormBean classListFormBean) throws Exception
-	{
-//		ClassListFormBean classListFormBean = new ClassListFormBean();
-
-		if(classListFormBean.getOffset() <= 0)
-			classListFormBean.setOffset(10);
-		if(classListFormBean.getPage() <= 1 && classListFormBean.getPage() != -1) //如果访问首页
-		{
-			classListFormBean.setHasPrev(false);
-			classListFormBean.setPage(1);
-		}
-
-		int count = classListService.countClassListByClassNameAndCreateMan(classListFormBean);  //获取数据库中记录总条数
-//		System.out.println("count:" + count);
-		classListFormBean.setTotalPage((int)Math.ceil(count / (float)classListFormBean.getOffset()));  //计算总页数
-
-		if(classListFormBean.getPage() == -1 || (int)Math.ceil(count / (float)classListFormBean.getOffset()) == classListFormBean.getPage())  //如果访问末页
-		{
-			classListFormBean.setHasNext(false);  //如果是末页则不可继续访问下一页
-			classListFormBean.setPage((int)Math.ceil(count / (float)classListFormBean.getOffset()));  //计算page，向上取整
-		}
-
-		List<ClassList> classLists = classListService.selectByClassNameAndCreateManAndLimit(classListFormBean);  //根据page，offset查询对应的记录
-		classListFormBean.setClassLists(classLists); //将结果返回给Bean
-
-		return classListFormBean;
-	}
+//	@RequestMapping("/pagelist")
+//	public @ResponseBody ClassListFormBean pageList(ClassListFormBean classListFormBean) throws Exception
+//	{
+////		ClassListFormBean classListFormBean = new ClassListFormBean();
+//
+//		if(classListFormBean.getOffset() <= 0)
+//			classListFormBean.setOffset(10);
+//		if(classListFormBean.getPage() <= 1 && classListFormBean.getPage() != -1) //如果访问首页
+//		{
+//			classListFormBean.setHasPrev(false);
+//			classListFormBean.setPage(1);
+//		}
+//
+//		int count = classListService.countClassListByClassNameAndCreateMan(classListFormBean);  //获取数据库中记录总条数
+////		System.out.println("count:" + count);
+//		classListFormBean.setTotalPage((int)Math.ceil(count / (float)classListFormBean.getOffset()));  //计算总页数
+//
+//		if(classListFormBean.getPage() == -1 || (int)Math.ceil(count / (float)classListFormBean.getOffset()) == classListFormBean.getPage())  //如果访问末页
+//		{
+//			classListFormBean.setHasNext(false);  //如果是末页则不可继续访问下一页
+//			classListFormBean.setPage((int)Math.ceil(count / (float)classListFormBean.getOffset()));  //计算page，向上取整
+//		}
+//
+//		List<ClassList> classLists = classListService.selectByClassNameAndCreateManAndLimit(classListFormBean);  //根据page，offset查询对应的记录
+//		classListFormBean.setClassLists(classLists); //将结果返回给Bean
+//
+//		return classListFormBean;
+//	}
 
 
 	//@Override  //不带参数访问时的默认方法

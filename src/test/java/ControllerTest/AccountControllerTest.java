@@ -4,6 +4,7 @@ import com.student.registration.controller.AccountController;
 import com.student.registration.model.ClassList;
 import com.student.registration.service.ClassListService;
 import com.student.registration.vo.ClassListFormBean;
+import com.student.registration.vo.PageListBean;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -23,11 +24,12 @@ public class AccountControllerTest {
 		AccountController accountController = (AccountController)ctx.getBean("AccountController");
 
 		ClassListFormBean clfb = new ClassListFormBean();
+		PageListBean plb = new PageListBean();
 		clfb.setCreateMan("22");
 		clfb.setClassName("8");
-		clfb.setOffset(10);
-		clfb.setPage(0);
+		plb.setOffset(10);
+		plb.setPage(2);
 
-		System.out.println(accountController.pageList(clfb));
+//		System.out.println(accountController.pageList(clfb));
 	}
 }

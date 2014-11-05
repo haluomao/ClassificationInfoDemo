@@ -4,6 +4,7 @@ import com.student.registration.model.ClassList;
 import com.student.registration.service.ClassListService;
 import com.student.registration.service.UserService;
 import com.student.registration.vo.ClassListFormBean;
+import com.student.registration.vo.PageListBean;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -95,11 +96,12 @@ public class ClassListTest {
 		ClassListService classListService = (ClassListService)ctx.getBean("ClassListServiceImpl");
 
 		ClassListFormBean clfb = new ClassListFormBean();
+		PageListBean plb = new PageListBean();
 		clfb.setCreateMan("22");
 		clfb.setClassName("8");
-		clfb.setOffset(10);
-		clfb.setPage(2);
+		plb.setOffset(10);
+		plb.setPage(2);
 
-		System.out.println(classListService.selectByClassNameAndCreateManAndLimit(clfb));
+		System.out.println(classListService.selectByClassNameAndCreateManAndLimit(clfb,plb));
 	}
 }
