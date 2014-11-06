@@ -69,7 +69,7 @@ public class AccountController {
         }
 
         userService.add(u);
-        return "register";
+        return "register1";
 	}
 
 	/* 此方法实现网页分页机制 */

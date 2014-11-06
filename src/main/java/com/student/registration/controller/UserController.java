@@ -21,7 +21,7 @@ import com.student.registration.service.UserService;
 import com.student.registration.vo.UserFormBean;
 
 @Component("userController")
-@RequestMapping("user.do")  //请求url配置
+//@RequestMapping("user.do")  //请求url配置
 @Scope("prototype")
 //@SessionAttributes({"arg3"})
 public class UserController implements Controller{
@@ -131,6 +131,35 @@ public class UserController implements Controller{
 				return "registerFailure";  //跳转到registerFailure.jsp;
 			userService.add(u);
 			return "registerSuccess";  //跳转到registerSuccess.jsp;
+	}
+
+	@RequestMapping("{\\.*}/userregister.do")
+	public String register(UserFormBean userFormBean,HttpServletRequest req,ModelMap map) throws Exception {
+		System.out.println("HelloController.reg4()");
+		System.out.println(req.getRequestURI());
+		logger.info("reg4!!!!");
+		//	req.setAttribute("a", "aaaa");  //设置返回数据
+		req.setAttribute("arg1", "requestValue");
+		req.getSession().setAttribute("arg2", "sessionValue");
+		map.addAttribute("arg3", "ModelMapValue3");
+		map.addAttribute("arg4", "ModelMapValue4");
+		User u = new User();
+		u.setUsername(userFormBean.getUsername());
+		u.setPassword(userFormBean.getPassword());
+
+		System.out.println("username:" + userFormBean.getUsername());
+		System.out.println("password:" + userFormBean.getPassword());
+
+		if(userService.exists(u))
+			return "registerFailure";  //跳转到registerFailure.jsp;
+		userService.add(u);
+		return "login";  //跳转到registerSuccess.jsp;
+	}
+
+	@RequestMapping("{\\.*}/register.do")
+	public String redirect_register(ModelMap map) throws Exception {
+		System.out.println("hehe");
+		return "register1";  //跳转到registerSuccess.jsp;
 	}
 
 	@Override  //不带参数访问时的默认方法

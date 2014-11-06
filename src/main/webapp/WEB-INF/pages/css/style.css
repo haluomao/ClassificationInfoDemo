@@ -3,7 +3,7 @@
 	padding: 0px;
 }
 .LoginTable {
-	margin-top: 60px;
+	margin-top: 30px;
 	background-color: #FFFFFF;
 	border-top-width: 0px;
 	border-right-width: 1px;
@@ -43,3 +43,22 @@
 	height:30px;
 	width:250px;
 }
+
+.head_title {
+    margin-top: 15px;
+    font-size: 24px;
+    color: #0066FF;
+    font-weight: bold;
+}
+
+.Table3 {
+    border-left-width: 10px;
+    border-left-style: solid;
+    border-left-color: #0099FF;
+    background-color: #FFFFFF;
+    border-bottom-width: 3px;
+    border-bottom-style: solid;
+    border-bottom-color: #CCCCCC;
+}
+
+.STYLE1 {font-size: 14px}

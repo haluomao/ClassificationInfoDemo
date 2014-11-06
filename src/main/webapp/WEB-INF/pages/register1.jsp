@@ -28,11 +28,18 @@
         <td><div align="center"><img src="images/logo_login.png" width="482" height="89" alt="img" /></div></td>
     </tr>
 </table>
-<div align="center" class="head_title">用户登录</div>
+<div align="center" class="head_title">新用户注册</div>
+
+<table width="320" height="60" border="0" align="center" cellspacing="10" class="Table3">
+    <tr>
+        <td><span class="STYLE1">请在这个页面注册</span></td>
+    </tr>
+</table>
+
 <table width="350" height="290" align="center" cellspacing="0" class="LoginTable">
     <tr>
         <td height="230">
-            <form id="loginform" name="loginform" method="post" action="login.do" onSubmit="return sendlogin()"/>
+            <form id="loginform" name="loginform" method="post" action="userregister.do" onSubmit="return sendlogin()"/>
                 <p>用户名</p>
             <p>
                 <input type="text" id="username" name="username" class="textview1"/>
@@ -40,6 +47,10 @@
             <p>密码</p>
             <p>
                 <input type="password" id="password" name="password" class="textview1" />
+            </p>
+            <p>密码</p>
+            <p>
+                <input type="confirm" id="confirm" name="password" class="textview1" />
             </p>
                 <table width="320" border="0">
                     <tr>
@@ -53,7 +64,7 @@
 </table>
 <table width="320" height="30" border="0" align="center" cellspacing="0" class="OperationTable">
     <tr>
-        <td><a href="register.do" class="textview2">注册</a> | <span class="textview2">忘记密码？</span></td>
+        <td><a href="/register.do" class="textview2">注册</a> | <span class="textview2">忘记密码？</span></td>
     </tr>
 </table>
 
@@ -62,19 +73,24 @@
 //        alert($('#username').val());
         if ($('#username').val() == "" || $('#username') == null) {
             $('#tips').css('color', 'red');
-            $('#tips').html("用户名不可为空");
+            $('#tips').html("用户名不可为空！");
 //            $('#username').val("用户名不可为空");
             return false;
         }
         else if ($('#password').val() == "" || $('#password') == null) {
             $('#tips').css('color', 'red');
-            $('#tips').html("密码不可为空");
+            $('#tips').html("密码不可为空！");
+            return false;
+        }
+        else if ($('#password').val() != $('#confirm').val()) {
+            $('#tips').css('color', 'red');
+            $('#tips').html("两次密码不一致！");
             return false;
         }
         else{
             $('#tips').css('color', 'black');
-            $('#tips').html("正在登录...");
-            return true;
+            $('#tips').html("正在注册...");
+            return true;;
         }
     }
 </script>
