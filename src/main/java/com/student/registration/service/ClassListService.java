@@ -2,7 +2,7 @@ package com.student.registration.service;
 
 import com.student.registration.model.ClassList;
 import com.student.registration.vo.ClassListFormBean;
-import com.student.registration.vo.PageListBean;
+import com.student.registration.vo.PageBean;
 
 import java.util.List;
 
@@ -35,7 +35,9 @@ public interface ClassListService {
 
 	public int deleteByClassId(int classId);
 
-	public List<ClassList> selectByClassNameAndCreateManAndLimit(ClassListFormBean classListFormBean,PageListBean pageListBean);
+    public ClassList selectByClassId(int classId);
+
+	public List<ClassList> selectByClassNameAndCreateManAndLimit(ClassListFormBean classListFormBean,PageBean pageBean);
 
 	public int countClassList();
 

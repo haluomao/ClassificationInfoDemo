@@ -5,15 +5,18 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
     <title>用户登录</title>
 
+
     <style type="text/css">
-        <!--
+
         body {
+
             /*background-image: url(./images/background.png);*/
             /*background-repeat: repeat-x;*/
         }
-        -->
+
     </style>
     <link href="./css/style.css" rel="stylesheet" type="text/css" />
 
@@ -32,8 +35,10 @@
 <table width="350" height="290" align="center" cellspacing="0" class="LoginTable">
     <tr>
         <td height="230">
+
             <form id="loginform" name="loginform" method="post" action="login.do"/>
                 <p>用户名</p>
+
             <p>
                 <input type="text" id="username" name="username" class="textview1"/>
             </p>
@@ -41,6 +46,7 @@
             <p>
                 <input type="password" id="password" name="password" class="textview1" />
             </p>
+
             </form>
                 <table width="320" border="0">
                     <tr>
@@ -54,7 +60,12 @@
 </table>
 <table width="320" height="30" border="0" align="center" cellspacing="0" class="OperationTable">
     <tr>
+<<<<<<< HEAD
         <td><a href="register.html" class="textview2">注册</a> | <span class="textview2">忘记密码？</span></td>
+=======
+        <td><a href="<%=request.getContextPath()%>/registerAction" class="textview2">注册</a> | <span class="textview2">忘记密码？</span>
+        </td>
+>>>>>>> 38f6b9dc07dcd717fe283dd877790e0b5e65b211
     </tr>
 </table>
 

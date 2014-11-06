@@ -1,23 +1,23 @@
 .titlelogo {
-	margin: 40px;
-	padding: 0px;
+    margin: 40px;
+    padding: 0px;
 }
 .LoginTable {
-	margin-top: 30px;
-	background-color: #FFFFFF;
-	border-top-width: 0px;
-	border-right-width: 1px;
-	border-bottom-width: 2px;
-	border-left-width: 1px;
-	border-top-style: solid;
-	border-right-style: solid;
-	border-bottom-style: solid;
-	border-left-style: solid;
+    margin-top: 30px;
+    background-color: #FFFFFF;
+    border-top-width: 0px;
+    border-right-width: 1px;
+    border-bottom-width: 2px;
+    border-left-width: 1px;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
     border-color: #CCCCCC;
-	padding-top: 15px;
-	padding-right: 25px;
-	padding-bottom: 20px;
-	padding-left: 25px;
+    padding-top: 15px;
+    padding-right: 25px;
+    padding-bottom: 20px;
+    padding-left: 25px;
     background-image: url(../images/logintable.png);
     background-repeat: repeat-x;
 }
@@ -29,19 +29,19 @@
     padding-left: 15px;
 }
 .textview2 {
-	font-size: 14px;
-	color: #999999;
+    font-size: 14px;
+    color: #999999;
 }
 
 .LoginTable p {
-	font-size: 16px;
-	color: #666666;
+    font-size: 16px;
+    color: #666666;
 }
 
 .textview1 {
-	font-size: 16px;
-	height:30px;
-	width:250px;
+    font-size: 16px;
+    height:30px;
+    width:250px;
 }
 
 .head_title {
