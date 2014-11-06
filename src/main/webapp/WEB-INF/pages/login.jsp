@@ -60,12 +60,8 @@
 </table>
 <table width="320" height="30" border="0" align="center" cellspacing="0" class="OperationTable">
     <tr>
-<<<<<<< HEAD
         <td><a href="register.html" class="textview2">注册</a> | <span class="textview2">忘记密码？</span></td>
-=======
-        <td><a href="<%=request.getContextPath()%>/registerAction" class="textview2">注册</a> | <span class="textview2">忘记密码？</span>
-        </td>
->>>>>>> 38f6b9dc07dcd717fe283dd877790e0b5e65b211
+
     </tr>
 </table>
 
@@ -108,6 +104,8 @@
         }
         else
         {
+            $('#tips').css('color', 'black');
+            $('#tips').html("登录中...");
             createXMLHttpRequest(); //创建XMLHttpRequest对象
             //var object1 = document.getElementById(objectID);
             var username = $('#username').val();
