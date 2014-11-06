@@ -13,4 +13,6 @@ public interface UserService {
 	public List<User> getUsers();
 	
 	public User getUserById(int id);
+
+	public User getUserByUsername(String username);
 }

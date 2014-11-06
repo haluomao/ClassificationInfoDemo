@@ -47,6 +47,16 @@ public class UserServiceImpl implements UserService{
 		// TODO Auto-generated method stub
 		return this.userMapper.selectByPrimaryKey(id);
 	}
+
+	@Override
+	public User getUserByUsername(String username) {
+		// TODO Auto-generated method stub
+		UserExample userExample = new UserExample();
+		userExample.createCriteria().andUsernameEqualTo(username);
+		User user = userMapper.selectByExample(userExample).get(0);
+		userExample.clear();
+		return user;
+	}
 	
 	public UserExample getUserExample() {
 		return userExample;

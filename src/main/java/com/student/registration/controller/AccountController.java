@@ -4,7 +4,6 @@ import com.student.registration.model.ClassList;
 import com.student.registration.model.User;
 import com.student.registration.service.ClassListService;
 import com.student.registration.service.UserService;
-import com.student.registration.vo.ClassListFormBean;
 import com.student.registration.vo.UserFormBean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +11,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -69,7 +69,49 @@ public class AccountController {
         }
 
         userService.add(u);
-        return "register1";
+        return "register";
+	}
+
+
+	@RequestMapping(value="usercheck",method= RequestMethod.POST)
+	public @ResponseBody String userCheck(UserFormBean userFormBean) throws Exception{
+		String username = userFormBean.getUsername();
+		String password = userFormBean.getPassword();
+		System.out.println("username:" + username);
+		System.out.println("password:" + password);
+
+		User u= new User();
+		u.setUsername(userFormBean.getUsername());
+		u.setPassword(userFormBean.getPassword());
+		if(userService.exists(u)) {
+			System.out.println("user exist.");
+			User u1 = userService.getUserByUsername(u.getUsername());
+			System.out.println("u1:" + u1.getPassword());
+			System.out.println("u:" + u.getPassword());
+			if (u1.getPassword().equals(u.getPassword())) {
+				System.out.println("success_1");
+				return "success";
+			}
+			else {
+				System.out.println("failure_1");
+				return "failure";
+			}
+		}
+		else
+		{
+			System.out.println("failure_2");
+			return "failure";
+		}
+	}
+
+	@RequestMapping(value="register.html")
+	public String redirectTo_register(ModelMap map) throws Exception {
+		return "register";  //跳转到registerSuccess.jsp;
+	}
+
+	@RequestMapping(value="login.html")
+	public String redirectTo_login(ModelMap map) throws Exception {
+		return "login";  //跳转到registerSuccess.jsp;
 	}
 
 	/* 此方法实现网页分页机制 */

@@ -54,6 +54,8 @@
             <tx:method name="count*" read-only="true" propagation="NOT_SUPPORTED" />
             <tx:method name="list*" read-only="true" propagation="NOT_SUPPORTED" />
             <tx:method name="find*" read-only="true" propagation="NOT_SUPPORTED" />
+            <tx:method name="get*" read-only="true" propagation="NOT_SUPPORTED" />
+            <tx:method name="exist*" read-only="true" propagation="NOT_SUPPORTED" />
 			<tx:method name="add*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
             <tx:method name="modify*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
             <tx:method name="delete*" propagation="REQUIRED" rollback-for="java.lang.Exception" />

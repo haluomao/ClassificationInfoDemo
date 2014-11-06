@@ -156,11 +156,7 @@ public class UserController implements Controller{
 		return "login";  //跳转到registerSuccess.jsp;
 	}
 
-	@RequestMapping("{\\.*}/register.do")
-	public String redirect_register(ModelMap map) throws Exception {
-		System.out.println("hehe");
-		return "register1";  //跳转到registerSuccess.jsp;
-	}
+
 
 	@Override  //不带参数访问时的默认方法
 	public ModelAndView handleRequest(HttpServletRequest req, HttpServletResponse resp) throws Exception {
