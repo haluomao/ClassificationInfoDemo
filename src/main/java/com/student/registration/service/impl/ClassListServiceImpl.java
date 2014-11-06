@@ -40,7 +40,9 @@ public class ClassListServiceImpl implements ClassListService{
 		if(classListFormBean.getCreateMan() == null)
 			classListFormBean.setCreateMan("");
 		classListExample.createCriteria().andClassNameLike("%" + classListFormBean.getClassName() + "%").andCreateManLike("%" + classListFormBean.getCreateMan() + "%");
-		return classListMapper.countByExample(classListExample);
+		int count = classListMapper.countByExample(classListExample);
+		classListExample.clear();
+		return count;
 	}
 
 	@Override
@@ -64,6 +66,7 @@ public class ClassListServiceImpl implements ClassListService{
 		classListExample.setLimit(begin);
 		classListExample.setOffset(offset);
 		List<ClassList> classlist = classListMapper.selectByExampleAndLimit(classListExample);
+		classListExample.clear();
 		return classlist;
 	}
 

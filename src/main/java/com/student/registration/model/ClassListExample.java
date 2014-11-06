@@ -1956,7 +1956,7 @@ public class ClassListExample implements Serializable {
      *
      * @mbggenerated do_not_delete_during_merge Thu Oct 30 20:04:42 CST 2014
      */
-    public static class Criteria extends GeneratedCriteria {
+    public static class Criteria extends GeneratedCriteria implements Serializable {
 
         protected Criteria() {
             super();

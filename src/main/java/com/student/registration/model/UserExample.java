@@ -405,7 +405,7 @@ public class UserExample implements Serializable{
      *
      * @mbggenerated do_not_delete_during_merge Tue Oct 21 20:25:50 CST 2014
      */
-    public static class Criteria extends GeneratedCriteria {
+    public static class Criteria extends GeneratedCriteria implements Serializable{
 
         protected Criteria() {
             super();
@@ -418,7 +418,7 @@ public class UserExample implements Serializable{
      *
      * @mbggenerated Tue Oct 21 20:25:50 CST 2014
      */
-    public static class Criterion {
+    public static class Criterion implements Serializable{
         private String condition;
 
         private Object value;

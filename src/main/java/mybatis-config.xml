@@ -4,8 +4,11 @@
     "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
-	<typeAliases>
-		<typeAlias type="com.student.registration.model.User" alias="User"/>
-	</typeAliases>
+    <settings>
+        <setting name="logImpl" value="LOG4J" />
+    </settings>
+	<!--<typeAliases>-->
+		<!--<typeAlias type="com.student.registration.model.User" alias="User"/>-->
+	<!--</typeAliases>-->
 	
 </configuration>

@@ -18,7 +18,7 @@ public interface UserMapper {
      *
      * @mbggenerated Tue Oct 21 20:25:50 CST 2014
      */
-	@Cacheable(value = "serviceCache")
+//	@Cacheable(value = "serviceCache")
     int countByExample(UserExample example);
 
     /**
@@ -27,7 +27,7 @@ public interface UserMapper {
      *
      * @mbggenerated Tue Oct 21 20:25:50 CST 2014
      */
-	 @CacheEvict(value = "serviceCache")
+//	 @CacheEvict(value = "serviceCache")
     int deleteByExample(UserExample example);
 
     /**
@@ -36,7 +36,7 @@ public interface UserMapper {
      *
      * @mbggenerated Tue Oct 21 20:25:50 CST 2014
      */
-	 @CacheEvict(value = "serviceCache")
+//	 @CacheEvict(value = "serviceCache")
     int deleteByPrimaryKey(Integer id);
 
     /**
@@ -45,7 +45,7 @@ public interface UserMapper {
      *
      * @mbggenerated Tue Oct 21 20:25:50 CST 2014
      */
-	 @CacheEvict(value = "serviceCache")
+//	 @CacheEvict(value = "serviceCache")
     int insert(User record);
 
     /**
@@ -54,7 +54,7 @@ public interface UserMapper {
      *
      * @mbggenerated Tue Oct 21 20:25:50 CST 2014
      */
-	 @CacheEvict(value = "serviceCache")
+//	 @CacheEvict(value = "serviceCache")
     int insertSelective(User record);
 
     /**
@@ -63,7 +63,7 @@ public interface UserMapper {
      *
      * @mbggenerated Tue Oct 21 20:25:50 CST 2014
      */
-	@Cacheable(value = "serviceCache")
+//	@Cacheable(value = "serviceCache")
     List<User> selectByExample(UserExample example);
 
     /**
@@ -72,7 +72,7 @@ public interface UserMapper {
      *
      * @mbggenerated Tue Oct 21 20:25:50 CST 2014
      */
-	@Cacheable(value = "serviceCache")
+//	@Cacheable(value = "serviceCache")
     User selectByPrimaryKey(Integer id);
 
     /**
@@ -81,7 +81,7 @@ public interface UserMapper {
      *
      * @mbggenerated Tue Oct 21 20:25:50 CST 2014
      */
-    @CacheEvict(value = "serviceCache")
+//    @CacheEvict(value = "serviceCache")
     int updateByExampleSelective(@Param("record") User record, @Param("example") UserExample example);
 
     /**
@@ -90,7 +90,7 @@ public interface UserMapper {
      *
      * @mbggenerated Tue Oct 21 20:25:50 CST 2014
      */
-    @CacheEvict(value = "serviceCache")
+//    @CacheEvict(value = "serviceCache")
     int updateByExample(@Param("record") User record, @Param("example") UserExample example);
 
     /**
@@ -99,7 +99,7 @@ public interface UserMapper {
      *
      * @mbggenerated Tue Oct 21 20:25:50 CST 2014
      */
-    @CacheEvict(value = "serviceCache")
+//    @CacheEvict(value = "serviceCache")
     int updateByPrimaryKeySelective(User record);
 
     /**
@@ -108,6 +108,6 @@ public interface UserMapper {
      *
      * @mbggenerated Tue Oct 21 20:25:50 CST 2014
      */
-    @CacheEvict(value = "serviceCache")
+//    @CacheEvict(value = "serviceCache")
     int updateByPrimaryKey(User record);
 }
