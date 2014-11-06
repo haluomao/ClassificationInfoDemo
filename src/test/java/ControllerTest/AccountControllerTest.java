@@ -20,7 +20,7 @@ public class AccountControllerTest {
 	@Test
 	public void pageListTest() throws Exception {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("ApplicationContext.xml");
-		AccountController accountController = (AccountController)ctx.getBean("AccountController");
+//		AccountController accountController = (AccountController)ctx.getBean("AccountController");
 
 		ClassListFormBean clfb = new ClassListFormBean();
 		clfb.setCreateMan("22");

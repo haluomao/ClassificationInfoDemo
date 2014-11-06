@@ -56,16 +56,6 @@ public class UserController implements Controller{
         this.users = users;
     }
 
-//	public String list(){
-//		this.users = this.userService.getUsers();
-//		return "list";
-//	}
-//
-//	public String load(){
-//		this.user = this.userService.getUserById(userFormBean.getId());
-//		return "load";
-//	}
-
     @RequestMapping(params="method=reg1")  //当有一个名字为method的参数值为reg1时调用此方法
     public String reg1(String username,String password) throws Exception {
         System.out.println("HelloController.reg1()");
@@ -133,34 +123,6 @@ public class UserController implements Controller{
         return "registerSuccess";  //跳转到registerSuccess.jsp;
     }
 
-    @RequestMapping("{\\.*}/userregister.do")
-    public String register(UserFormBean userFormBean,HttpServletRequest req,ModelMap map) throws Exception {
-        System.out.println("HelloController.reg4()");
-        System.out.println(req.getRequestURI());
-        logger.info("reg4!!!!");
-        //	req.setAttribute("a", "aaaa");  //设置返回数据
-        req.setAttribute("arg1", "requestValue");
-        req.getSession().setAttribute("arg2", "sessionValue");
-        map.addAttribute("arg3", "ModelMapValue3");
-        map.addAttribute("arg4", "ModelMapValue4");
-        User u = new User();
-        u.setUsername(userFormBean.getUsername());
-        u.setPassword(userFormBean.getPassword());
-
-        System.out.println("username:" + userFormBean.getUsername());
-        System.out.println("password:" + userFormBean.getPassword());
-
-        if(userService.exists(u))
-            return "registerFailure";  //跳转到registerFailure.jsp;
-        userService.add(u);
-        return "login";  //跳转到registerSuccess.jsp;
-    }
-
-    @RequestMapping("{\\.*}/register.do")
-    public String redirect_register(ModelMap map) throws Exception {
-        System.out.println("hehe");
-        return "register1";  //跳转到registerSuccess.jsp;
-    }
 
     @Override  //不带参数访问时的默认方法
     public ModelAndView handleRequest(HttpServletRequest req, HttpServletResponse resp) throws Exception {

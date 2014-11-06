@@ -57,7 +57,7 @@
     <div class="row">
         <form method="post" action="classListSearchNormalAction">
             <div class="col-md-11 col-md-offset-1">
-                资产分类：<input type="text" name="className" id="className"/>
+                资产分类：<input type="text" name="className" id="className" value='<c:if test="${null!=classListFormBean}">${classListFormBean.className}</c:if>'/>
                 保管人：<input type="text" name="createMan" id="createMan" />
                 <button type="submit">检索</button>
                 <button type="button" onclick="classListSearch('classListSearchAction', 1)">Ajax检索</button>
@@ -144,8 +144,8 @@
                                     <th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="datatable_tabletools" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column descending" style="width: 53px;">ID</th>
                                     <th class="sorting" role="columnheader" tabindex="0" aria-controls="datatable_tabletools" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 115px;">Name</th>
                                     <th class="sorting" role="columnheader" tabindex="0" aria-controls="datatable_tabletools" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 144px;">Status</th>
-                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="datatable_tabletools" rowspan="1" colspan="1" aria-label="Creator: activate to sort column ascending" style="width: 133px;">Creator</th>
-                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="datatable_tabletools" rowspan="1" colspan="1" aria-label="Date: activate to sort column ascending" style="width: 109px;">Date</th>
+                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="datatable_tabletools" rowspan="1" colspan="1" aria-label="Creator: activate to sort column ascending" style="width: 103px;">Creator</th>
+                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="datatable_tabletools" rowspan="1" colspan="1" aria-label="Date: activate to sort column ascending" style="width: 139px;">SequenceNo</th>
                                     <th class="sorting" role="columnheader" tabindex="0" aria-controls="datatable_tabletools" rowspan="1" colspan="1" aria-label="Operation: activate to sort column ascending" style="width: 80px;">Operation</th>
                                 </tr>
                                 </thead>
@@ -181,14 +181,20 @@
                                         <c:if test="${null!= pageBean}">
                                             <li class="prev disabled"><a href="#">Previous</a></li>
                                             <li class="active"><a href='javascript:classListSearch("classListSearchAction",1)'>1</a></li>
-                                            <c:if test="${pageBean.totalPages>=2}">
+                                            <c:if test="${pageBean.totalPages<2}">
+                                                <li class="next disabled"><a href='#'>next</a></li>
+                                            </c:if>
+                                            <c:if test="${pageBean.totalPages==2}">
                                                 <li><a href='javascript:classListSearch("classListSearchAction",2)'>2</a></li>
+                                                <li class="next"><a href='javascript:classListSearch("classListSearchAction",2)'>next</a></li>
                                             </c:if>
                                             <c:if test="${pageBean.totalPages>2}">
-                                                <li><a href='#'>...</a></li>
+                                                <li><a href='javascript:classListSearch("classListSearchAction",2)'>2</a></li>
+                                                <c:if test="${pageBean.totalPages!=3}"><li><a href='#'>...</a></li></c:if>
                                                 <li><a href='javascript:classListSearch("classListSearchAction",<c:out value="${pageBean.totalPages}"/>)'><c:out value="${pageBean.totalPages}"/></a></li>
+                                                <li class="next"><a href='javascript:classListSearch("classListSearchAction",2)'>next</a></li>
                                             </c:if>
-                                            <li class="next"><a href='javascript:classListSearch("classListSearchAction",2)'>next</a></li>
+
                                         </c:if>
                                     </ul>
 

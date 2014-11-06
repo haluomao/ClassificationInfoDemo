@@ -15,8 +15,8 @@ import java.util.*;
  */
 public class ClassListTest {
 
-//	@Test
-//	public void addClassListTest(){
+	@Test
+	public void addClassListTest(){
 //		ApplicationContext ctx = new ClassPathXmlApplicationContext("ApplicationContext.xml");
 //		ClassListService classListService = (ClassListService)ctx.getBean("ClassListServiceImpl");
 //
@@ -37,11 +37,11 @@ public class ClassListTest {
 //			cl.setModifyMan("修改人_" + rand);
 //			cl.setClassType("t");
 //			cl.setCreateDate(new Date());
-//
+
 //            classListService.addClassList(cl);
-////          System.out.println("res:"+res);
+//          System.out.println("res:"+res);
 //		}
-//	}
+	}
 
 //	@Test
 //	public void findClassListTest(){

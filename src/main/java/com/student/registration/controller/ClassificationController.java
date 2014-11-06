@@ -67,72 +67,6 @@ public class ClassificationController {
         return "index";
     }
 
-//    @RequestMapping(value = "ajaxSearchAction", method = RequestMethod.POST)
-//    public void ajaxSearchAction(HttpServletRequest req,
-//                           HttpServletResponse response,ClassListFormBean classListFormBean) throws Exception {
-//        logger.info("ajaxSearchAction method(post)");
-//        String classNameAjax = req.getParameter("classNameAjax");
-//		String createManAjax = req.getParameter("createManAjax");
-//		int page = Integer.parseInt(req.getParameter("page"));
-//		int offset = Integer.parseInt(req.getParameter("offset"));
-//        logger.info("classNameAjax:" + classNameAjax);
-//		logger.info("createManAjax:" + createManAjax);
-//		logger.info("page:" + page);
-//		logger.info("offset:" + offset);
-//
-//		System.out.println("lalala:" + classListFormBean.getOffset());
-//
-//        List<ClassList> objList = classListService.selectByClassName(classNameAjax);
-//        String jsonString = JsonUtil.getMapper().writeValueAsString(objList);
-//        logger.info("Json result", jsonString);
-//        PrintWriter printWriter = response.getWriter();
-//        printWriter.write(jsonString);
-//        printWriter.flush();
-//        printWriter.close();
-//    }
-
-    @RequestMapping(value = "ajaxSearchAction", method = RequestMethod.POST)
-    @ResponseBody
-    public ClassListFormBean ajaxSearchAction(HttpServletResponse response,ClassListFormBean classListFormBean) throws Exception {
-
-//		System.out.println(classListFormBean);
-
-//        if(classListFormBean.getOffset() <= 0)
-//            classListFormBean.setOffset(10);
-//        if(classListFormBean.getPage() <= 1 && classListFormBean.getPage() != -1) //如果访问首页
-//        {
-//            classListFormBean.setHasPrev(false);
-//            classListFormBean.setPage(1);
-//        }
-//
-//        int count = classListService.countClassListByClassNameAndCreateMan(classListFormBean);  //获取数据库中记录总条数
-////        classListFormBean.setTotalCount(count);  //计算总页数
-////        classListFormBean.setTotalPage((int)Math.ceil(count / (float)classListFormBean.getOffset()));  //计算总页数
-//
-//        if(classListFormBean.getPage() == -1 || (int)Math.ceil(count / (float)classListFormBean.getOffset()) == classListFormBean.getPage())  //如果访问末页
-//        {
-//            classListFormBean.setHasNext(false);  //如果是末页则不可继续访问下一页
-//            classListFormBean.setPage((int)Math.ceil(count / (float)classListFormBean.getOffset()));  //计算page，向上取整
-//        }
-//
-//        List<ClassList> classLists = classListService.selectByClassNameAndCreateManAndLimit(classListFormBean);  //根据page，offset查询对应的记录
-//        classListFormBean.setClassLists(classLists); //将结果返回给Bean
-//
-//        System.out.println(classListFormBean);
-//
-//        return classListFormBean;
-
-//		String jsonString = JsonUtil.getMapper().writeValueAsString(classListFormBean);
-//
-//		logger.info("Json result", jsonString);
-//		logger.info(jsonString);
-//		PrintWriter printWriter = response.getWriter();
-//		printWriter.write(jsonString);
-//		printWriter.flush();
-//		printWriter.close();
-        return null;
-    }
-
     @RequestMapping("classListSearchNormalAction")
     public String classListSearchNormal(HttpServletRequest req, ModelMap map) throws Exception
     {
@@ -163,10 +97,6 @@ public class ClassificationController {
         List<ClassList> classLists = classListService.selectByClassNameAndCreateManAndLimit(classListFormBean, pageBean);  //根据page，offset查询对应的记录
         classListFormBean.setClassLists(classLists); //将结果返回给Bean
 
-//        System.out.println(classListFormBean);
-//        System.out.println(pageBean);
-//
-//        Map<String,Object> result = new HashMap<String,Object>();
         logger.info(pageBean.toString());
         map.put("pageBean",pageBean);
         map.put("classListFormBean",classListFormBean);
@@ -212,10 +142,6 @@ public class ClassificationController {
         List<ClassList> classLists = classListService.selectByClassNameAndCreateManAndLimit(classListFormBean, pageBean);  //根据page，offset查询对应的记录
         classListFormBean.setClassLists(classLists); //将结果返回给Bean
 
-//        System.out.println(classListFormBean);
-//        System.out.println(pageBean);
-//
-//        Map<String,Object> result = new HashMap<String,Object>();
         logger.info(pageBean.toString());
         map.put("pageBean",pageBean);
         map.put("classListFormBean",classListFormBean);
@@ -231,23 +157,6 @@ public class ClassificationController {
         logger.info("pagebean getCacheSize:"+(pageBean==null?null:pageBean.getCacheSize()));
         logger.info("pagebean getCacheBegin:"+(pageBean==null?null:pageBean.getCacheBegin()));
         logger.info("pagebean getCurrentPage:"+(pageBean==null?null:pageBean.getCurrentPage()));
-//        if(classListFormBean.getOffset() <= 0)
-//            classListFormBean.setOffset(10);
-//        if(classListFormBean.getPage() <= 1 && classListFormBean.getPage() != -1) //如果访问首页
-//        {
-//            classListFormBean.setHasPrev(false);
-//            classListFormBean.setPage(1);
-//        }
-//
-//        int count = classListService.countClassListByClassNameAndCreateMan(classListFormBean);  //获取数据库中记录总条数
-////        classListFormBean.setTotalCount(count);  //计算总页数
-////        classListFormBean.setTotalPage((int)Math.ceil(count / (float)classListFormBean.getOffset()));  //计算总页数
-//
-//        if(classListFormBean.getPage() == -1 || (int)Math.ceil(count / (float)classListFormBean.getOffset()) == classListFormBean.getPage())  //如果访问末页
-//        {
-//            classListFormBean.setHasNext(false);  //如果是末页则不可继续访问下一页
-//            classListFormBean.setPage((int)Math.ceil(count / (float)classListFormBean.getOffset()));  //计算page，向上取整
-//        }
 
         int count = classListService.countClassListByClassNameAndCreateMan(classListFormBean);  //获取数据库中记录总条数
 

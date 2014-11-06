@@ -54,7 +54,6 @@
 <table width="320" height="30" border="0" align="center" cellspacing="0" class="OperationTable">
     <tr>
         <td><a href="<%=request.getContextPath()%>/registerAction" class="textview2">注册</a> | <span class="textview2">忘记密码？</span>
-            <a href="registerAction" class="textview2">注册2</a>
         </td>
     </tr>
 </table>
