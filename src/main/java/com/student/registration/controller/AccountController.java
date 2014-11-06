@@ -88,17 +88,17 @@ public class AccountController {
 			System.out.println("u1:" + u1.getPassword());
 			System.out.println("u:" + u.getPassword());
 			if (u1.getPassword().equals(u.getPassword())) {
-				System.out.println("success_1");
+//				System.out.println("success_1");
 				return "success";
 			}
 			else {
-				System.out.println("failure_1");
+//				System.out.println("failure_1");
 				return "failure";
 			}
 		}
 		else
 		{
-			System.out.println("failure_2");
+//			System.out.println("failure_2");
 			return "failure";
 		}
 	}
