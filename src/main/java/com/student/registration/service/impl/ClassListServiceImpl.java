@@ -5,7 +5,7 @@ import com.student.registration.model.ClassList;
 import com.student.registration.model.ClassListExample;
 import com.student.registration.service.ClassListService;
 import com.student.registration.vo.ClassListFormBean;
-import com.student.registration.vo.PageListBean;
+import com.student.registration.vo.PageBean;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -35,11 +35,11 @@ public class ClassListServiceImpl implements ClassListService{
 
 	@Override
 	public int countClassListByClassNameAndCreateMan(ClassListFormBean classListFormBean) {
-		if(classListFormBean.getClassname() == null)
-			classListFormBean.setClassname("");
-		if(classListFormBean.getCreateman() == null)
-			classListFormBean.setCreateman("");
-		classListExample.createCriteria().andClassNameLike("%" + classListFormBean.getClassname() + "%").andCreateManLike("%" + classListFormBean.getCreateman() + "%");
+		if(classListFormBean.getClassName() == null)
+			classListFormBean.setClassName("");
+		if(classListFormBean.getCreateMan() == null)
+			classListFormBean.setCreateMan("");
+		classListExample.createCriteria().andClassNameLike("%" + classListFormBean.getClassName() + "%").andCreateManLike("%" + classListFormBean.getCreateMan() + "%");
 		return classListMapper.countByExample(classListExample);
 	}
 
@@ -87,16 +87,22 @@ public class ClassListServiceImpl implements ClassListService{
 		return classListMapper.deleteByPrimaryKey(classId);
 	}
 
+    @Override
+    public ClassList selectByClassId(int classId) {
+        return classListMapper.selectByPrimaryKey(classId);
+    }
+
 	@Override
-	public List<ClassList> selectByClassNameAndCreateManAndLimit(ClassListFormBean classListFormBean) {
-		if(classListFormBean.getClassname() == null)
-			classListFormBean.setClassname("");
-		if(classListFormBean.getCreateman() == null)
-			classListFormBean.setCreateman("");
-        PageListBean pageListBean = classListFormBean.getPageBean();
-		classListExample.setLimit(pageListBean.getCacheBegin());
-		classListExample.setOffset(pageListBean.getCacheSize());
-		classListExample.createCriteria().andClassNameLike("%" + classListFormBean.getClassname() + "%").andCreateManLike("%" + classListFormBean.getCreateman() + "%");
+	public List<ClassList> selectByClassNameAndCreateManAndLimit(ClassListFormBean classListFormBean ,PageBean pageBean) {
+		if(classListFormBean.getClassName() == null)
+			classListFormBean.setClassName("");
+		if(classListFormBean.getCreateMan() == null)
+			classListFormBean.setCreateMan("");
+		//classListExample.setLimit((classListFormBean.getPage()-1) * classListFormBean.getOffset());
+        //classListExample.setOffset(classListFormBean.getOffset());
+        classListExample.setLimit(pageBean.getCacheBegin());
+        classListExample.setOffset(pageBean.getCacheSize());
+		classListExample.createCriteria().andClassNameLike("%" + classListFormBean.getClassName() + "%").andCreateManLike("%" + classListFormBean.getCreateMan() + "%");
 		List<ClassList> classlist = classListMapper.selectByExampleAndLimit(classListExample);
 		classListExample.clear();
 		return classlist;

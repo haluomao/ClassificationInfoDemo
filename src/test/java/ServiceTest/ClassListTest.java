@@ -15,33 +15,33 @@ import java.util.*;
  */
 public class ClassListTest {
 
-	@Test
-	public void addClassListTest(){
-		ApplicationContext ctx = new ClassPathXmlApplicationContext("ApplicationContext.xml");
-		ClassListService classListService = (ClassListService)ctx.getBean("ClassListServiceImpl");
-
-		int count = 500;
-		ClassList cl;
-		for(int i = 0; i<count; i++)
-		{
-			Random r = new Random();
-            int rand = r.nextInt(100000000);
-			cl = new ClassList();
-			cl.setClassPid(rand);
-			cl.setClassName("名称_" + rand);
-			cl.setDefaultStatName("状态名称_" + rand);
-			cl.setDefaultIsCheck("1");
-			cl.setDefaultUserYear(rand);
-			cl.setDeprTypeId(1);
-			cl.setCreateMan("创建人_" + rand);
-			cl.setModifyMan("修改人_" + rand);
-			cl.setClassType("t");
-			cl.setCreateDate(new Date());
-
+//	@Test
+//	public void addClassListTest(){
+//		ApplicationContext ctx = new ClassPathXmlApplicationContext("ApplicationContext.xml");
+//		ClassListService classListService = (ClassListService)ctx.getBean("ClassListServiceImpl");
+//
+//		int count = 500;
+//		ClassList cl;
+//		for(int i = 0; i<count; i++)
+//		{
+//			Random r = new Random();
+//            int rand = r.nextInt(100000000);
+//			cl = new ClassList();
+//			cl.setClassPid(rand);
+//			cl.setClassName("名称_" + rand);
+//			cl.setDefaultStatName("状态名称_" + rand);
+//			cl.setDefaultIsCheck("1");
+//			cl.setDefaultUserYear(rand);
+//			cl.setDeprTypeId(1);
+//			cl.setCreateMan("创建人_" + rand);
+//			cl.setModifyMan("修改人_" + rand);
+//			cl.setClassType("t");
+//			cl.setCreateDate(new Date());
+//
 //            classListService.addClassList(cl);
-//          System.out.println("res:"+res);
-		}
-	}
+////          System.out.println("res:"+res);
+//		}
+//	}
 
 //	@Test
 //	public void findClassListTest(){
