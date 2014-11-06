@@ -70,9 +70,7 @@ public class AccountController {
 
         userService.add(u);
         return "register";
-<<<<<<< HEAD
 	}
-
 
 	@RequestMapping(value="usercheck",method= RequestMethod.POST)
 	public @ResponseBody String userCheck(UserFormBean userFormBean) throws Exception{
@@ -113,8 +111,7 @@ public class AccountController {
 	@RequestMapping(value="login.html")
 	public String redirectTo_login(ModelMap map) throws Exception {
 		return "login";  //跳转到registerSuccess.jsp;
-=======
->>>>>>> 38f6b9dc07dcd717fe283dd877790e0b5e65b211
+
 	}
 
 	//@Override  //不带参数访问时的默认方法

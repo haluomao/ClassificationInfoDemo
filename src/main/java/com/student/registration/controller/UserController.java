@@ -105,7 +105,6 @@ public class UserController implements Controller{
         System.out.println("HelloController.reg4()");
         System.out.println(req.getRequestURI());
         logger.info("reg4!!!!");
-<<<<<<< HEAD
 		//	req.setAttribute("a", "aaaa");  //设置返回数据
 		req.setAttribute("arg1", "requestValue");
 		req.getSession().setAttribute("arg2", "sessionValue");
@@ -164,39 +163,4 @@ public class UserController implements Controller{
 	}
 	
 }
-=======
-        //	req.setAttribute("a", "aaaa");  //设置返回数据
-        req.setAttribute("arg1", "requestValue");
-        req.getSession().setAttribute("arg2", "sessionValue");
-        map.addAttribute("arg3", "ModelMapValue3");
-        map.addAttribute("arg4", "ModelMapValue4");
-        User u = new User();
-        u.setUsername(userFormBean.getUsername());
-        u.setPassword(userFormBean.getPassword());
 
-        System.out.println("username:" + userFormBean.getUsername());
-        System.out.println("password:" + userFormBean.getPassword());
-
-        if(userService.exists(u))
-            return "registerFailure";  //跳转到registerFailure.jsp;
-        userService.add(u);
-        return "registerSuccess";  //跳转到registerSuccess.jsp;
-    }
-
-
-    @Override  //不带参数访问时的默认方法
-    public ModelAndView handleRequest(HttpServletRequest req, HttpServletResponse resp) throws Exception {
-        // TODO Auto-generated method stub
-        System.out.println("HelloController.handelRequest()");
-        req.setAttribute("a", "aaaa");  //设置返回数据
-        User u = new User();
-        u.setUsername(req.getParameter("username"));
-        u.setPassword(req.getParameter("password"));
-        if(userService.exists(u))
-            return new ModelAndView("registerFailure");  //跳转到registerFailure.jsp;
-        userService.add(u);
-        return new ModelAndView("registerSuccess");  //跳转到registerSuccess.jsp;
-    }
-
-}
->>>>>>> 38f6b9dc07dcd717fe283dd877790e0b5e65b211
