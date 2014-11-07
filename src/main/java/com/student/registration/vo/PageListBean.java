@@ -1,5 +1,7 @@
 package com.student.registration.vo;
 
+import java.io.Serializable;
+
 /**
  * Created by Administrator on 2014/11/5.
  */

@@ -82,12 +82,12 @@ public class ClassListTest {
 //		System.out.println(classListService.modifyOneRecord(classList.get(0)));
 //	}
 //
-//	@Test
-//	public void deleteByClassIdTest() throws Exception {
-//		ApplicationContext ctx = new ClassPathXmlApplicationContext("ApplicationContext.xml");
-//		ClassListService classListService = (ClassListService)ctx.getBean("ClassListServiceImpl");
-//		System.out.println(classListService.deleteByClassId(24));
-//	}
+	@Test
+	public void deleteByClassIdTest() throws Exception {
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("ApplicationContext.xml");
+		ClassListService classListService = (ClassListService)ctx.getBean("ClassListServiceImpl");
+		System.out.println(classListService.deleteByClassId(24));
+	}
 //
 //	@Test
 //	public void selectByClassNameAndCreateManTest() throws Exception {

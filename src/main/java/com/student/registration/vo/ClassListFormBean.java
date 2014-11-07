@@ -2,9 +2,10 @@ package com.student.registration.vo;
 
 import com.student.registration.model.ClassList;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class ClassListFormBean {
+public class ClassListFormBean{
     private List<ClassList> classLists;   //classlist结果集
 //    private int offset;   //当前步长
 //    private int page;    //当前页数

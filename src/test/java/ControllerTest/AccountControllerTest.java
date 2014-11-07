@@ -19,12 +19,12 @@ public class AccountControllerTest {
 
 	@Test
 	public void pageListTest() throws Exception {
-		ApplicationContext ctx = new ClassPathXmlApplicationContext("ApplicationContext.xml");
+//		ApplicationContext ctx = new ClassPathXmlApplicationContext("ApplicationContext.xml");
 //		AccountController accountController = (AccountController)ctx.getBean("AccountController");
-
-		ClassListFormBean clfb = new ClassListFormBean();
-		clfb.setCreateMan("22");
-		clfb.setClassName("8");
+//
+//		ClassListFormBean clfb = new ClassListFormBean();
+//		clfb.setCreateMan("22");
+//		clfb.setClassName("8");
 //		clfb.setOffset(10);
 //		clfb.setPage(0);
 

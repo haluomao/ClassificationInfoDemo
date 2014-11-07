@@ -85,22 +85,22 @@ public class ClassificationController {
         classListFormBean.setCreateMan(createMan);
         //List<ClassList> objList =classListService.selectByClassName(className);
         int count = classListService.countClassListByClassNameAndCreateMan(classListFormBean);  //获取数据库中记录总条数
-        logger.info("count:"+count);
-        PageBean pageBean = new PageBean();
-        pageBean.setCacheBegin(0);
-        pageBean.setCacheSize(100);
-        pageBean.setTotalCount(count);
-        pageBean.setListCount(10);
-        pageBean.setTotalPages((count-1)/pageBean.getListCount()+1);
-
-        //返回结果
-        List<ClassList> classLists = classListService.selectByClassNameAndCreateManAndLimit(classListFormBean, pageBean);  //根据page，offset查询对应的记录
-        classListFormBean.setClassLists(classLists); //将结果返回给Bean
-
-        logger.info(pageBean.toString());
-        map.put("pageBean",pageBean);
-        map.put("classListFormBean",classListFormBean);
-        map.put("objList", classLists);
+//        logger.info("count:"+count);
+//        PageBean pageBean = new PageBean();
+//        pageBean.setCacheBegin(0);
+//        pageBean.setCacheSize(100);
+//        pageBean.setTotalCount(count);
+//        pageBean.setListCount(10);
+//        pageBean.setTotalPages((count-1)/pageBean.getListCount()+1);
+//
+//        //返回结果
+//        List<ClassList> classLists = classListService.selectByClassNameAndCreateManAndLimit(classListFormBean, pageBean);  //根据page，offset查询对应的记录
+//        classListFormBean.setClassLists(classLists); //将结果返回给Bean
+//
+//        logger.info(pageBean.toString());
+//        map.put("pageBean",pageBean);
+//        map.put("classListFormBean",classListFormBean);
+//        map.put("objList", classLists);
         return "index";
     }
 
