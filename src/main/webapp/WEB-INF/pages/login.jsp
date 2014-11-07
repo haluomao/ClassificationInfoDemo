@@ -37,7 +37,7 @@
         <td height="230">
 
             <form id="loginform" name="loginform" method="post" action="login.do"/>
-                <p>用户名</p>
+            <p>用户名</p>
 
             <p>
                 <input type="text" id="username" name="username" class="textview1"/>
@@ -48,24 +48,19 @@
             </p>
 
             </form>
-                <table width="320" border="0">
-                    <tr>
-                        <td width="239"><span id="tips" class="tips"></span>
-                        <td width="65"><input name="login" type="image" src="./images/login.png" width="80" height="40" onclick="sendAjaxLogin('usercheck')"/> </td>
-                    </tr>
-                </table>
+            <table width="320" border="0">
+                <tr>
+                    <td width="239"><span id="tips" class="tips"></span>
+                    <td width="65"><input name="login" type="image" src="./images/login.png" width="80" height="40" onclick="sendAjaxLogin('usercheck')"/> </td>
+                </tr>
+            </table>
 
         </td>
     </tr>
 </table>
 <table width="320" height="30" border="0" align="center" cellspacing="0" class="OperationTable">
     <tr>
-<<<<<<< HEAD
         <td><a href="register.html" class="textview2">注册</a> | <span class="textview2">忘记密码？</span></td>
-=======
-        <td><a href="<%=request.getContextPath()%>/registerAction" class="textview2">注册</a> | <span class="textview2">忘记密码？</span>
-        </td>
->>>>>>> 38f6b9dc07dcd717fe283dd877790e0b5e65b211
     </tr>
 </table>
 

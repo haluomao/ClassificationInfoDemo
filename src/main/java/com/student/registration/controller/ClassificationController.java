@@ -178,7 +178,37 @@ public class ClassificationController {
         return result;
     }
 
+    @RequestMapping(value = "classListModifyAjax", method = RequestMethod.POST)
+    @ResponseBody
+    public Map classListModifyAjax(ClassList classList) throws Exception {
+        //PageBean pageBean = classListFormBean.getPageBean();
+        logger.info("ClassList classId:"+(classList==null?null:classList.getClassId()));
 
+        classList = classListService.selectByClassId(classList.getClassId());
+        logger.info("ClassList:"+classList);
+        Map<String,Object> result = new HashMap<String,Object>();
+        result.put("classList", classList);
+        return result;
+    }
+
+    private void appendParameters(Map<String,Object> map, PageBean pageBean, ClassListFormBean classListFormBean){
+        int count = classListService.countClassListByClassNameAndCreateMan(classListFormBean);  //获取数据库中记录总条数
+
+        pageBean.setCacheBegin(pageBean.getCacheBegin());
+        pageBean.setCacheSize(100);
+        pageBean.setTotalCount(count);
+        pageBean.setTotalPages((count-1)/pageBean.getListCount()+1);
+
+        //返回结果
+        List<ClassList> classLists = classListService.selectByClassNameAndCreateManAndLimit(classListFormBean, pageBean);  //根据page，offset查询对应的记录
+        classListFormBean.setClassLists(classLists); //将结果返回给Bean
+
+        System.out.println(classListFormBean);
+        System.out.println(pageBean);
+
+        map.put("pageBean",pageBean);
+        map.put("classListFormBean", classListFormBean);
+    }
     @RequestMapping("classListAddAction")
     public String classListAdd(ClassList classList, HttpServletRequest req, ModelMap map) throws Exception
     {

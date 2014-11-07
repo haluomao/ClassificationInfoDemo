@@ -25,7 +25,7 @@
 	<context:component-scan base-package="com.student" />  <!-- 以下的配置对该包及其子包有效 -->
 	<aop:aspectj-autoproxy />  <!-- 支持aop注解 -->
 	<tx:annotation-driven />
-	<cache:annotation-driven cache-manager="cacheManager" />  <!-- 支持缓存注解 -->
+	<!--<cache:annotation-driven cache-manager="cacheManager" />  &lt;!&ndash; 支持缓存注解 &ndash;&gt;-->
 
 	
 	<bean id="mySqlDataSource" class="org.apache.commons.dbcp.BasicDataSource"
@@ -75,13 +75,13 @@
 		<property name="basePackage" value="com.student.registration.dao" />
 	</bean>
 	
-	<!-- 配置ehcahe缓存管理器 -->
-	<bean id="cacheManagerFactory" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
-		<property name="configLocation" value="classpath:ehcache.xml"/>
-	</bean>
-	
-	<!-- 声明cacheManager -->
-	<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
-		<property name="cacheManager" ref="cacheManagerFactory"/>
-	</bean>
+	<!--&lt;!&ndash; 配置ehcahe缓存管理器 &ndash;&gt;-->
+	<!--<bean id="cacheManagerFactory" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">-->
+		<!--<property name="configLocation" value="classpath:ehcache.xml"/>-->
+	<!--</bean>-->
+	<!---->
+	<!--&lt;!&ndash; 声明cacheManager &ndash;&gt;-->
+	<!--<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">-->
+		<!--<property name="cacheManager" ref="cacheManagerFactory"/>-->
+	<!--</bean>-->
 </beans>

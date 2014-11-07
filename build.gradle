@@ -97,7 +97,8 @@ dependencies {
             [group: 'org.codehaus.jackson', name: 'jackson-core-asl', version: '1.9.13'],
             [group: 'net.sf.ehcache', name: 'ehcache-core', version: '2.6.9'],
             [group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.4.3'],
-            [group: 'mysql', name: 'mysql-connector-java', version: '5.1.33']
+            [group: 'mysql', name: 'mysql-connector-java', version: '5.1.33'],
+            [group: 'org.mybatis', name: 'mybatis-ehcache', version: '1.0.0']
 
     )
 

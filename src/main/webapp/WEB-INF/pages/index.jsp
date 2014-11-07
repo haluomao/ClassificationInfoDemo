@@ -1,5 +1,5 @@
 ﻿﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+          pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="zh-cn">
@@ -118,8 +118,8 @@
                     <div id="datatable_tabletools_wrapper" class="dataTables_wrapper form-inline" role="grid"><div class="dt-top-row"><div class="DTTT btn-group">
                         <button type="button" class="btn btn-default btn-sm DTTT_button_copy" data-toggle="modal" data-target="#addDiv">新增</button>
                         <a class="btn btn-default btn-sm DTTT_button_copy" id="ToolTables_datatable_tabletools_0"
-						data-toggle="modal" data-target=".bs-example-modal-lg">
-						<span>Copy</span>
+                           data-toggle="modal" data-target=".bs-example-modal-lg">
+                            <span>Copy</span>
                             <div style="position: absolute; left: 0px; top: 0px; width: 50px; height: 31px; z-index: 99;">
                                 <embed id="ZeroClipboard_TableToolsMovie_5" src="js/plugin/datatables/media/swf/copy_csv_xls_pdf.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="50" height="31" name="ZeroClipboard_TableToolsMovie_5" align="middle" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=5&amp;width=50&amp;height=31" wmode="transparent"></div></a>
                         <a class="btn btn-default btn-sm DTTT_button_print" id="ToolTables_datatable_tabletools_1" title="View print view"><span>Print</span></a>
@@ -129,8 +129,6 @@
                                 <label class="select" style="width:60px">
                                     <select size="1" name="datatable_tabletools_length" aria-controls="datatable_tabletools" id="listCount"
                                             onchange="classListSearch('classListSearchAction',1)">
-                                            <%--onchange="countSelect('pageUpdateAction', ${pageBean.currentPage}, ${pageBean.totalPages}, ${pageBean.listCount}, ${pageBean.cacheBegin})">--%>
-                                        <%--onchange="countSelect('pageUpdateAction', '${pageBean.currentPage}', '${pageBean.totalPages}', '${pageBean.listCount}', '${pageBean.cacheBegin}')">--%>
                                         <option value="10" selected="selected">10</option>
                                         <option value="25">25</option>
                                         <option value="50">50</option>
@@ -153,18 +151,17 @@
                                 <tbody role="alert" aria-live="polite" aria-relevant="all" id="tablebody">
                                 <c:forEach items="${objList}" var="obj" varStatus="status">
                                     <c:if test="${status.count<=10}">
-                                    <tr class="odd">
-                                        <td class=" sorting_1">${obj.classId}</td>
-                                        <td class=" ">${obj.className}</td>
-                                        <td class=" ">${obj.defaultStatName}</td>
-                                        <td class=" ">${obj.createMan}</td>
-                                        <td class=" ">${obj.createDate}</td>
-                                        <td class=" ">
-                                            <button type="button" onclick="classListDelete('classListDeleteAction', ${obj.classId}, 1)">删除</button>
-                                            <button type="button" disabled="disabled" onclick="javascript:updateModifyDiv(${obj})"  data-toggle="modal" data-target="#modifyDiv">修改</button>
-                                            <%--<a class="btn btn-default btn-sm DTTT_button_copy" data-toggle="modal" data-target="#addDiv" href="classListModify('classListDModifyAction', ${obj})">修改</a>--%>
-                                        </td>
-                                    </tr>
+                                        <tr class="odd">
+                                            <td class=" sorting_1">${obj.classId}</td>
+                                            <td class=" ">${obj.className}</td>
+                                            <td class=" ">${obj.defaultStatName}</td>
+                                            <td class=" ">${obj.createMan}</td>
+                                            <td class=" ">${obj.createDateString}</td>
+                                            <td class=" ">
+                                                <button type="button" onclick="classListDelete('classListDeleteAction', ${obj.classId}, 1)">删除</button>
+                                                <button type="button" objId="${obj.classId}"class="modifyButton" data-toggle="modal" data-target="#modifyDiv">修改</button>
+                                            </td>
+                                        </tr>
                                     </c:if>
                                 </c:forEach>
                                 </tbody>
@@ -172,33 +169,33 @@
                         <div class="dt-row dt-bottom-row">
                             <div class="row">
                                 <div class="col-sm-6">
-                                <div class="dataTables_info" id="totalCount">Showing <c:if test="${null!=pageBean}">${pageBean.totalCount}</c:if> entries.</div>
+                                    <div class="dataTables_info" id="totalCount">Showing <c:if test="${null!=pageBean}">${pageBean.totalCount}</c:if> entries.</div>
                                 </div>
                                 <div class="col-sm-6 text-right">
                                     <div class="dataTables_paginate paging_bootstrap">
-                                    <ul class="pagination" id="pageNumbers">
-                                        <c:if test="${null==pageBean}"><li><a href="#">Empty</a></li></c:if>
-                                        <c:if test="${null!= pageBean}">
-                                            <li class="prev disabled"><a href="#">Previous</a></li>
-                                            <li class="active"><a href='javascript:classListSearch("classListSearchAction",1)'>1</a></li>
-                                            <c:if test="${pageBean.totalPages<2}">
-                                                <li class="next disabled"><a href='#'>next</a></li>
-                                            </c:if>
-                                            <c:if test="${pageBean.totalPages==2}">
-                                                <li><a href='javascript:classListSearch("classListSearchAction",2)'>2</a></li>
-                                                <li class="next"><a href='javascript:classListSearch("classListSearchAction",2)'>next</a></li>
-                                            </c:if>
-                                            <c:if test="${pageBean.totalPages>2}">
-                                                <li><a href='javascript:classListSearch("classListSearchAction",2)'>2</a></li>
-                                                <c:if test="${pageBean.totalPages!=3}"><li><a href='#'>...</a></li></c:if>
-                                                <li><a href='javascript:classListSearch("classListSearchAction",<c:out value="${pageBean.totalPages}"/>)'><c:out value="${pageBean.totalPages}"/></a></li>
-                                                <li class="next"><a href='javascript:classListSearch("classListSearchAction",2)'>next</a></li>
-                                            </c:if>
+                                        <ul class="pagination" id="pageNumbers">
+                                            <c:if test="${null==pageBean}"><li><a href="#">Empty</a></li></c:if>
+                                            <c:if test="${null!= pageBean}">
+                                                <li class="prev disabled"><a href="#">Previous</a></li>
+                                                <li class="active"><a href='javascript:classListSearch("classListSearchAction",1)'>1</a></li>
+                                                <c:if test="${pageBean.totalPages<2}">
+                                                    <li class="next disabled"><a href='#'>next</a></li>
+                                                </c:if>
+                                                <c:if test="${pageBean.totalPages==2}">
+                                                    <li><a href='javascript:classListSearch("classListSearchAction",2)'>2</a></li>
+                                                    <li class="next"><a href='javascript:classListSearch("classListSearchAction",2)'>next</a></li>
+                                                </c:if>
+                                                <c:if test="${pageBean.totalPages>2}">
+                                                    <li><a href='javascript:classListSearch("classListSearchAction",2)'>2</a></li>
+                                                    <c:if test="${pageBean.totalPages!=3}"><li><a href='#'>...</a></li></c:if>
+                                                    <li><a href='javascript:classListSearch("classListSearchAction",<c:out value="${pageBean.totalPages}"/>)'><c:out value="${pageBean.totalPages}"/></a></li>
+                                                    <li class="next"><a href='javascript:classListSearch("classListSearchAction",2)'>next</a></li>
+                                                </c:if>
 
-                                        </c:if>
-                                    </ul>
+                                            </c:if>
+                                        </ul>
 
-                                </div></div></div></div></div>
+                                    </div></div></div></div></div>
 
                 </div>
                 <!-- end widget content -->
@@ -211,32 +208,32 @@
 
 <!-- add  model div-->
 <div id="addDiv" class="modal fade">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title">新增对象</h4>
-      </div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">新增对象</h4>
+            </div>
 
-      <div class="modal-body">
-		<div class="col-md-11 col-md-offset-1">
-            <form method="post" action="classListAddAction">
-			资产分类：<input type="text" name="className" class="form-control" placeholder="class name"><br />
-			资产状态：<input type="text" name="defaultStatName" class="form-control" placeholder="status"><br />
-			保 管 人：<input type="text" name="createMan" class="form-control" placeholder="create man"><br />
-            <input type="submit" class="btn btn-primary" data-dismiss="#addDiv"/>
-            </form>
-			<%--日期：<input type="text" name="date" id="dateAdd" /><br />--%>
-			<%--<button type="button" onclick="classListSearch('classListSearchAction', 1)">添加</button>--%>
-		</div>
-      </div>
-        <div class="modal-footer">
-            <%--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>--%>
-            <%--<button type="submit" class="btn btn-primary" data-dismiss="modal">添加</button>--%>
+            <div class="modal-body">
+                <div class="col-md-11 col-md-offset-1">
+                    <form method="post" action="classListAddAction">
+                        资产分类：<input type="text" name="className" class="form-control" placeholder="class name"><br />
+                        资产状态：<input type="text" name="defaultStatName" class="form-control" placeholder="status"><br />
+                        保 管 人：<input type="text" name="createMan" class="form-control" placeholder="create man"><br />
+                        <input type="submit" class="btn btn-primary" data-dismiss="#addDiv"/>
+                    </form>
+                    <%--日期：<input type="text" name="date" id="dateAdd" /><br />--%>
+                    <%--<button type="button" onclick="classListSearch('classListSearchAction', 1)">添加</button>--%>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <%--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>--%>
+                <%--<button type="submit" class="btn btn-primary" data-dismiss="modal">添加</button>--%>
                 <%--<input type="submit" class="btn btn-primary" data-dismiss="modal">添加</input>--%>
-          </div>
-	  </div>
-  </div>
+            </div>
+        </div>
+    </div>
 </div>
 <!--end add model div-->
 <!-- modify model div-->
@@ -244,7 +241,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="#modifyDiv"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title">修改对象</h4>
             </div>
 
@@ -257,14 +254,9 @@
                         保 管 人：<input type="text" name="createMan" class="form-control" placeholder="create man" id="createManModify"><br />
                         <input type="submit" class="btn btn-primary" data-dismiss="#modifyDiv"/>
                     </form>
-                    <%--日期：<input type="text" name="date" id="dateAdd" /><br />--%>
-                    <%--<button type="button" onclick="classListSearch('classListSearchAction', 1)">添加</button>--%>
                 </div>
             </div>
             <div class="modal-footer">
-                <%--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>--%>
-                <%--<button type="submit" class="btn btn-primary" data-dismiss="modal">添加</button>--%>
-                <%--<input type="submit" class="btn btn-primary" data-dismiss="modal">添加</input>--%>
             </div>
         </div>
     </div>
@@ -291,16 +283,34 @@
 <script src="js/classListAjax.js"></script>
 <script>
 
-
-    function updateModifyDiv(obj){
-        alert("here");
-        $('#classIdModify').val(obj.classId);
-        $('#classNameModify').val(obj.className);
-        $('#defaultStatNameModify').val(obj.defaultStatName);
-        $('#createManModify').val(obj.createMan);
+    $( document ).on( "click", ".modifyButton",function(){
+        modifyButtonClickFunc($(this).attr('objId'));
+    });
+    //Ajax 修改
+    function modifyButtonClickFunc(objId){
+        if(typeof(objId)=='undefined') {alert("undefined!"); return false;}
+        //var objId=$(this).attr('objId');
+        createXMLHttpRequest();
+        XMLHttpReq.open('POST', 'classListModifyAjax', true);
+        XMLHttpReq.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
+        XMLHttpReq.send("classId="+objId);
+        XMLHttpReq.onreadystatechange =updateModifyDiv;
     }
 
-    //Ajax 局部更新
+    function updateModifyDiv() {
+        if (XMLHttpReq.readyState == 4) {
+            if (XMLHttpReq.status == 200) {
+                var result = XMLHttpReq.responseText;
+                var json = eval("(" + result + ")");
+                $('#classIdModify').val(json.classList.classId);
+                $('#classNameModify').val(json.classList.className);
+                $('#defaultStatNameModify').val(json.classList.defaultStatName);
+                $('#createManModify').val(json.classList.createMan);
+            }
+        }
+    }
+
+    //Ajax 查询 局部更新
     function classListSearch(url, currentPage) {
 
         var classNameAjax_value = $('#className').val();
@@ -321,7 +331,7 @@
         XMLHttpReq.onreadystatechange = processSearchResponse;
     }
 
-    // Update Bottom Page Numbers.
+    // 更新页数列表.
     function updatePageNumbers(pageBean, jsFunc, url, ulObj){
         //clear <ul> content
         ulObj.empty();
@@ -363,7 +373,7 @@
         ulObj.append(next);
     }
 
-    //执行获取Json数据后的操作
+    // Ajax 查询 执行获取Json数据后的操作
     function processSearchResponse(){
         if (XMLHttpReq.readyState == 4) {
             if (XMLHttpReq.status == 200) {
@@ -377,17 +387,17 @@
                         var obj = json.classListFormBean.classLists[i];
                         $('#tablebody').append('<tr class="odd"></tr>');
                         $('#tablebody>tr:last-child').append('<td class=" sorting_1">' + obj.classId + '</td>');
-                        $('#tablebody>tr:last-child').append('<td class=" sorting_1">' + obj.className + '</td>');
-                        $('#tablebody>tr:last-child').append('<td class=" sorting_1">' + obj.defaultStatName + '</td>');
-                        $('#tablebody>tr:last-child').append('<td class=" sorting_1">' + obj.createMan + '</td>');
-                        $('#tablebody>tr:last-child').append('<td class=" sorting_1">' + obj.createDate + '</td>');
+                        $('#tablebody>tr:last-child').append('<td class=" ">' + obj.className + '</td>');
+                        $('#tablebody>tr:last-child').append('<td class=" ">' + obj.defaultStatName + '</td>');
+                        $('#tablebody>tr:last-child').append('<td class=" ">' + obj.createMan + '</td>');
+                        $('#tablebody>tr:last-child').append('<td class=" ">' + obj.createDateString + '</td>');
                         $('#tablebody>tr:last-child').append('<td class=" ">'
                                 +'<button type="button" onclick="classListDelete(\'classListDeleteAction\', '+obj.classId+',1)">删除</button>'
-                                +'<button type="button" disabled="disabled" onclick="javascript:updateModifyDiv('+obj+')" data-toggle="modal" data-target="#modifyDiv">修改</button>'
+                                +'<button type="button" objId="'+obj.classId+'"class="modifyButton" data-toggle="modal" data-target="#modifyDiv">修改</button>'
                                 + '</td>');
                     }
                 }
-
+                //$(".modifyButton").click(modifyButtonClickFunc($(this).attr('objId')));
                 //Update buttom info
                 document.getElementById('totalCount').innerHTML='Showing '+ json.pageBean.totalCount+' entries.';
                 updatePageNumbers(json.pageBean, 'classListSearch', 'classListSearchAction', $('#pageNumbers'));
@@ -423,57 +433,6 @@
         XMLHttpReq.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
         XMLHttpReq.send("currentPage="+currentPage+"&totalPages="+totalPages
                 +"&listCount="+listCount+"&cacheBegin="+cacheBegin);
-    }
-
-    function processResponseToPage(){
-        if (XMLHttpReq.readyState == 4) {
-            if (XMLHttpReq.status == 200) {
-                alert("success");
-                var dataObj = eval("("+XMLHttpReq.responseText+")");
-                var inHtml ="";
-                var tablebody =document.getElementById("tablebody");
-                tablebody.innerHTML="";
-                for(var i=0;i<dataObj.length;i++){
-                    var obj = dataObj[i];
-                    if(i<10) {
-                        var tr=document.createElement("tr");
-                        var td=new Array();
-                        for(var j=0; j<5; j++){td[j]= document.createElement("td");}
-                        td[0].innerHTML=obj.classId;
-                        td[1].innerHTML=obj.className;
-                        td[2].innerHTML=obj.defaultStatName;
-                        td[3].innerHTML=obj.createMan;
-                        td[4].innerHTML=obj.createDate;
-                        for(var j=0; j<5; j++){tr.appendChild(td[j]);}
-
-                        tablebody.appendChild(tr);
-                    }
-                }
-//                    document.getElementById("tbody").innerHTML=inHtml;
-                //alert(document.getElementById("tablebody").innerHTML);
-                //
-                //document.getElementById("ajaxRes").innerHTML=XMLHttpReq.responseText;
-            }
-        }
-    }
-
-    function sendAjaxSearch2(url,objectID, resObjID) {
-        createXMLHttpRequest();                                //创建XMLHttpRequest对象
-        var object1 = document.getElementById(objectID);
-        var object2 = document.getElementById(resObjID);
-        XMLHttpReq.open('POST', url, true);
-        XMLHttpReq.onreadystatechange = processResponseAjax;
-        XMLHttpReq.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        XMLHttpReq.send("className="+object1.value);//+object1.value
-    }
-
-    function processResponseAjax(){
-        if (XMLHttpReq.readyState == 4) {
-            if (XMLHttpReq.status == 200) {
-                alert("success");
-                document.getElementById("ajaxRes").innerHTML=XMLHttpReq.responseText;
-            }
-        }
     }
 
 </script>
