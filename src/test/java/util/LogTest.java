@@ -1,12 +1,8 @@
 package util;
 
-import com.student.registration.service.ClassListService;
-import org.apache.log4j.PropertyConfigurator;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * Created by haluomao on 14/11/03.

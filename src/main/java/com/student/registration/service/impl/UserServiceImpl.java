@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public boolean exists(User u) throws Exception{
 		System.out.println(u.getUsername());
-		userExample = new UserExample();
+//		userExample = new UserExample();
 		userExample.createCriteria().andUsernameEqualTo(u.getUsername());  //username=u.username
 		int count = userMapper.countByExample(userExample);
 		userExample.clear();

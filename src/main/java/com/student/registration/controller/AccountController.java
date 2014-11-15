@@ -57,8 +57,8 @@ public class AccountController {
         u.setUsername(userFormBean.getUsername());
         u.setPassword(userFormBean.getPassword());
 
-        System.out.println("username:" + userFormBean.getUsername());
-        System.out.println("password:" + userFormBean.getPassword());
+        System.out.println("hhh_username:" + userFormBean.getUsername());
+        System.out.println("hhh_password:" + userFormBean.getPassword());
 
         if(userService.exists(u)){
             logger.info("user exist.");
