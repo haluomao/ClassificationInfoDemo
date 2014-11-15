@@ -99,6 +99,7 @@ dependencies {
             [group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.4.3'],
             [group: 'mysql', name: 'mysql-connector-java', version: '5.1.33'],
             [group: 'org.mybatis', name: 'mybatis-ehcache', version: '1.0.0']
+
     )
 
     testCompile(
@@ -138,7 +139,7 @@ cargo {
     }
 
     local {
-        homeDir = file('C:\\Program Files\\apache-tomcat-7.0.50')
+        homeDir = file('D:\\Java\\apache-tomcat-7.0.56')
         outputFile = file('build/output.log')
         timeout = 60000
 

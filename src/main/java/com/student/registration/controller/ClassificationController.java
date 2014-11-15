@@ -83,24 +83,8 @@ public class ClassificationController {
         ClassListFormBean classListFormBean = new ClassListFormBean();
         classListFormBean.setClassName(className);
         classListFormBean.setCreateMan(createMan);
-        //List<ClassList> objList =classListService.selectByClassName(className);
-        int count = classListService.countClassListByClassNameAndCreateMan(classListFormBean);  //获取数据库中记录总条数
-//        logger.info("count:"+count);
-//        PageBean pageBean = new PageBean();
-//        pageBean.setCacheBegin(0);
-//        pageBean.setCacheSize(100);
-//        pageBean.setTotalCount(count);
-//        pageBean.setListCount(10);
-//        pageBean.setTotalPages((count-1)/pageBean.getListCount()+1);
-//
-//        //返回结果
-//        List<ClassList> classLists = classListService.selectByClassNameAndCreateManAndLimit(classListFormBean, pageBean);  //根据page，offset查询对应的记录
-//        classListFormBean.setClassLists(classLists); //将结果返回给Bean
-//
-//        logger.info(pageBean.toString());
-//        map.put("pageBean",pageBean);
-//        map.put("classListFormBean",classListFormBean);
-//        map.put("objList", classLists);
+        PageBean pageBean = new PageBean();
+        appendParameters(map, pageBean, classListFormBean);
         return "index";
     }
 
@@ -126,26 +110,9 @@ public class ClassificationController {
         classListService.modifyOneRecord(classList);
 
         ClassListFormBean classListFormBean = new ClassListFormBean();
-        classListFormBean.setClassName("");
-        classListFormBean.setCreateMan("");
-        //List<ClassList> objList =classListService.selectByClassName(className);
-        int count = classListService.countClassListByClassNameAndCreateMan(classListFormBean);  //获取数据库中记录总条数
-        logger.info("count:"+count);
         PageBean pageBean = new PageBean();
-        pageBean.setCacheBegin(0);
-        pageBean.setCacheSize(100);
-        pageBean.setTotalCount(count);
-        pageBean.setListCount(10);
-        pageBean.setTotalPages((count-1)/pageBean.getListCount()+1);
+        appendParameters(map, pageBean, classListFormBean);
 
-        //返回结果
-        List<ClassList> classLists = classListService.selectByClassNameAndCreateManAndLimit(classListFormBean, pageBean);  //根据page，offset查询对应的记录
-        classListFormBean.setClassLists(classLists); //将结果返回给Bean
-
-        logger.info(pageBean.toString());
-        map.put("pageBean",pageBean);
-        map.put("classListFormBean",classListFormBean);
-        map.put("objList", classLists);
         return "index";
     }
 
@@ -178,7 +145,38 @@ public class ClassificationController {
         return result;
     }
 
+    @RequestMapping(value = "classListModifyAjax", method = RequestMethod.POST)
+    @ResponseBody
+    public Map classListModifyAjax(ClassList classList) throws Exception {
+        //PageBean pageBean = classListFormBean.getPageBean();
+        logger.info("ClassList classId:"+(classList==null?null:classList.getClassId()));
 
+        classList = classListService.selectByClassId(classList.getClassId());
+        logger.info("ClassList:"+classList);
+        Map<String,Object> result = new HashMap<String,Object>();
+        result.put("classList", classList);
+        return result;
+    }
+
+    private void appendParameters(Map<String,Object> map, PageBean pageBean, ClassListFormBean classListFormBean){
+        int count = classListService.countClassListByClassNameAndCreateMan(classListFormBean);  //获取数据库中记录总条数
+
+        pageBean.setCacheBegin(pageBean.getCacheBegin());
+        pageBean.setCacheSize(100);
+        pageBean.setTotalCount(count);
+        pageBean.setTotalPages((count-1)/pageBean.getListCount()+1);
+
+        //返回结果
+        List<ClassList> classLists = classListService.selectByClassNameAndCreateManAndLimit(classListFormBean, pageBean);  //根据page，offset查询对应的记录
+        classListFormBean.setClassLists(classLists); //将结果返回给Bean
+
+        System.out.println(classListFormBean);
+        System.out.println(pageBean);
+
+        map.put("pageBean",pageBean);
+        map.put("classListFormBean", classListFormBean);
+        map.put("objList",classLists);
+    }
     @RequestMapping("classListAddAction")
     public String classListAdd(ClassList classList, HttpServletRequest req, ModelMap map) throws Exception
     {
@@ -200,26 +198,8 @@ public class ClassificationController {
         logger.info("res:" + res);
 
         ClassListFormBean classListFormBean = new ClassListFormBean();
-        classListFormBean.setClassName("");
-        classListFormBean.setCreateMan("");
-        //List<ClassList> objList =classListService.selectByClassName(className);
-        int count = classListService.countClassListByClassNameAndCreateMan(classListFormBean);  //获取数据库中记录总条数
-        logger.info("count:"+count);
         PageBean pageBean = new PageBean();
-        pageBean.setCacheBegin(0);
-        pageBean.setCacheSize(100);
-        pageBean.setTotalCount(count);
-        pageBean.setListCount(10);
-        pageBean.setTotalPages((count-1)/pageBean.getListCount()+1);
-
-        //返回结果
-        List<ClassList> classLists = classListService.selectByClassNameAndCreateManAndLimit(classListFormBean, pageBean);  //根据page，offset查询对应的记录
-        classListFormBean.setClassLists(classLists); //将结果返回给Bean
-
-        logger.info(pageBean.toString());
-        map.put("pageBean",pageBean);
-        map.put("classListFormBean",classListFormBean);
-        map.put("objList", classLists);
+        appendParameters(map, pageBean, classListFormBean);
         return "index";
     }
 
@@ -234,24 +214,9 @@ public class ClassificationController {
         logger.info("classList getClassId:"+(classList==null?null:classList.getClassId()));
 
         classListService.deleteByClassId(classList==null?-1:classList.getClassId());
-
-        int count = classListService.countClassListByClassNameAndCreateMan(classListFormBean);  //获取数据库中记录总条数
-
-        pageBean.setCacheBegin(pageBean.getCacheBegin());
-        pageBean.setCacheSize(100);
-        pageBean.setTotalCount(count);
-        pageBean.setTotalPages((count-1)/pageBean.getListCount()+1);
-
-        //返回结果
-        List<ClassList> classLists = classListService.selectByClassNameAndCreateManAndLimit(classListFormBean, pageBean);  //根据page，offset查询对应的记录
-        classListFormBean.setClassLists(classLists); //将结果返回给Bean
-
-        System.out.println(classListFormBean);
-        System.out.println(pageBean);
-
         Map<String,Object> result = new HashMap<String,Object>();
-        result.put("pageBean",pageBean);
-        result.put("classListFormBean",classListFormBean);
+
+        appendParameters(result, pageBean, classListFormBean);
         return result;
     }
 
@@ -266,24 +231,9 @@ public class ClassificationController {
         logger.info("classList getClassId:"+(classList==null?null:classList.getClassId()));
 
         classListService.modifyOneRecord(classList);
-
-        int count = classListService.countClassListByClassNameAndCreateMan(classListFormBean);  //获取数据库中记录总条数
-
-        pageBean.setCacheBegin(pageBean.getCacheBegin());
-        pageBean.setCacheSize(100);
-        pageBean.setTotalCount(count);
-        pageBean.setTotalPages((count-1)/pageBean.getListCount()+1);
-
-        //返回结果
-        List<ClassList> classLists = classListService.selectByClassNameAndCreateManAndLimit(classListFormBean, pageBean);  //根据page，offset查询对应的记录
-        classListFormBean.setClassLists(classLists); //将结果返回给Bean
-
-        System.out.println(classListFormBean);
-        System.out.println(pageBean);
-
         Map<String,Object> result = new HashMap<String,Object>();
-        result.put("pageBean",pageBean);
-        result.put("classListFormBean",classListFormBean);
+
+        appendParameters(result, pageBean, classListFormBean);
         return result;
     }
 

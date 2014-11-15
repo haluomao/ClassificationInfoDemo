@@ -16,7 +16,7 @@ public class PageBean {
     public PageBean(){
         totalPages=0;
         currentPage=1;
-        listCount=20;
+        listCount=10;
         cacheBegin=0;
         totalCount=0;
         cacheSize = 100;
