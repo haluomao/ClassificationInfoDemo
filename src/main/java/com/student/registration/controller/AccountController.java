@@ -84,11 +84,11 @@ public class AccountController {
             map.put("classListFormBean",classListFormBean);
             map.put("objList", classLists);
 
-            return "index";
+            return "classification/index";
         }
 
         userService.add(u);
-        return "register";
+        return "register/register";
     }
 
     @RequestMapping(value="usercheck",method= RequestMethod.POST)
@@ -124,7 +124,7 @@ public class AccountController {
 
     @RequestMapping(value="register.html")
     public String redirectTo_register(ModelMap map) throws Exception {
-        return "register";  //跳转到registerSuccess.jsp;
+        return "register/register";  //跳转到registerSuccess.jsp;
     }
 
     @RequestMapping(value="login.html")
@@ -142,9 +142,9 @@ public class AccountController {
         u.setUsername(req.getParameter("username"));
         u.setPassword(req.getParameter("password"));
         if(userService.exists(u))
-            return new ModelAndView("registerFailure");  //跳转到registerFailure.jsp;
+            return new ModelAndView("register/registerFailure");  //跳转到registerFailure.jsp;
         userService.add(u);
-        return new ModelAndView("registerSuccess");  //跳转到registerSuccess.jsp;
+        return new ModelAndView("register/registerSuccess");  //跳转到registerSuccess.jsp;
     }
 
 }

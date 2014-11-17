@@ -18,17 +18,17 @@
         }
 
     </style>
-    <link href="./css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
 
-    <script type="text/javascript" src="js/jquery-ui.js"></script>
-    <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="js/AjaxUtil.js"></script>
+    <script type="text/javascript" src="common/js/jquery-ui.js"></script>
+    <script type="text/javascript" src="common/js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="common/js/AjaxUtil.js"></script>
 
 </head>
 <body>
 <table width="1920" border="0" cellpadding="10" class="titlelogo">
     <tr>
-        <td><div align="center"><img src="images/logo_login.png" width="482" height="89" alt="img" /></div></td>
+        <td><div align="center"><img src="common/images/logo_login.png" width="482" height="89" alt="img" /></div></td>
     </tr>
 </table>
 <div align="center" class="head_title">用户登录</div>
@@ -51,7 +51,7 @@
             <table width="320" border="0">
                 <tr>
                     <td width="239"><span id="tips" class="tips"></span>
-                    <td width="65"><input name="login" type="image" src="./images/login.png" width="80" height="40" onclick="sendAjaxLogin('usercheck')"/> </td>
+                    <td width="65"><input name="login" type="image" src="images/login.png" width="80" height="40" onclick="sendAjaxLogin('usercheck')"/> </td>
                 </tr>
             </table>
 

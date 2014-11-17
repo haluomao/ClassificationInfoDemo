@@ -64,7 +64,7 @@ public class ClassificationController {
 
         List<ClassList> objList =classListService.selectByClassName(className);
         map.put("objList", objList);
-        return "index";
+        return "classification/index";
     }
 
     @RequestMapping("classListSearchNormalAction")
@@ -101,7 +101,7 @@ public class ClassificationController {
 //        map.put("pageBean",pageBean);
 //        map.put("classListFormBean",classListFormBean);
 //        map.put("objList", classLists);
-        return "index";
+        return "classification/index";
     }
 
     @RequestMapping("classListModifyAction")
@@ -146,7 +146,7 @@ public class ClassificationController {
         map.put("pageBean",pageBean);
         map.put("classListFormBean",classListFormBean);
         map.put("objList", classLists);
-        return "index";
+        return "classification/index";
     }
 
     @RequestMapping(value = "classListSearchAction", method = RequestMethod.POST)
@@ -209,6 +209,7 @@ public class ClassificationController {
         map.put("pageBean",pageBean);
         map.put("classListFormBean", classListFormBean);
     }
+
     @RequestMapping("classListAddAction")
     public String classListAdd(ClassList classList, HttpServletRequest req, ModelMap map) throws Exception
     {
@@ -250,7 +251,7 @@ public class ClassificationController {
         map.put("pageBean",pageBean);
         map.put("classListFormBean",classListFormBean);
         map.put("objList", classLists);
-        return "index";
+        return "classification/index";
     }
 
     @RequestMapping("classListDeleteAction")

@@ -8,10 +8,11 @@
 </head>
 <body>
 注册成功！
-	<h1>${requestScope.a}</h1>
-	<h1>${requestScope.arg1}</h1>
-	<h1>${sessionScope.arg2}</h1>
-	<h1>${sessionScope.arg3}</h1>
-	<h1>${sessionScope.arg4}</h1>
+<a href="login.html">返回登陆</a>
+	<%--<h1>${requestScope.a}</h1>--%>
+	<%--<h1>${requestScope.arg1}</h1>--%>
+	<%--<h1>${sessionScope.arg2}</h1>--%>
+	<%--<h1>${sessionScope.arg3}</h1>--%>
+	<%--<h1>${sessionScope.arg4}</h1>--%>
 </body>
 </html>

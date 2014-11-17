@@ -16,9 +16,9 @@
         }
         -->
     </style>
-    <link href="./css/style.css" rel="stylesheet" type="text/css" />
+    <link  rel="stylesheet" type="text/css" href="common/css/style.css"/>
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="common/css/bootstrap.min.css">
 
 </head>
 <body>
@@ -53,9 +53,9 @@
     </tr>
 </table>
 
-<script src="js/jquery-ui.js"></script>
-<script src="js/jquery-2.1.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<script src="common/js/jquery-ui.js"></script>
+<script src="common/js/jquery-2.1.1.min.js"></script>
+<script src="common/js/bootstrap.min.js"></script>
 <script>
     function sendlogin() {
 //        alert($('#username').val());

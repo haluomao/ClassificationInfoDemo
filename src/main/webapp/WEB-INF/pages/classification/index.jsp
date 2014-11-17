@@ -8,11 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title> Classification Information </title>
 
-    <link rel="stylesheet" type="text/css" media="screen" href="css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-production.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-skins.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link type="text/css" href="css/jquery-ui.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen" href="common/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="common/css/smartadmin-production.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="common/css/smartadmin-skins.css">
+    <link rel="stylesheet" href="common/css/bootstrap.min.css">
+    <link type="text/css" href="common/css/jquery-ui.css" rel="stylesheet">
 
     <style>
 
@@ -39,7 +39,7 @@
     <br>
     <div class="row">
         <div class="col-md-5 col-md-offset-1">
-            <img id="logo_img" src="images/logo.png" width="100px"/>
+            <img id="logo_img" src="common/images/logo.png" width="100px"/>
             <span style="font-weight:700;">佳克实物资产管理软件 V8.0</span>
         </div>
         <div class="col-md-4 col-md-offset-2">
@@ -277,9 +277,9 @@
 </div>
 
 
-<script src="js/jquery-ui.js"></script>
-<script src="js/jquery-2.1.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<script src="common/js/jquery-ui.js"></script>
+<script src="common/js/jquery-2.1.1.min.js"></script>
+<script src="common/js/bootstrap.min.js"></script>
 <script src="js/classListAjax.js"></script>
 <script>
 

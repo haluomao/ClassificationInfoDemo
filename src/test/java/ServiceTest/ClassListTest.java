@@ -2,18 +2,25 @@ package ServiceTest;
 
 import com.student.registration.model.ClassList;
 import com.student.registration.service.ClassListService;
-import com.student.registration.service.UserService;
-import com.student.registration.vo.ClassListFormBean;
 import org.junit.Test;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.*;
+import java.util.List;
 
 /**
  * Created by Administrator on 2014/10/30.
  */
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"classpath:ApplicationContext.xml","classpath:springmvc-servlet.xml"})
+@Transactional
 public class ClassListTest {
+
+    @Autowired
+    ClassListService classListService;
 
 	@Test
 	public void addClassListTest(){
@@ -43,19 +50,19 @@ public class ClassListTest {
 //		}
 	}
 
-//	@Test
-//	public void findClassListTest(){
-//		ApplicationContext ctx = new ClassPathXmlApplicationContext("ApplicationContext.xml");
-//		ClassListService classListService = (ClassListService)ctx.getBean("ClassListServiceImpl");
-//		List<ClassList> cl_list = classListService.findClassList();
-//		System.out.println(cl_list);
-////		Iterator itr = cl_list.iterator();
-////		while (itr.hasNext()) {
-////			ClassList cl = (ClassList) itr.next();
-////			System.out.println(cl.getClassName() + " | " + cl.getCreateDate() + " | " + cl.getModifyDate());
-////		}
-//
-//	}
+	@Test
+	public void findClassListTest(){
+        System.out.println(classListService);
+		List<ClassList> cl_list = classListService.findClassList();
+		System.out.println(cl_list);
+//		Iterator itr = cl_list.iterator();
+//		while (itr.hasNext()) {
+//			ClassList cl = (ClassList) itr.next();
+//			System.out.println(cl.getClassName() + " | " + cl.getCreateDate() + " | " + cl.getModifyDate());
+//		}
+
+	}
+
 //	@Test
 //	public void SelectByClassNameTest() throws Exception {
 //		ApplicationContext ctx = new ClassPathXmlApplicationContext("ApplicationContext.xml");
@@ -84,9 +91,9 @@ public class ClassListTest {
 //
 	@Test
 	public void deleteByClassIdTest() throws Exception {
-		ApplicationContext ctx = new ClassPathXmlApplicationContext("ApplicationContext.xml");
-		ClassListService classListService = (ClassListService)ctx.getBean("ClassListServiceImpl");
-		System.out.println(classListService.deleteByClassId(24));
+//		ApplicationContext ctx = new ClassPathXmlApplicationContext("ApplicationContext.xml");
+//		ClassListService classListService = (ClassListService)ctx.getBean("ClassListServiceImpl");
+//		System.out.println(classListService.deleteByClassId(24));
 	}
 //
 //	@Test

@@ -56,50 +56,6 @@ public class UserController implements Controller{
         this.users = users;
     }
 
-    @RequestMapping(params="method=reg1")  //当有一个名字为method的参数值为reg1时调用此方法
-    public String reg1(String username,String password) throws Exception {
-        System.out.println("HelloController.reg1()");
-        //	req.setAttribute("a", "aaaa");  //设置返回数据
-        User u = new User();
-        u.setUsername(username);
-        u.setPassword(password);
-        if(userService.exists(u))
-            return "registerFailure";  //跳转到registerFailure.jsp;
-        userService.add(u);
-        return "registerSuccess";  //跳转到registerSuccess.jsp;
-    }
-
-    @RequestMapping(params="method=reg2")
-    public String reg2(UserFormBean userFormBean) throws Exception {
-        System.out.println("HelloController.reg2()");
-        //	req.setAttribute("a", "aaaa");  //设置返回数据
-        User u = new User();
-        u.setUsername(userFormBean.getUsername());
-        u.setPassword(userFormBean.getPassword());
-        if(userService.exists(u))
-            return "registerFailure";  //跳转到registerFailure.jsp;
-        userService.add(u);
-        return "registerSuccess";  //跳转到registerSuccess.jsp;
-    }
-
-    @RequestMapping(params="method=reg3")
-    public String reg3(UserFormBean userFormBean,HttpServletRequest req,ModelMap map) throws Exception {
-        System.out.println("HelloController.reg3()");
-        //	req.setAttribute("a", "aaaa");  //设置返回数据
-        req.setAttribute("arg1", "requestValue");
-        req.getSession().setAttribute("arg2", "sessionValue");
-        map.addAttribute("arg3", "ModelMapValue3");
-        map.addAttribute("arg4", "ModelMapValue4");
-        User u = new User();
-        u.setUsername(userFormBean.getUsername());
-        u.setPassword(userFormBean.getPassword());
-
-        if(userService.exists(u))
-            return "registerFailure";  //跳转到registerFailure.jsp;
-        userService.add(u);
-        return "registerSuccess";  //跳转到registerSuccess.jsp;
-    }
-
     @RequestMapping(params="method=reg4")
     public String reg4(UserFormBean userFormBean,HttpServletRequest req,ModelMap map) throws Exception {
         System.out.println("HelloController.reg4()");
@@ -119,9 +75,9 @@ public class UserController implements Controller{
         System.out.println("password:" + userFormBean.getPassword());
 
         if(userService.exists(u))
-            return "registerFailure";  //跳转到registerFailure.jsp;
+            return "register/registerFailure";  //跳转到registerFailure.jsp;
         userService.add(u);
-        return "registerSuccess";  //跳转到registerSuccess.jsp;
+        return "register/registerSuccess";  //跳转到registerSuccess.jsp;
     }
 
 
@@ -134,9 +90,9 @@ public class UserController implements Controller{
         u.setUsername(req.getParameter("username"));
         u.setPassword(req.getParameter("password"));
         if(userService.exists(u))
-            return new ModelAndView("registerFailure");  //跳转到registerFailure.jsp;
+            return new ModelAndView("register/registerFailure");  //跳转到registerFailure.jsp;
         userService.add(u);
-        return new ModelAndView("registerSuccess");  //跳转到registerSuccess.jsp;
+        return new ModelAndView("register/registerSuccess");  //跳转到registerSuccess.jsp;
     }
 
 }
