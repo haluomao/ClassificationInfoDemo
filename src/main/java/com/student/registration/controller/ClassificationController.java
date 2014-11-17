@@ -11,6 +11,7 @@ import com.student.registration.vo.PageBean;
 import com.student.registration.vo.UserFormBean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -38,16 +39,17 @@ import java.util.Map;
 public class ClassificationController {
     public static final Logger logger = LoggerFactory.getLogger(ClassificationController.class);
 
+    @Autowired
     private ClassListService classListService;
 
-    @Resource(name="ClassListServiceImpl")
-    public void setClassListService(ClassListService classListService) {
-        this.classListService = classListService;
-    }
-
-    public ClassListService getClassListService() {
-        return classListService;
-    }
+//    @Resource(name="ClassListServiceImpl")
+//    public void setClassListService(ClassListService classListService) {
+//        this.classListService = classListService;
+//    }
+//
+//    public ClassListService getClassListService() {
+//        return classListService;
+//    }
 
     @RequestMapping("searchAction")
     public String searchByPara(HttpServletRequest req, ModelMap map) throws Exception

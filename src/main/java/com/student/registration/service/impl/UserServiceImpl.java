@@ -3,6 +3,7 @@ package com.student.registration.service.impl;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 
 import org.springframework.stereotype.Component;
 
@@ -10,6 +11,7 @@ import com.student.registration.dao.UserMapper;
 import com.student.registration.model.User;
 import com.student.registration.model.UserExample;
 import com.student.registration.service.UserService;
+import org.springframework.validation.BindingResult;
 
 @Component("UserServiceImpl")
 public class UserServiceImpl implements UserService{
@@ -18,7 +20,7 @@ public class UserServiceImpl implements UserService{
 	private UserMapper userMapper;
 	
 	@Override
-	public boolean exists(User u) throws Exception{
+	public boolean exists(@Valid User u) throws Exception{
 		System.out.println(u.getUsername());
 		userExample = new UserExample();
 		userExample.createCriteria().andUsernameEqualTo(u.getUsername());  //username=u.username
@@ -75,6 +77,4 @@ public class UserServiceImpl implements UserService{
 	public void setUserMapper(UserMapper userMapper) {
 		this.userMapper = userMapper;
 	}
-
-	
 }

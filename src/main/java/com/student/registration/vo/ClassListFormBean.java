@@ -1,7 +1,9 @@
 package com.student.registration.vo;
 
 import com.student.registration.model.ClassList;
+import org.hibernate.validator.constraints.Length;
 
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.List;
 
@@ -11,7 +13,12 @@ public class ClassListFormBean{
 //    private int page;    //当前页数
 //    private boolean hasNext = true;   //是否可以继续访问下一页，即是否末页
 //    private boolean hasPrev = true;   //是否可以继续访问上一页，即是否首页
+
+    @NotNull
+    @Length(max=1024)
     private String className;
+
+    @Length(max=512)
     private String createMan;
 //    private int totalPage;  //根据当前步长计算的页数总数
 //    private int totalCount;

@@ -7,6 +7,7 @@ import com.student.registration.service.ClassListService;
 import com.student.registration.vo.ClassListFormBean;
 import com.student.registration.vo.PageBean;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -16,7 +17,8 @@ import java.util.List;
  * Created by BakerCxy on 2014/10/30.
  */
 
-@Component("ClassListServiceImpl")
+//@Component("ClassListServiceImpl")
+@Service
 public class ClassListServiceImpl implements ClassListService{
 
 	ClassListExample classListExample;

@@ -1,6 +1,9 @@
 package ControllerTest;
 
+import com.student.registration.controller.AccountController;
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * Created by Administrator on 2014/10/30.

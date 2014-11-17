@@ -1,5 +1,7 @@
 package com.student.registration.vo;
 
+import org.hibernate.validator.constraints.Length;
+
 import java.io.Serializable;
 
 /**
@@ -11,6 +13,7 @@ public class PageBean {
     private int currentPage;
     private int listCount;
     private int cacheBegin;
+
     private int cacheSize = 100;
 
     public PageBean(){

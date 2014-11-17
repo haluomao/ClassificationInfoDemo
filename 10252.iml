@@ -232,6 +232,10 @@
     <orderEntry type="library" exported="" name="Gradle: mysql-connector-java-5.1.33" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: jstl-1.2" level="project" />
     <orderEntry type="library" exported="" name="Gradle: mybatis-ehcache-1.0.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: hibernate-validator-5.1.3.Final" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: validation-api-1.1.0.Final" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jboss-logging-3.1.3.GA" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: classmate-1.0.0" level="project" />
   </component>
 </module>
 

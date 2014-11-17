@@ -9,9 +9,11 @@ import com.student.registration.vo.PageBean;
 import com.student.registration.vo.UserFormBean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -20,6 +22,8 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
+import java.sql.ResultSet;
 import java.util.List;
 
 @Scope("prototype")
@@ -29,16 +33,17 @@ public class AccountController {
 
     private UserService userService;
 
+    @Autowired
     private ClassListService classListService;
 
-    public ClassListService getClassListService() {
-        return classListService;
-    }
-
-    @Resource(name="ClassListServiceImpl")
-    public void setClassListService(ClassListService classListService) {
-        this.classListService = classListService;
-    }
+//    public ClassListService getClassListService() {
+//        return classListService;
+//    }
+//
+//    @Resource(name="ClassListServiceImpl")
+//    public void setClassListService(ClassListService classListService) {
+//        this.classListService = classListService;
+//    }
 
     public UserService getUserService() {
         return userService;
@@ -50,8 +55,13 @@ public class AccountController {
     }
 
     @RequestMapping("login.do")
-    public String login(UserFormBean userFormBean,HttpServletRequest req, ModelMap map) throws Exception
+    public String login(@Valid UserFormBean userFormBean, BindingResult result , HttpServletRequest req, ModelMap map) throws Exception
     {
+//        if (result.hasErrors()) {
+//            logger.info("Error in userFormBean Validator");
+//            return "register/register";
+//        }
+
         logger.info("login method");
 
         //获取
@@ -120,6 +130,29 @@ public class AccountController {
             System.out.println("failure_2");
             return "failure";
         }
+    }
+    @RequestMapping("registerSubmitAction")
+    public String registerSubmit(@Valid UserFormBean userFormBean, BindingResult result, HttpServletRequest req,ModelMap map) throws Exception {
+
+        if(result.hasErrors()){
+            logger.info("Validation failed! Password is too long?");
+            logger.info(result.getAllErrors().toString());
+            return "register/registerFailure";
+        }
+
+        logger.info("registerSubmitAction");
+        req.setAttribute("arg1", "requestValue");
+        req.getSession().setAttribute("arg2", "sessionValue");
+        map.addAttribute("arg3", "ModelMapValue3");
+        map.addAttribute("arg4", "ModelMapValue4");
+        User u = new User();
+        u.setUsername(userFormBean.getUsername());
+        u.setPassword(userFormBean.getPassword());
+
+        if(userService.exists(u))
+            return "register/registerFailure";  //跳转到registerFailure.jsp;
+        userService.add(u);
+        return "register/registerSuccess";  //跳转到registerSuccess.jsp;
     }
 
     @RequestMapping(value="register.html")
