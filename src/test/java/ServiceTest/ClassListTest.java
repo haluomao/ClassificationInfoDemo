@@ -15,7 +15,7 @@ import java.util.List;
  * Created by Administrator on 2014/10/30.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:ApplicationContext.xml","classpath:springmvc-servlet.xml"})
+@ContextConfiguration(locations = {"classpath:ApplicationContext.xml","classpath:*-servlet.xml"})
 @Transactional
 public class ClassListTest {
 

@@ -23,31 +23,17 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import java.sql.ResultSet;
 import java.util.List;
 
 @Scope("prototype")
 @Controller("AccountController")
 public class AccountController {
     public static final Logger logger = LoggerFactory.getLogger(AccountController.class);
-
+    @Autowired
     private UserService userService;
 
     @Autowired
     private ClassListService classListService;
-
-//    public ClassListService getClassListService() {
-//        return classListService;
-//    }
-//
-//    @Resource(name="ClassListServiceImpl")
-//    public void setClassListService(ClassListService classListService) {
-//        this.classListService = classListService;
-//    }
-
-    public UserService getUserService() {
-        return userService;
-    }
 
     @Resource(name="UserServiceImpl")
     public void setUserService(UserService userService) {
@@ -94,9 +80,8 @@ public class AccountController {
             map.put("classListFormBean",classListFormBean);
             map.put("objList", classLists);
 
-            return "classification/index";
+            return "classification/classification";
         }
-
         userService.add(u);
         return "register/register";
     }
@@ -162,7 +147,7 @@ public class AccountController {
 
     @RequestMapping(value="login.html")
     public String redirectTo_login(ModelMap map) throws Exception {
-        return "login";  //跳转到registerSuccess.jsp;
+        return "register/login";  //跳转到registerSuccess.jsp;
 
     }
 

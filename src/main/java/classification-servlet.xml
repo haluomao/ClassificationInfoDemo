@@ -15,11 +15,10 @@
     <mvc:annotation-driven/>  <!-- 支持spring3.0新的mvc注解 -->
 
     <!--<mvc:resources mapping="/images/**" location="/WEB-INF/pages/classification/images/"/>-->
-    <mvc:resources mapping="/images/**" location="/WEB-INF/pages/classification/images/"/>
-    <mvc:resources mapping="/js/**" location="/WEB-INF/pages/classification/js/"/>
+    <mvc:resources mapping="/classification/images/**" location="/WEB-INF/pages/classification/images/"/>
+    <mvc:resources mapping="/classification/js/**" location="/WEB-INF/pages/classification/js/"/>
 
-    <mvc:resources mapping="/images/**" location="/WEB-INF/pages/register/images/"/>
-    <mvc:resources mapping="/js/**" location="/WEB-INF/pages/register/js/"/>
-    <mvc:resources mapping="/css/**" location="/WEB-INF/pages/register/css/"/>
+    <mvc:resources mapping="/register/images/**" location="/WEB-INF/pages/register/images/"/>
+    <mvc:resources mapping="/register/css/**" location="/WEB-INF/pages/register/css/"/>
 
 </beans>

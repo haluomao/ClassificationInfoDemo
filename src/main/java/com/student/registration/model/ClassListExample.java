@@ -1963,8 +1963,8 @@ public class ClassListExample implements Serializable {
         }
     }
 
-	//myDO
-	protected int limit;
+	//@CodeGen 手动添加或生成 begin
+	protected int start;
 	protected int offset;
 
 	public int getOffset() {
@@ -1975,11 +1975,12 @@ public class ClassListExample implements Serializable {
 		this.offset = offset;
 	}
 
-	public int getLimit() {
-		return limit;
+	public int getStart() {
+		return start;
 	}
 
-	public void setLimit(int limit) {
-		this.limit = limit;
+	public void setStart(int start) {
+		this.start = start;
 	}
+    //@CodeGen 手动添加或生成 end
 }

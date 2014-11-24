@@ -1,34 +1,24 @@
 package com.student.registration.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.student.registration.model.ClassList;
-import com.student.registration.model.User;
 import com.student.registration.service.ClassListService;
-import com.student.registration.service.UserService;
-import com.student.registration.util.JsonUtil;
-import com.student.registration.vo.ClassListFormBean;
-import com.student.registration.vo.PageBean;
-import com.student.registration.vo.UserFormBean;
+import com.student.registration.util.DataEditResponse;
+import com.student.registration.util.DataRequest;
+import com.student.registration.util.DataSearchResponse;
+import com.student.registration.util.UtilMethod;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.PrintWriter;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 
 /**
@@ -42,296 +32,115 @@ public class ClassificationController {
     @Autowired
     private ClassListService classListService;
 
-//    @Resource(name="ClassListServiceImpl")
-//    public void setClassListService(ClassListService classListService) {
-//        this.classListService = classListService;
-//    }
-//
-//    public ClassListService getClassListService() {
-//        return classListService;
-//    }
-
-    @RequestMapping("searchAction")
-    public String searchByPara(HttpServletRequest req, ModelMap map) throws Exception
-    {
-        logger.info("searchByPara method");
-        logger.info(req.getRequestURI());
-
-        //获取
-        String className = req.getParameter("className");
-        String createMan = req.getParameter("createMan");
-
-        logger.info("className:" + className);
-        logger.info("createMan:" + createMan);
-
-        List<ClassList> objList =classListService.selectByClassName(className);
-        map.put("objList", objList);
-        return "classification/index";
-    }
-
-    @RequestMapping("classListSearchNormalAction")
-    public String classListSearchNormal(HttpServletRequest req, ModelMap map) throws Exception
-    {
-        logger.info("classListSearchNormalAction method");
-        logger.info(req.getRequestURI());
-
-        //获取
-        String className = req.getParameter("className");
-        String createMan = req.getParameter("createMan");
-
-        logger.info("className:" + className);
-        logger.info("createMan:" + createMan);
-
-        ClassListFormBean classListFormBean = new ClassListFormBean();
-        classListFormBean.setClassName(className);
-        classListFormBean.setCreateMan(createMan);
-        //List<ClassList> objList =classListService.selectByClassName(className);
-        int count = classListService.countClassListByClassNameAndCreateMan(classListFormBean);  //获取数据库中记录总条数
-//        logger.info("count:"+count);
-//        PageBean pageBean = new PageBean();
-//        pageBean.setCacheBegin(0);
-//        pageBean.setCacheSize(100);
-//        pageBean.setTotalCount(count);
-//        pageBean.setListCount(10);
-//        pageBean.setTotalPages((count-1)/pageBean.getListCount()+1);
-//
-//        //返回结果
-//        List<ClassList> classLists = classListService.selectByClassNameAndCreateManAndLimit(classListFormBean, pageBean);  //根据page，offset查询对应的记录
-//        classListFormBean.setClassLists(classLists); //将结果返回给Bean
-//
-//        logger.info(pageBean.toString());
-//        map.put("pageBean",pageBean);
-//        map.put("classListFormBean",classListFormBean);
-//        map.put("objList", classLists);
-        return "classification/index";
-    }
-
-    @RequestMapping("classListModifyAction")
-    public String classListModifyAction(HttpServletRequest req, ModelMap map) throws Exception
-    {
-        logger.info("classListModifyAction method");
-
-        //获取
-        String className = req.getParameter("className");
-        String createMan = req.getParameter("createMan");
-        String defaultStatName = req.getParameter("defaultStatName");
-        int classId = Integer.valueOf(req.getParameter("classId"));
-
-        logger.info("className:" + className);
-        logger.info("createMan:" + createMan);
-
-        ClassList classList = classListService.selectByClassId(classId);
-        classList.setClassName(className);
-        classList.setCreateMan(createMan);
-        classList.setDefaultStatName(defaultStatName);
-        classList.setModifyDate(new Date());
-        classListService.modifyOneRecord(classList);
-
-        ClassListFormBean classListFormBean = new ClassListFormBean();
-        classListFormBean.setClassName("");
-        classListFormBean.setCreateMan("");
-        //List<ClassList> objList =classListService.selectByClassName(className);
-        int count = classListService.countClassListByClassNameAndCreateMan(classListFormBean);  //获取数据库中记录总条数
-        logger.info("count:"+count);
-        PageBean pageBean = new PageBean();
-        pageBean.setCacheBegin(0);
-        pageBean.setCacheSize(100);
-        pageBean.setTotalCount(count);
-        pageBean.setListCount(10);
-        pageBean.setTotalPages((count-1)/pageBean.getListCount()+1);
-
-        //返回结果
-        List<ClassList> classLists = classListService.selectByClassNameAndCreateManAndLimit(classListFormBean, pageBean);  //根据page，offset查询对应的记录
-        classListFormBean.setClassLists(classLists); //将结果返回给Bean
-
-        logger.info(pageBean.toString());
-        map.put("pageBean",pageBean);
-        map.put("classListFormBean",classListFormBean);
-        map.put("objList", classLists);
-        return "classification/index";
-    }
-
-    @RequestMapping(value = "classListSearchAction", method = RequestMethod.POST)
+    /**
+     * 包含 增 删 改
+     * @param httpServletRequest
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping("classListEdit")
     @ResponseBody
-    public Map classListSearch(ClassListFormBean classListFormBean, PageBean pageBean) throws Exception {
-        //PageBean pageBean = classListFormBean.getPageBean();
-        logger.info("pagebean ListCount:"+(pageBean==null?null:pageBean.getListCount()));
-        logger.info("pagebean getCacheSize:"+(pageBean==null?null:pageBean.getCacheSize()));
-        logger.info("pagebean getCacheBegin:"+(pageBean==null?null:pageBean.getCacheBegin()));
-        logger.info("pagebean getCurrentPage:"+(pageBean==null?null:pageBean.getCurrentPage()));
-
-        int count = classListService.countClassListByClassNameAndCreateMan(classListFormBean);  //获取数据库中记录总条数
-
-        pageBean.setCacheBegin(pageBean.getCacheBegin());
-        pageBean.setCacheSize(100);
-        pageBean.setTotalCount(count);
-        pageBean.setTotalPages((count-1)/pageBean.getListCount()+1);
-
-        //返回结果
-        List<ClassList> classLists = classListService.selectByClassNameAndCreateManAndLimit(classListFormBean, pageBean);  //根据page，offset查询对应的记录
-        classListFormBean.setClassLists(classLists); //将结果返回给Bean
-
-        System.out.println(classListFormBean);
-        System.out.println(pageBean);
-
+    public Map classListEdit(HttpServletRequest httpServletRequest) throws Exception
+    {
+        Map map = UtilMethod.TurnRequest2Map(httpServletRequest);
+        logger.info("httpServletRequest:" + httpServletRequest.getParameterMap());
+        logger.info("map:" + map);
         Map<String,Object> result = new HashMap<String,Object>();
-        result.put("pageBean",pageBean);
-        result.put("classListFormBean",classListFormBean);
+        DataEditResponse editResponse = new DataEditResponse();
+        try {
+            if (map.containsKey("oper")) {
+                String oper = (String) map.get("oper");
+                if ("add".equals(oper)) {
+                    ClassList entity = UtilMethod.ClassMakeup(ClassList.class, map);
+                    System.out.println("user1:" + entity);
+                    int res = classListService.add(entity);
+                    if (res == 1) {
+                        editResponse.setStatus("success");
+                        editResponse.setMessage(oper + " succeed");
+                    }
+                } else if ("edit".equals(oper)) {
+                    ClassList entity = UtilMethod.ClassMakeup(ClassList.class, map);
+                    System.out.println("user1:" + entity);
+                    int res = classListService.update(entity);
+                    if (res == 1) {
+                        editResponse.setStatus("success");
+                        editResponse.setMessage(oper + " succeed");
+                    }
+                } else if ("del".equals(oper)) {
+                    Set<Integer> idSet = UtilMethod.TurnString2Set((String)map.get("id"));/*fill*/
+                    System.out.println("keySet:" + idSet);
+
+                    editResponse.setStatus("success");
+                    editResponse.setMessage(oper + " succeed");
+                    for (Integer id : idSet) {
+                        int res = classListService.delete(id);
+                        if (res == 0) {
+                            editResponse.setStatus("error");
+                            editResponse.setMessage(oper + " failed");
+                            break;
+                        }
+                    }
+                }
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            editResponse.setStatus("error");
+            editResponse.setMessage("operation failed");
+            logger.info(editResponse.toString());
+            result.put("editResponse", editResponse);
+            return result;
+        }
+        logger.info(editResponse.toString());
+        result.put("editResponse", editResponse);
         return result;
     }
 
-    @RequestMapping(value = "classListModifyAjax", method = RequestMethod.POST)
+    @RequestMapping("classListSelectM")
     @ResponseBody
-    public Map classListModifyAjax(ClassList classList) throws Exception {
-        //PageBean pageBean = classListFormBean.getPageBean();
-        logger.info("ClassList classId:"+(classList==null?null:classList.getClassId()));
-
-        classList = classListService.selectByClassId(classList.getClassId());
-        logger.info("ClassList:"+classList);
-        Map<String,Object> result = new HashMap<String,Object>();
-        result.put("classList", classList);
-        return result;
-    }
-
-    private void appendParameters(Map<String,Object> map, PageBean pageBean, ClassListFormBean classListFormBean){
-        int count = classListService.countClassListByClassNameAndCreateMan(classListFormBean);  //获取数据库中记录总条数
-
-        pageBean.setCacheBegin(pageBean.getCacheBegin());
-        pageBean.setCacheSize(100);
-        pageBean.setTotalCount(count);
-        pageBean.setTotalPages((count-1)/pageBean.getListCount()+1);
-
-        //返回结果
-        List<ClassList> classLists = classListService.selectByClassNameAndCreateManAndLimit(classListFormBean, pageBean);  //根据page，offset查询对应的记录
-        classListFormBean.setClassLists(classLists); //将结果返回给Bean
-
-        System.out.println(classListFormBean);
-        System.out.println(pageBean);
-
-        map.put("pageBean",pageBean);
-        map.put("classListFormBean", classListFormBean);
-    }
-
-    @RequestMapping("classListAddAction")
-    public String classListAdd(ClassList classList, HttpServletRequest req, ModelMap map) throws Exception
+    public DataSearchResponse<ClassList> classListSearch(HttpServletRequest httpServletRequest, DataRequest dataRequest, ClassList entity) throws Exception
     {
-        logger.info("classListAddAction method");
-        //获取
-        String className = req.getParameter("className");
-        String createMan = req.getParameter("createMan");
+        logger.info("dataRequest:" + dataRequest);
+        logger.info("Entity:" + entity.getClass()+entity.toString());
 
-        logger.info("className:" + className);
-        logger.info("createMan:" + createMan);
-
-        classList.setDefaultIsCheck("1");
-        classList.setDefaultUserYear(2014);
-        classList.setDeprTypeId(1);
-        classList.setModifyMan("修改人_" + 2014);
-        classList.setClassType("t");
-        classList.setCreateDate(new Date());
-        int res=classListService.addClassList(classList);
-        logger.info("res:" + res);
-
-        ClassListFormBean classListFormBean = new ClassListFormBean();
-        classListFormBean.setClassName("");
-        classListFormBean.setCreateMan("");
-        //List<ClassList> objList =classListService.selectByClassName(className);
-        int count = classListService.countClassListByClassNameAndCreateMan(classListFormBean);  //获取数据库中记录总条数
-        logger.info("count:"+count);
-        PageBean pageBean = new PageBean();
-        pageBean.setCacheBegin(0);
-        pageBean.setCacheSize(100);
-        pageBean.setTotalCount(count);
-        pageBean.setListCount(10);
-        pageBean.setTotalPages((count-1)/pageBean.getListCount()+1);
-
-        //返回结果
-        List<ClassList> classLists = classListService.selectByClassNameAndCreateManAndLimit(classListFormBean, pageBean);  //根据page，offset查询对应的记录
-        classListFormBean.setClassLists(classLists); //将结果返回给Bean
-
-        logger.info(pageBean.toString());
-        map.put("pageBean",pageBean);
-        map.put("classListFormBean",classListFormBean);
-        map.put("objList", classLists);
-        return "classification/index";
+        Map map = UtilMethod.TurnRequest2Map(httpServletRequest);
+        DataSearchResponse<ClassList> dataResponse = null;
+        try {
+            dataResponse = search(map, dataRequest, entity, classListService);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return dataResponse;
     }
 
-    @RequestMapping("classListDeleteAction")
-    @ResponseBody
-    public Map classListDelete(ClassListFormBean classListFormBean, PageBean pageBean, ClassList classList) throws Exception {
-        //PageBean pageBean = classListFormBean.getPageBean();
-        logger.info("pagebean ListCount:"+(pageBean==null?null:pageBean.getListCount()));
-        logger.info("pagebean getCacheSize:"+(pageBean==null?null:pageBean.getCacheSize()));
-        logger.info("pagebean getCacheBegin:"+(pageBean==null?null:pageBean.getCacheBegin()));
-        logger.info("pagebean getCurrentPage:"+(pageBean==null?null:pageBean.getCurrentPage()));
-        logger.info("classList getClassId:"+(classList==null?null:classList.getClassId()));
+    //搜索
+    public DataSearchResponse<ClassList> search(Map<String, Object> map, DataRequest request, ClassList entity, ClassListService classListService) {
+        DataSearchResponse<ClassList> response = new DataSearchResponse<ClassList>();
 
-        classListService.deleteByClassId(classList==null?-1:classList.getClassId());
+        int limit = request.getRows() <= 0 ? 20 : request.getRows();//每页显示数量
+        int totalPages;//总页数
+        int page = request.getPage() <= 0 ? 1 : request.getPage();//当前显示页码
+        int count;//总记录数
 
-        int count = classListService.countClassListByClassNameAndCreateMan(classListFormBean);  //获取数据库中记录总条数
+        count = classListService.count(map, entity);
+        logger.info("Count:"+count);
 
-        pageBean.setCacheBegin(pageBean.getCacheBegin());
-        pageBean.setCacheSize(100);
-        pageBean.setTotalCount(count);
-        pageBean.setTotalPages((count-1)/pageBean.getListCount()+1);
+        totalPages = count / limit;
+        if (count % limit != 0) {totalPages++;}
+        int currPage = Math.min(totalPages, page);
+        int start = currPage * limit - limit;
+        start = start < 0 ? 0 : start;
 
-        //返回结果
-        List<ClassList> classLists = classListService.selectByClassNameAndCreateManAndLimit(classListFormBean, pageBean);  //根据page，offset查询对应的记录
-        classListFormBean.setClassLists(classLists); //将结果返回给Bean
+        String orderByClause = UtilMethod.TurnUpperCase2Underline(request.getSidx())+" "+request.getSord(); //如 ID desc
+//        String orderByClause = request.getSidx()+" "+request.getSord();
+        logger.info("orderByClause:"+orderByClause);
+        List<ClassList> list;
+        list = classListService.select(map, entity, orderByClause, start, limit);
 
-        System.out.println(classListFormBean);
-        System.out.println(pageBean);
-
-        Map<String,Object> result = new HashMap<String,Object>();
-        result.put("pageBean",pageBean);
-        result.put("classListFormBean",classListFormBean);
-        return result;
-    }
-
-    @RequestMapping("classListModifyActionAjax")
-    @ResponseBody
-    public Map classListModify(ClassListFormBean classListFormBean, PageBean pageBean, ClassList classList) throws Exception {
-        //PageBean pageBean = classListFormBean.getPageBean();
-        logger.info("pagebean ListCount:"+(pageBean==null?null:pageBean.getListCount()));
-        logger.info("pagebean getCacheSize:"+(pageBean==null?null:pageBean.getCacheSize()));
-        logger.info("pagebean getCacheBegin:"+(pageBean==null?null:pageBean.getCacheBegin()));
-        logger.info("pagebean getCurrentPage:"+(pageBean==null?null:pageBean.getCurrentPage()));
-        logger.info("classList getClassId:"+(classList==null?null:classList.getClassId()));
-
-        classListService.modifyOneRecord(classList);
-
-        int count = classListService.countClassListByClassNameAndCreateMan(classListFormBean);  //获取数据库中记录总条数
-
-        pageBean.setCacheBegin(pageBean.getCacheBegin());
-        pageBean.setCacheSize(100);
-        pageBean.setTotalCount(count);
-        pageBean.setTotalPages((count-1)/pageBean.getListCount()+1);
-
-        //返回结果
-        List<ClassList> classLists = classListService.selectByClassNameAndCreateManAndLimit(classListFormBean, pageBean);  //根据page，offset查询对应的记录
-        classListFormBean.setClassLists(classLists); //将结果返回给Bean
-
-        System.out.println(classListFormBean);
-        System.out.println(pageBean);
-
-        Map<String,Object> result = new HashMap<String,Object>();
-        result.put("pageBean",pageBean);
-        result.put("classListFormBean",classListFormBean);
-        return result;
-    }
-
-    @RequestMapping(value = "ajaxSearchTest", method=RequestMethod.POST)
-    public void ajaxSearchTest(HttpServletRequest req,
-                               String classNameAjax, PrintWriter printWriter) throws Exception {
-        logger.info("ajaxSearch method");
-        String className = req.getParameter("className");
-        logger.info("className:" + classNameAjax);
-
-        List<ClassList> objList = classListService.selectByClassName(classNameAjax);
-        String jsonString = JsonUtil.getMapper().writeValueAsString(objList);
-        logger.info("Json result", jsonString);
-        printWriter.write(jsonString);
-        printWriter.flush();
-        printWriter.close();
+        response.setRecords(count);
+        response.setTotalpage(totalPages);
+        response.setCurrentpage(currPage);
+        response.setRows(list);
+        logger.info("response:"+response);
+        return response;
     }
 }

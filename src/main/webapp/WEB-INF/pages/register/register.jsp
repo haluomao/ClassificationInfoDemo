@@ -16,7 +16,7 @@
         }
         -->
     </style>
-    <link  rel="stylesheet" type="text/css" href="common/css/style.css"/>
+    <link  rel="stylesheet" type="text/css" href="register/css/style.css"/>
 
     <link rel="stylesheet" href="common/css/bootstrap.min.css">
 
@@ -24,7 +24,7 @@
 <body>
 <table width="1920" border="0" cellpadding="10" class="titlelogo">
     <tr>
-        <td><div align="center"><img src="images/logo_login.png" width="482" height="89" alt="img" /></div></td>
+        <td><div align="center"><img src="common/images/logo_login.png" width="482" height="89" alt="img" /></div></td>
     </tr>
 </table>
 <div align="center" class="head_title">新用户注册</div>

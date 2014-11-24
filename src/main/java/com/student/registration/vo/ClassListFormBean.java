@@ -14,6 +14,10 @@ public class ClassListFormBean{
 //    private boolean hasNext = true;   //是否可以继续访问下一页，即是否末页
 //    private boolean hasPrev = true;   //是否可以继续访问上一页，即是否首页
 
+    public ClassListFormBean(){
+        className="";
+        createMan="";
+    }
     @NotNull
     @Length(max=1024)
     private String className;

@@ -65,10 +65,10 @@
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="mySqlDataSource" />
-		<property name="typeAliasesPackage" value="com.student.registration.model" />
+		<property name="typeAliasesPackage" value="com.student.*.model" />
 		<property name="configLocation" value="classpath:mybatis-config.xml" />
 		<!-- 显式指定Mapper文件位置 -->
-		<property name="mapperLocations" value="classpath:com/student/registration/mapper/*.xml" />
+		<property name="mapperLocations" value="classpath:com/student/*/mapper/*.xml" />
 	</bean>
 
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 /**
  * Created by haluomao on 14/11/04.
  */
+@Deprecated
 public class JsonUtil {
     protected static ObjectMapper mapper = new ObjectMapper();
 
