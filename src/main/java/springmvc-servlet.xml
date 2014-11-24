@@ -10,7 +10,7 @@
             http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
 
     <context:annotation-config/>  <!-- 是否可以使用annotation方式实现IOC -->
-    <context:component-scan base-package="com.student.registration.controller" />  <!-- annotation对哪些包下面的类适用 -->
+    <context:component-scan base-package="com.canco.*.controller" />  <!-- annotation对哪些包下面的类适用 -->
 
     <mvc:annotation-driven/>  <!-- 支持spring3.0新的mvc注解 -->
 
@@ -53,13 +53,11 @@
 
     <mvc:interceptors>
         <!-- 拦截所有springmvc的url！ -->
-        <!-- 	<bean class="com.student.registration.interceptor.MyInterceptor"></bean>    -->
+        <!-- 	<bean class="com.canco.registration.interceptor.MyInterceptor"></bean>    -->
         <mvc:interceptor>
             <mvc:mapping path="/myajax.do" />
             <!--<mvc:mapping path="/test/*" />-->
-            <bean class="com.student.registration.interceptor.MyInterceptor"/>  <!-- 拦截特定springmvc的url！ -->
+            <bean class="com.canco.registration.interceptor.MyInterceptor"/>  <!-- 拦截特定springmvc的url！ -->
         </mvc:interceptor>
     </mvc:interceptors>
-
-
 </beans>

@@ -5,9 +5,9 @@
 <classPathEntry location="F:/eclipse-jee-luna_project/Spring_Registration_SpringMVC/WebContent/WEB-INF/lib/mysql-connector-java-3.1.13-bin.jar" />
   <context id="context1" >
     <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost/registration" userId="root" password="000000" />
-    <javaModelGenerator targetPackage="com.student.registration.model" targetProject="Spring_Registration_SSM" />
-    <sqlMapGenerator targetPackage="com.student.registration.mapper" targetProject="Spring_Registration_SSM" />
-    <javaClientGenerator targetPackage="com.student.registration.dao" targetProject="Spring_Registration_SSM" type="XMLMAPPER" />
+    <javaModelGenerator targetPackage="com.canco.registration.model" targetProject="Spring_Registration_SSM" />
+    <sqlMapGenerator targetPackage="com.canco.registration.mapper" targetProject="Spring_Registration_SSM" />
+    <javaClientGenerator targetPackage="com.canco.registration.dao" targetProject="Spring_Registration_SSM" type="XMLMAPPER" />
     <table schema="" tableName="user" ></table>
   </context>
 </generatorConfiguration>

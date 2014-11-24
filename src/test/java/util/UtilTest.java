@@ -1,6 +1,6 @@
 package util;
 
-import com.student.registration.util.UtilMethod;
+import com.canco.common.util.UtilMethod;
 import org.junit.Test;
 
 import java.util.HashMap;

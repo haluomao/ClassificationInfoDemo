@@ -10,7 +10,7 @@
             http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
 
     <context:annotation-config/>  <!-- 是否可以使用annotation方式实现IOC -->
-    <!--<context:component-scan base-package="com.student.registration.controller" />  &lt;!&ndash; annotation对哪些包下面的类适用 &ndash;&gt;-->
+    <!--<context:component-scan base-package="com.canco.registration.controller" />  &lt;!&ndash; annotation对哪些包下面的类适用 &ndash;&gt;-->
 
     <mvc:annotation-driven/>  <!-- 支持spring3.0新的mvc注解 -->
 

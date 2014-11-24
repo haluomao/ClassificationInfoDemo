@@ -1,7 +1,7 @@
 package ServiceTest;
 
-import com.student.registration.model.ClassList;
-import com.student.registration.service.ClassListService;
+import com.canco.classfication.model.ClassList;
+import com.canco.classfication.service.ClassListService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

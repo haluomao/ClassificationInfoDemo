@@ -7,8 +7,5 @@
     <settings>
         <setting name="logImpl" value="LOG4J" />
     </settings>
-    <!--<typeAliases>-->
-    <!--<typeAlias type="com.student.registration.model.User" alias="User"/>-->
-    <!--</typeAliases>-->
 
 </configuration>

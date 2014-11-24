@@ -22,7 +22,7 @@
 	<context:property-placeholder location="classpath:jdbc.properties" /> <!-- Properties文件读取配置，base的properties -->
 	
 	<context:annotation-config />  <!-- 是否可以使用annotation方式实现IOC -->
-	<context:component-scan base-package="com.student" />  <!-- 以下的配置对该包及其子包有效 -->
+	<context:component-scan base-package="com.canco" />  <!-- 以下的配置对该包及其子包有效 -->
 
 	<aop:aspectj-autoproxy />  <!-- 支持aop注解 -->
 	<tx:annotation-driven />
@@ -44,7 +44,7 @@
 
 	<!-- 建立切面的位置 -->
 	<aop:config>
-		<aop:pointcut expression="execution(public * com.student.registration.service..*.*(..))" id="businessService" />
+		<aop:pointcut expression="execution(public * com.canco.*.service..*.*(..))" id="businessService" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="businessService" />
 	</aop:config>
 
@@ -65,14 +65,14 @@
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="mySqlDataSource" />
-		<property name="typeAliasesPackage" value="com.student.*.model" />
+		<property name="typeAliasesPackage" value="com.canco.*.model" />
 		<property name="configLocation" value="classpath:mybatis-config.xml" />
 		<!-- 显式指定Mapper文件位置 -->
-		<property name="mapperLocations" value="classpath:com/student/*/mapper/*.xml" />
+		<property name="mapperLocations" value="classpath:com/canco/*/mapper/*.xml" />
 	</bean>
 
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.student.registration.dao" />
+		<property name="basePackage" value="com.canco.*.dao" />
 	</bean>
 	
 	<!--&lt;!&ndash; 配置ehcahe缓存管理器 &ndash;&gt;-->
