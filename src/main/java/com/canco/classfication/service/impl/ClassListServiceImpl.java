@@ -9,6 +9,8 @@ import com.canco.classfication.vo.PageBean;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -48,6 +50,28 @@ public class ClassListServiceImpl implements ClassListService{
             criteria.andClassNameLike("%"+entity.getClassName()+ "%");
         if(entity.getCreateMan()!=null && !"".equals(entity.getCreateMan()))
             criteria.andCreateManLike("%"+entity.getCreateMan()+ "%");
+
+        //对日期进行判断
+        try {
+            if(map.get("search_startDate")==null||map.get("search_endDate")==null) return;
+            String startDateString = map.get("search_startDate").toString();
+            String endDateString = map.get("search_endDate").toString();
+            Date startDate = null,endDate = null;
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+            if(startDateString != null && !"".equals(startDateString)) {
+                startDate = sdf.parse(startDateString);
+                criteria.andCreateDateGreaterThanOrEqualTo(startDate);
+            }
+
+            if(endDateString != null && !"".equals(endDateString)) {
+                endDate = new Date((sdf.parse(endDateString)).getTime() + 1 * 24 * 60 * 60 * 1000 - 1);  //将时间调整为该日的最后一毫秒
+                System.out.println("endDate:" + endDate);
+                criteria.andCreateDateLessThanOrEqualTo(endDate);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override

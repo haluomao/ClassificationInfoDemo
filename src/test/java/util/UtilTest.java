@@ -17,8 +17,8 @@ public class UtilTest {
         map.put("code", null);
         map.put("num", 5);
 
-        TestB testB = UtilMethod.ClassMakeup(TestB.class, map);
-        System.out.println(testB.toString());
+//        TestB testB = UtilMethod.ClassMakeup(TestB.class, map);
+//        System.out.println(testB.toString());
 
     }
 }
