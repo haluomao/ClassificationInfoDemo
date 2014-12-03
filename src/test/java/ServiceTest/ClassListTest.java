@@ -18,12 +18,17 @@ import java.util.List;
 @ContextConfiguration(locations = {"classpath:ApplicationContext.xml","classpath:*-servlet.xml"})
 @Transactional
 public class ClassListTest {
+//    public static final Logger logger = LoggerFactory.getLogger(ClassListTest.class);
 
     @Autowired
     ClassListService classListService;
 
 	@Test
 	public void addClassListTest(){
+//        logger.debug("debug");
+//        logger.error("error");
+//        logger.warn("warn");
+//        logger.info("info");
 //		ApplicationContext ctx = new ClassPathXmlApplicationContext("ApplicationContext.xml");
 //		ClassListService classListService = (ClassListService)ctx.getBean("ClassListServiceImpl");
 //

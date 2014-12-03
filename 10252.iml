@@ -73,8 +73,6 @@
     <orderEntry type="library" exported="" name="Gradle: pinyin4j-2.5.0" level="project" />
     <orderEntry type="library" exported="" name="Gradle: slf4j-api-1.7.7" level="project" />
     <orderEntry type="library" exported="" name="Gradle: jcl-over-slf4j-1.7.7" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: jul-to-slf4j-1.7.7" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: log4j-1.2.17" level="project" />
     <orderEntry type="library" exported="" name="Gradle: log4jdbc-remix-0.2.7" level="project" />
     <orderEntry type="library" exported="" name="Gradle: spring-test-4.1.1.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: junit-4.11" level="project" />
@@ -246,6 +244,9 @@
     <orderEntry type="library" exported="" name="Gradle: hibernate-commons-annotations-3.2.0.Final" level="project" />
     <orderEntry type="library" exported="" name="Gradle: hibernate-jpa-2.0-api-1.0.0.Final" level="project" />
     <orderEntry type="library" exported="" name="Gradle: jta-1.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jul-to-slf4j-1.7.7" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: log4j-1.2.17" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: slf4j-log4j12-1.7.7" level="project" />
   </component>
 </module>
 
