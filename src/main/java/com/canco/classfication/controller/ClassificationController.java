@@ -105,12 +105,13 @@ public class ClassificationController {
         Map map = UtilMethod.TurnRequest2Map(httpServletRequest);
         DataSearchResponse<ClassList> dataResponse = null;
         try {
-            dataResponse = search(map, dataRequest, entity, classListService);
+				dataResponse = search(map, dataRequest, entity, classListService);
         }catch(Exception e){
             e.printStackTrace();
         }
         return dataResponse;
     }
+
 
     //搜索
     public DataSearchResponse<ClassList> search(Map<String, Object> map, DataRequest request, ClassList entity, ClassListService classListService) {

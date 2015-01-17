@@ -1,5 +1,7 @@
 package com.canco.classfication.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -406,11 +408,12 @@ public class ClassList implements Serializable {
 	 * @return  the value of class_list.CREATE_DATE
 	 * @mbggenerated  Mon Nov 03 12:57:56 CST 2014
 	 */
-	public Date getCreateDate() {
-		return createDate;
-	}
+//	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+//	public Date getCreateDate() {
+//		return createDate;
+//	}
 
-    public String getCreateDateString() {
+    public String getCreateDate() {
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss E");
         return format.format(createDate);
     }

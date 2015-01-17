@@ -9,7 +9,7 @@
     <title> Classification Information </title>
     <link rel="stylesheet" href="common/css/bootstrap.min.css">
     <link type="text/css" href="common/css/jquery-ui.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" media="screen" href="common/css/jquery-ui.theme.css" />
+    <%--<link rel="stylesheet" type="text/css" media="screen" href="common/css/jquery-ui.theme.css" />--%>
     <link rel="stylesheet" type="text/css" media="screen" href="common/css/ui.jqgrid.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="common/css/searchFilter.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="common/css/ui.multiselect.css" />
@@ -81,10 +81,11 @@
                 <div class="col-md-11 col-md-offset-1">
                     资产分类：<input type="text" name="className" id="search_className" />
                     保管人：<input type="text" name="createMan" id="search_createMan" />
+                    创建日期：<input type='text' name="startDate" id="search_startDate"  />  -
+                    <input type='text' name="endDate" id="search_endDate" />
                     <button type="button" onclick="gridReload()">搜索</button>
                     <br><br>
                 </div>
-                </form>
             </div>
         </div>
 
@@ -105,8 +106,9 @@
 </div>
 
 
-<script src="common/js/jquery-ui.js"></script>
+
 <script src="common/js/jquery-2.1.1.min.js"></script>
+<script src="common/js/jquery-ui.js"></script>
 <script src="common/js/bootstrap.min.js"></script>
 
 <script src="common/js/i18n/grid.locale-en.js" type="text/javascript"></script>
@@ -117,8 +119,26 @@
 <script src="common/js/jquery.tablednd.js"></script>
 
 <script src="common/js/AjaxUtil.js"></script>
+
+<script src="classification/js/time.js"></script>
 <script>
     $(function() {
+        var date_options={
+            size:12,
+            dataInit:function(element){
+                $(element).datepicker({dateFormat:'yy-mm-dd'});
+            },
+            defaultValue: function(){
+                var currentTime = new Date();
+                var month = parseInt(currentTime.getMonth() + 1);
+                month = month <= 9 ? "0"+month : month;
+                var day = currentTime.getDate();
+                day = day <= 9 ? "0"+day : day;
+                var year = currentTime.getFullYear();
+                return year+"-"+month + "-"+day;
+            }
+        };
+
         $("#tableList").jqGrid({
             //@CodeGen begin
             url: 'classListSelectM',
@@ -129,7 +149,9 @@
                 {name: 'className', index: 'className', width: 200, sortable: true, align:"left", editable:true},
                 {name: 'defaultStatName', index: 'defaultStatName', width: 200, sortable: true, align:"left", editable:true},
                 {name: 'createMan', index: 'createMan', width: 200, sortable: true, align:"left", editable:true},
-                {name: 'createDate', index: 'createDate', width: 200, sortable: true, align:"left", editable:false}
+                {name: 'createDate', index: 'createDate', width: 200, sortable: true, align:"left", editable:true,
+                    formatter:"date",formatoptions: {srcformat:'Y-m-d H:i:s',newformat:'Y-m-d'},
+                    editoptions:date_options,editrules:{required:true, time:true}}
             ],
             jsonReader : {
                 page: "currentpage",
@@ -225,30 +247,39 @@
         $(window).resize(function() {
             $("#tableList").setGridWidth($(window).width() * 0.80);
         });
+
+        $("#search_startDate").datepicker({dateFormat:'yy-mm-dd'});
+        $("#search_endDate").datepicker({dateFormat:'yy-mm-dd'});
     });
-
-    var timeoutHnd;
-    var flAuto = false;
-
-    function doSearch(ev){
-        if(!flAuto)
-            return;
-        if(timeoutHnd)
-            clearTimeout(timeoutHnd);
-        timeoutHnd = setTimeout(gridReload,500);
-    }
 
     function gridReload(){
         //@CodeGen begin
         var var1 = $("#search_className").val();
         var var2 = $("#search_createMan").val();
-        $("#tableList").jqGrid('setGridParam',{url:"classListSelectM?className="+var1+"&createMan="+var2, page:1}).trigger("reloadGrid");
+        if (dateCompare() == true)
+        {
+            var var3 = $("#search_startDate").val();
+            var var4 = $("#search_endDate").val();
+            $("#tableList").jqGrid('setGridParam',{url:"classListSelectM?className="+var1+"&createMan="+var2+"&search_startDate="+var3+"&search_endDate="+var4 , page:1}).trigger("reloadGrid");
+        }
+
         //@CodeGen end
     }
-    function enableAutosubmit(state){
-        flAuto = state;
-        $("#submitButton").attr("disabled",state);
+
+    function dateCompare(){
+        var startdate=new Date(($("#search_startDate").val()).replace(/-/g,"/"));
+        var enddate=new Date(($("#search_endDate").val()).replace(/-/g,"/"));
+        var date = new Date();
+        if(startdate > enddate)
+        {
+            alert("起始日期不得大于截止日期！");
+            return false;
+        }
+        else
+            return true;
     }
+
+
 </script>
 
 </body>
