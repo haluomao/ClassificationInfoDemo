@@ -3,10 +3,7 @@ package com.canco.assetstockin.dao;
 
 import java.util.List;
 
-import com.canco.assetstockin.model.AssetStockList;
-import com.canco.assetstockin.model.AssetStockListExample;
-import com.canco.assetstockin.model.StockInInfoList;
-import com.canco.assetstockin.model.StockInInfoListExample;
+import com.canco.assetstockin.model.*;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
@@ -80,8 +77,17 @@ public interface StockInInfoListMapper {
 	 */
 	int updateByPrimaryKey(StockInInfoList record);
 
-	/*  
-     * 自己添加的方�?     * */
+    /**
+     * 根据example里的查询条件选择中间关联表数据
+     * @param example
+     * @return
+     */
     List<AssetStockList> selectAssetStockList(AssetStockListExample example);
-    
+
+    /**
+     * 根据example里的查询条件选择不存在关联关系的资产列表
+     * @param example
+     * @return
+     */
+    List<AssetList> selectAssetListNotInStockInInfoList(AssetStockListExample example);
 }

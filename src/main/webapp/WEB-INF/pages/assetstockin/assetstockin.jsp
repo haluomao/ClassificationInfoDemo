@@ -99,7 +99,31 @@
          </div>
         </div>
 
-        <!-- 列表 -->
+        <!-- 购物车 -->
+        <div class="widget-toolbar dropdown">
+            <a href="#" class="dropdown-menu-right dropdown-toggle" data-action="cart" data-toggle="dropdown"
+               aria-expanded="false">
+                <i class="ace-icon fa fa-shopping-cart bigger-120 red"></i>
+                <span class="infobox-data-number red">购物车</span>
+            </a>
+
+            <ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close"
+                style="width:auto;">
+                <li class="dropdown-header">
+                    <i class="ace-icon fa fa-shopping-cart"></i>
+                    购物车
+                </li>
+
+                <li class="dropdown-content ace-scroll" style="position: relative;">
+                    <div class="scroll-content" style="line-height: 19.5px;background-color: #FFFFFF;">
+                        <table id="grid-table-cart"></table>
+                        <div id="grid-pager-cart"></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 数据列表 -->
         <div class="panel-body">
             <table class="table" id="tableList"></table>
             <div id="pager"></div>
@@ -121,7 +145,7 @@
 <script src="common/js/jquery-ui.min.js"></script>
 <script src="common/js/bootstrap.min.js"></script>
 
-<script src="common/js/i18n/grid.locale-en.js" type="text/javascript"></script>
+<script id="locale" src="common/js/i18n/grid.locale-en.js" type="text/javascript"></script>
 <script src="common/js/jquery.jqGrid.min.js"></script>
 
 <script src="common/js/ui.multiselect.js"></script>
@@ -131,7 +155,13 @@
 <script src="common/js/AjaxUtil.js"></script>
 <script src="common/js/cancojs.js"></script>
 <script>
+var cartGoods=[];
+var rowDataIds=[];
     $(function() {
+//        if((screen.width==1024)&&(screen.height==768)){
+//            document.getElementById("locale").src="common/js/i18n/grid.locale-cn.js"; //判断分辨率是1024x768调用default1.css
+//        }else document.getElementById("locale").src="common/js/i18n/grid.locale-en.js"; //判断分辨率是1024x768调用default1.css
+
         var date_options={
             size:12,
             dataInit:function(element){
@@ -148,16 +178,99 @@
             }
         };
 
+        var select_options={
+            dataUrl:'assetListSelect'
+            ,buildSelect: function(data) {
+                var response =  eval(data);
+                var s = '<select>';
+                var selectedId = $("#tableList").jqGrid("getGridParam", "selrow");
+                if(selectedId){
+                    var rowData = $("#tableList").jqGrid("getRowData", selectedId);
+                    s += '<option value="'+rowData["assetList.assetId"]+'">'+rowData["assetList.assetNo"]+'</option>';
+                }
 
-        $("#tableList").jqGrid({
-            //@CodeGen begin
-            url: 'assetstockinSelect',
-            editurl: 'assetstockinEdit',
-            colNames: ['入库信息主键','资产编号','入库单号', '资产创建日期', '资产名', '入库创建人', '入库说明'],//['入库单号', '入库日期', '资产名','购买时间','创建人','说明']
+                if (response && response.length) {
+                    for (var i = 0, l=response.length; i<l ; i++) {
+                        var ri = response[i];
+                        s += '<option value="'+ri.assetId+'">'+ri.assetNo+'</option>';
+                    }
+                }
+                return s+'</select>';
+            }
+        };
+
+        function indexOfGoods(cartGoods, rowData){
+            for(var i=0; i<cartGoods.length; i++){
+                if(rowData["stockInInfoList.stockInInfoId"]==cartGoods[i]["stockInInfoList.stockInInfoId"])
+                    return i;
+            }
+            alert("error");
+            return -1;
+        }
+        //选择单条数据
+        function updateCart(id,  status){
+            var rowData = $("#tableList").jqGrid("getRowData", id);
+            if(status){
+                rowDataIds.push(id);
+                cartGoods.push(rowData);
+            }else{
+
+                rowDataIds.splice(rowDataIds.indexOf(id), 1);
+                var index = indexOfGoods(cartGoods, rowData);
+                cartGoods.splice(index, index<0?0:1);
+            }
+            $("#grid-table-cart").jqGrid("clearGridData");
+            for(var i=0; i<cartGoods.length; i++){
+                $("#grid-table-cart").jqGrid("addRowData", i, cartGoods[i]);
+            }
+            $("#grid-table-cart").trigger("reloadGrid");
+        }
+
+        //选择多条数据，一般是全选操作
+        function updateCartAll(ids,  status){
+            for(var i=0; i<ids.length; i++){
+                var id= ids[i];
+                var rowData = $("#tableList").jqGrid("getRowData", id);
+                if(status){
+                    if(rowDataIds.indexOf(id)<0) {
+                        rowDataIds.push(id);
+                        cartGoods.push(rowData);
+                    }
+                }else{
+                    if(rowDataIds.indexOf(id)>=0) {
+                        rowDataIds.splice(rowDataIds.indexOf(id), 1);
+                        var index = indexOfGoods(cartGoods, rowData);
+                        cartGoods.splice(index, index<0?0:1);
+                    }
+                }
+            }
+            $("#grid-table-cart").jqGrid("clearGridData");
+            for(var i=0; i<cartGoods.length; i++){
+                $("#grid-table-cart").jqGrid("addRowData", i, cartGoods[i]);
+            }
+            $("#grid-table-cart").trigger("reloadGrid");
+        }
+
+        //保存翻页时的选择
+        function updateSelection(){
+            for(var i=0; i<rowDataIds.length; i++){
+                $("#tableList").jqGrid("setSelection",rowDataIds[i], false);
+            }
+        }
+        //清空购物车
+        function clearCart(){
+            rowDataIds = [];
+            cartGoods = [];
+            $("#grid-table-cart").jqGrid("clearGridData");
+        }
+
+        //购物车
+        $("#grid-table-cart").jqGrid({
+            colNames: ['入库信息主键','资产主键','资产编号','入库单号', '资产创建日期', '资产名', '入库创建人', '入库说明'],//['入库单号', '入库日期', '资产名','购买时间','创建人','说明']
             colModel: [
                 {name: 'stockInInfoList.stockInInfoId', index: 'stockInInfoList.stockInInfoId', width: 100, sortable: true, key:true, hidden:true}
-                ,{name: 'assetList.assetNo', index: 'assetList.assetNo', width: 100, sortable: true, align:"left", editable:true
-                    ,edittype:"select",editoptions:{value:"FE:FedEx;IN:InTime;TN:TNT;AR:ARAMEX"}}
+                ,{name: 'assetList.assetId', index: 'assetList.assetId', width: 100, sortable: true, hidden:true}
+                ,{name: 'assetList.assetNo', index: 'assetList.assetNo', width: 100, sortable: true, align:"left"}
                 ,{name: 'stockInList.stockInNo', index: 'stockInList.stockInNo', width: 100, sortable: true, align:"left", editable:true}
                 ,{name: 'assetList.assetCreateDate', index: 'assetList.assetCreateDate', width: 100, sortable: true, align:"left", editable:false,
                     editoptions:date_options,editrules:{required:true, date:true}
@@ -166,7 +279,38 @@
                     editrules:{required:true}}
                 ,{name: 'stockInList.stockInCreateMan', index: 'stockInList.stockInCreateMan', width: 100, sortable: true, align:"left", editable:true}
                 ,{name: 'stockInList.stockInExplainInfo', index: 'stockInList.stockInExplainInfo', width: 100, sortable: true, align:"left", editable:true
-                    ,edittype:"textarea", editoptions:{rows:"2",cols:"10"}}
+                    ,edittype:"textarea", editoptions:{rows:"2",cols:"20"}}
+            ],
+            caption: "购物清单", //表格名称
+            //@CodeGen end
+            pager: '#grid-pager-cart',
+            rowNum: 10,
+            rowList: [10, 20, 30],
+            viewrecords: true, //总记录数
+            autowidth: true,
+            datatype: "local",
+            height: '300px'
+        });
+
+        $("#tableList").jqGrid({
+            url: 'assetstockinSelect',
+            editurl: 'assetstockinEdit',
+            colNames: ['入库信息主键','资产主键','资产编号','入库单号', '资产创建日期', '资产名', '入库创建人', '入库说明'],//['入库单号', '入库日期', '资产名','购买时间','创建人','说明']
+            colModel: [
+                {name: 'stockInInfoList.stockInInfoId', index: 'stockInInfoList.stockInInfoId', width: 100, sortable: true, key:true, hidden:true}
+                ,{name: 'assetList.assetId', index: 'assetList.assetId', width: 100, sortable: true, hidden:true}
+                ,{name: 'assetList.assetNo', index: 'assetList.assetNo', width: 100, sortable: true, align:"left", editable:true
+                    ,edittype:"select",editoptions:select_options
+                 }
+                ,{name: 'stockInList.stockInNo', index: 'stockInList.stockInNo', width: 100, sortable: true, align:"left", editable:true}
+                ,{name: 'assetList.assetCreateDate', index: 'assetList.assetCreateDate', width: 100, sortable: true, align:"left", editable:false,
+                    editoptions:date_options,editrules:{required:true, date:true}
+                    ,formatter:'date',formatoptions:{srcformat:'Y-m-d H:i:s', newformat:'Y-m-d'}}
+                ,{name: 'assetList.assetName', index: 'assetList.assetName', width: 100, sortable: true, align:"left", editable:false,
+                    editrules:{required:true}}
+                ,{name: 'stockInList.stockInCreateMan', index: 'stockInList.stockInCreateMan', width: 100, sortable: true, align:"left", editable:true}
+                ,{name: 'stockInList.stockInExplainInfo', index: 'stockInList.stockInExplainInfo', width: 100, sortable: true, align:"left", editable:true
+                    ,edittype:"textarea", editoptions:{rows:"2",cols:"20"}}
             ],
             jsonReader : {
                 page: "currentpage",
@@ -178,7 +322,9 @@
             caption: "数据列表", //表格名称
             sortname: 'stockInInfoList.stockInInfoId',
             sortorder: "asc",
-            //@CodeGen end
+            onSelectRow: updateCart,
+            loadComplete: updateSelection,
+            onSelectAll:updateCartAll,
             pager: '#pager',
             rowNum: 10,
             rowList: [10, 20, 30, 50],
@@ -193,7 +339,6 @@
         });
 
 
-
         var add_options={
             addCaption: "添加信息",
             bSubmit: "添加",
@@ -202,11 +347,13 @@
             reloadAfterSubmit:true,
             forceSync:true,
             closeOnEscape:true,
+
             afterSubmit: function (response, postdata) {
                 var json = response.responseText;
                 var result = eval("(" + json + ")"), success = false;
                 if ("success" == result.editResponse.status) {
                     success = true;
+                    clearCart();
                 }
                 return [success, result.editResponse.message, ""];
             }
@@ -227,6 +374,7 @@
                 var result = eval("(" + json + ")"), success = false;
                 if ("success" == result.editResponse.status) {
                     success = true;
+                    clearCart();
                 }
                 return [success, result.editResponse.message, ""];
             }
@@ -247,6 +395,7 @@
                 var result = eval("(" + json + ")"), success = false;
                 if ("success" == result.editResponse.status) {
                     success = true;
+                    clearCart();
                 }
                 return [success, result.editResponse.message, ""];
             }
@@ -266,10 +415,9 @@
         $(window).resize(function() {
             $("#tableList").setGridWidth($("body .container").width()-40);
             $("#ui-datepicker-div").css("left",$("#compareDate").offset().left);
+            //document.getElementById("locale").src="common/js/i18n/grid.locale-cn.js";//ok
         });
 
-//        $("#search_startDate").datepicker({dateFormat:'yy-mm-dd'});
-//        $("#search_endDate").datepicker({dateFormat:'yy-mm-dd'});
     });
 
     var timeoutHnd;
@@ -298,6 +446,20 @@
     function enableAutosubmit(state){
         flAuto = state;
         $("#submitButton").attr("disabled",state);
+    }
+
+    $(document).ready(function () {
+        dropdownOpen();
+    });
+
+    function dropdownOpen() {
+        var $dropdownLi = $('div.dropdown');
+
+        $dropdownLi.mouseover(function () {
+            $(this).addClass('open');
+        }).mouseout(function () {
+            $(this).removeClass('open');
+        });
     }
 
 </script>

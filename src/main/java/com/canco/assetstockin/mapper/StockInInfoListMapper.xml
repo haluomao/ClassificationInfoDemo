@@ -340,4 +340,22 @@
 		</foreach>
 	</sql>
 
+    <select id="selectAssetListNotInStockInInfoList" parameterType="com.canco.assetstockin.model.AssetStockListExample"
+            resultMap="com.canco.assetstockin.dao.AssetListMapper.BaseResultMap">
+        select distinct
+        <include refid="com.canco.assetstockin.dao.AssetListMapper.Base_Column_List" />
+        from asset_list
+        where asset_id not in(select stock_in_info_asset_id from stock_in_info_list)
+        and  asset_is_visible='1'
+        <!--<if test="stockInInfoListExample.orderByClause != null">-->
+            <!--order by ${stockInInfoListExample.orderByClause}-->
+        <!--</if>-->
+        <!--<if test=" stockInInfoListExample.start!= null">-->
+            <!--LIMIT ${stockInInfoListExample.start}-->
+        <!--</if>-->
+        <!--<if test="stockInInfoListExample.offset != null">-->
+            <!--,${stockInInfoListExample.offset}-->
+        <!--</if>-->
+    </select>
+
 </mapper>
