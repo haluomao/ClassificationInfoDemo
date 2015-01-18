@@ -50,7 +50,7 @@
             <table width="320" border="0">
                 <tr>
                     <td width="239"><span id="tips" class="tips"></span>
-                    <td width="65"><input name="login" type="image" src="register/images/login.png" width="80" height="40" onclick="sendAjaxLogin('usercheck')"/> </td>
+                        <td width="65"><input name="login" type="image" src="register/images/login.png" width="80" height="40" onclick="sendAjaxLogin('usercheck')"/> </td>
                 </tr>
             </table>
 

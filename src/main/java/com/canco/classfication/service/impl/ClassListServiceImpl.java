@@ -6,10 +6,11 @@ import com.canco.classfication.model.ClassListExample;
 import com.canco.classfication.service.ClassListService;
 import com.canco.classfication.vo.ClassListFormBean;
 import com.canco.classfication.vo.PageBean;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import javax.servlet.jsp.tagext.TryCatchFinally;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -22,6 +23,7 @@ import java.util.Map;
 //@Component("ClassListServiceImpl")
 @Service
 public class ClassListServiceImpl implements ClassListService{
+    public static final Logger logger = LoggerFactory.getLogger(ClassListServiceImpl.class);
 
 	ClassListExample classListExample;
 	ClassListMapper classListMapper;
@@ -46,32 +48,37 @@ public class ClassListServiceImpl implements ClassListService{
 
     //更新查询条件
     private void updateExample(Map<String, Object> map, ClassList entity){
-		ClassListExample.Criteria criteria = classListExample.createCriteria();
+
+        ClassListExample.Criteria criteria = classListExample.createCriteria();
+        logger.info("entity:" + entity);
         if(entity.getClassName()!=null && !"".equals(entity.getClassName()))
             criteria.andClassNameLike("%"+entity.getClassName()+ "%");
         if(entity.getCreateMan()!=null && !"".equals(entity.getCreateMan()))
             criteria.andCreateManLike("%"+entity.getCreateMan()+ "%");
 
-		//对日期进行判断
-		try {
-			String startDateString = map.get("search_startDate").toString();
-			String endDateString = map.get("search_endDate").toString();
-			Date startDate = null,endDate = null;
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        //对日期进行判断
+        try {
+            if(map.get("search_startDate")==null||map.get("search_endDate")==null) return;
+            String startDateString = map.get("search_startDate").toString();
+            String endDateString = map.get("search_endDate").toString();
+            Date startDate = null,endDate = null;
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
-			if(startDateString != null && !"".equals(startDateString)) {
-				startDate = sdf.parse(startDateString);
-				criteria.andCreateDateGreaterThanOrEqualTo(startDate);
-			}
+            if(startDateString != null && !"".equals(startDateString)) {
+                startDate = sdf.parse(startDateString);
+                logger.info("startDate:" + startDate);
+                criteria.andCreateDateGreaterThanOrEqualTo(startDate);
+            }
 
-			if(endDateString != null && !"".equals(endDateString)) {
-				endDate = new Date((sdf.parse(endDateString)).getTime() + 1 * 24 * 60 * 60 * 1000 - 1);  //将时间调整为该日的最后一毫秒
-				System.out.println("endDate:" + endDate);
-				criteria.andCreateDateLessThanOrEqualTo(endDate);
-			}
-		}catch (Exception e){
-			e.printStackTrace();
-		}
+            if(endDateString != null && !"".equals(endDateString)) {
+                endDate = new Date((sdf.parse(endDateString)).getTime() + 1 * 24 * 60 * 60 * 1000 - 1);  //将时间调整为该日的最后一毫秒
+                logger.info("endDate:" + endDate);
+                criteria.andCreateDateLessThanOrEqualTo(endDate);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            logger.error(e.getMessage());
+        }
     }
 
     @Override

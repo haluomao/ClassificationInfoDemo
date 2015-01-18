@@ -6,155 +6,109 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<<<<<<< HEAD
     <title> Classification Information </title>
     <link rel="stylesheet" href="common/css/bootstrap.min.css">
     <link type="text/css" href="common/css/jquery-ui.css" rel="stylesheet">
-=======
-    <title>资产管理系统</title>
-
-    <link rel="stylesheet" type="text/css" href="common/css/jquery-ui.css">
-    <link rel="stylesheet" type="text/css" href="common/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="common/css/font_awesome/css/font-awesome.css"/>
->>>>>>> cc2f81d88ae18ea3db6989e305de6fc48f00422e
     <%--<link rel="stylesheet" type="text/css" media="screen" href="common/css/jquery-ui.theme.css" />--%>
     <link rel="stylesheet" type="text/css" media="screen" href="common/css/ui.jqgrid.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="common/css/searchFilter.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="common/css/ui.multiselect.css" />
-
-    <%--<link rel="stylesheet" type="text/css" media="screen" href="classification/css/main.css"/>--%>
-
+    <style>
+        body,html {
+            margin: 0;
+            padding: 0;
+            height:100%;
+        }
+        #content {
+            min-height:100%;
+            position: relative;
+        }
+        #main {
+            position: absolute;
+            top: 1px;
+            bottom: 100px;
+            padding: 10px 0;
+            width: 100%;
+        }
+        #footer {
+            position: absolute;
+            bottom: 1px;
+            padding: 10px 0;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body style="overflow:auto; background-color:#FAFAFA">
-<!-- header -->
-<div class="header">
-    <nav class="navbar navbar-default" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#"><img src="common/images/logo.png" height="24px" padding-left="3px" width="auto"></a>
-            </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">张三<b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">修改密码</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">注销</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">未读消息<span class="badge">5</span></a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <form class="navbar-form navbar-left" role="search">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="检索">
-                        </div>
-                        <button type="submit" class="btn btn-default hidden">Submit</button>
-                    </form>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</div>
-
-<!-- container -->
-<div class="container">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-        <div class="row">
-            <div class="col-lg-12">
-                <i class="fa fa-list-alt fa-lg fa-fw"></i><span style="color:#999999;font-size:12px;">&nbsp;检索条件</span>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <form class="navbar-form navbar-left" role="search_list">
-                        <div class="form-group">
-                            资产名称:
-                            <input type="text" class="form-control" placeholder="资产名称" name="className" id="search_className">
-                            &nbsp;
-                            &nbsp;
-                            创建人:
-                            <input type="text" class="form-control" placeholder="创建人" name="createMan" id="search_createMan">
-                            &nbsp;
-                            &nbsp;
-                            <div id="compareDate">创建日期：</div>
-                            <%--创建日期：<input type='text' class="form-control" placeholder="起始日期" name="startDate" id="search_startDate"/>---%>
-                            <%--<input type='text' class="form-control" placeholder="结束日期" name="endDate" id="search_endDate" />--%>
-                            &nbsp;
-                            &nbsp;
-                            &nbsp;
-                            &nbsp;
-                            <%--<button type="submit" class="btn btn-default hidden">Submit</button>--%>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-success" onclick="gridReload()">检索</button>
-                                <button type="reset" class="btn btn-primary">重置</button>
-                            </div>
-                        </div>
-                    </form>
+<div id="content">
+    <div id="main">
+        <!-- User information part -->
+        <div id="userinfo">
+            <div style="height:10px;"></div>
+            <div id="welcome" class="container-fluid">
+                <div class="row">
+                    <div class="col-md-5 col-md-offset-1"><span>您好，${user.username}|</span>
+                        <a href="#">注销</a></div>
+                    <div class="col-md-2 col-md-offset-4">
+                        <a href="#">帮助中心</a>
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-12">&nbsp;</div>
-         </div>
         </div>
 
-        <div class="panel-body">
-            <table class="table" id="tableList"></table>
-            <div id="pager"></div>
-                <%--<table class="table">--%>
-                    <%--<tr>--%>
-                        <%--<th><input type="checkbox"/></th>--%>
-                        <%--<th>审核状态</th>--%>
-                        <%--<th>标题</th>--%>
-                        <%--<th>作者</th>--%>
-                        <%--<th>创建时间</th>--%>
-                        <%--<th>详情</th>--%>
-                    <%--</tr>--%>
-                    <%--<tr>--%>
-                        <%--<td><input type="checkbox"/></td>--%>
-                        <%--<td><span class="label label-success">已通过</span></td>--%>
-                        <%--<td><a href="#">虎式真是太强了，应该削弱</a></td>--%>
-                        <%--<td><a href="#">王者祝福</a></td>--%>
-                        <%--<td>2013年12月18日 10:52</td>--%>
-                        <%--<td>--%>
-                            <%--<a class="detail-link" data-toggle="collapse" data-parent="#accordion" href="#collapse8">--%>
-                                <%--<span class="glyphicon glyphicon-chevron-down"></span>--%>
-                            <%--</a>--%>
-                        <%--</td>--%>
-                    <%--</tr>--%>
-                    <%--<tr id="collapse8" class="collapse">--%>
-                        <%--<td colspan="10">--%>
-                        <%--</td>--%>
-                    <%--</tr>--%>
-                <%--</table>--%>
+        <!-- Banner Part including logo and global search bar. -->
+        <div id="banner" class="container-fluid">
+            <br>
+            <div class="row">
+                <div class="col-md-5 col-md-offset-1">
+                    <img id="logo_img" src="common/images/logo.png" width="100px"/>
+                    <span style="font-weight:700;">佳克实物资产管理软件 V8.0</span>
+                </div>
+                <div class="col-md-4 col-md-offset-2">
+                    <div style="height:80px;"></div>
+                    <input id="search_input" type="text"  placeholder="搜索"/>
+                    <a href="#"><img id="search_img" src="classification/images/sbutton.png" height="26px"/></a>
+                </div>
+            </div>
         </div>
+
+        <div id="searchDiv" class="container-fluid">
+            <br>
+            <br>
+            <div class="row"><div class="col-md-10 col-md-offset-1"><label>检索条件</label></div></div>
+            <div class="row">
+                <div class="col-md-11 col-md-offset-1">
+                    资产分类：<input type="text" name="className" id="search_className" />
+                    保管人：<input type="text" name="createMan" id="search_createMan" />
+                    创建日期：<input type='text' name="startDate" id="search_startDate"  />-
+                    <input type='text' name="endDate" id="search_endDate" />
+                    <button type="button" onclick="gridReload()">搜索</button>
+                    <br><br>
+                </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- 列表 begin -->
+        <div id="resultDiv" class="container-fluid">
+            <div class="col-md-10 col-md-offset-1">
+                <table id="tableList"></table>
+                <div id="pager"></div>
+            </div>
+        </div>
+        <!-- 列表 end -->
     </div>
-</div>
-<!-- footer -->
-<div class="footer">
-    <div class="panel-footer">
-        <div class="container">
-            <a href="#"><span style="color:#777777;"><i class="fa fa-at"></i>&nbsp;CancoSoft. All Right Reserved</span></a>
-        </div>
+
+    <div id="footer">
+        <span>关于佳克 | 版权说明 | asset365 | R2</span><br/>
+        <span>Copyright @1997-2011上海佳克计算机软件有限公司  版权所有</span>
     </div>
+
 </div>
-
-
-<<<<<<< HEAD
 
 <script src="common/js/jquery-2.1.1.min.js"></script>
 <script src="common/js/jquery-ui.js"></script>
-=======
-<script src="common/js/jquery-2.1.1.min.js"></script>
-<script src="common/js/jquery-ui.min.js"></script>
->>>>>>> cc2f81d88ae18ea3db6989e305de6fc48f00422e
 <script src="common/js/bootstrap.min.js"></script>
 
 <script src="common/js/i18n/grid.locale-en.js" type="text/javascript"></script>
@@ -165,13 +119,6 @@
 <script src="common/js/jquery.tablednd.js"></script>
 
 <script src="common/js/AjaxUtil.js"></script>
-<<<<<<< HEAD
-
-<script src="classification/js/time.js"></script>
-=======
-<script src="common/js/cancojs.js"></script>
-<%--<script src="classification/js/stickUp.min.js"></script>--%>
->>>>>>> cc2f81d88ae18ea3db6989e305de6fc48f00422e
 <script>
     $(function() {
         var date_options={
@@ -191,7 +138,6 @@
         };
 
 
-
         $("#tableList").jqGrid({
             //@CodeGen begin
             url: 'classListSelectM',
@@ -199,16 +145,15 @@
             colNames: ['ID', '资产名','状态名','创建人','创建日期'],
             colModel: [
                 {name: 'classId', index: 'classId', width: 100, sortable: true, key:true, hidden:true},
-
                 {name: 'className', index: 'className', width: 200, sortable: true, align:"left", editable:true,
                     editrules:{required:true}},
                 {name: 'defaultStatName', index: 'defaultStatName', width: 200, sortable: true, align:"left", editable:true,
                     editrules:{required:true}},
                 {name: 'createMan', index: 'createMan', width: 200, sortable: true, align:"left", editable:true,
                     editrules:{required:true}},
-                {name: 'createDate', index: 'createDate', width: 200, sortable: true, align: "left", editable: false,
-                    editoptions:date_options,editrules:{required:true, date:true},
-                    formatter:'date',formatoptions:{srcformat:'Y-m-d H:i:s', newformat:'Y-m-d'}}
+                {name: 'createDate', index: 'createDate', width: 200, sortable: true, align: "left", editable: true,
+                    editoptions:date_options,editrules:{required:true, time:true},
+                    formatter:'date',formatoptions:{srcformat:'Y-m-d H:i:s', newformat:'Y-m-d H:i'}}
             ],
             jsonReader : {
                 page: "currentpage",
@@ -244,11 +189,11 @@
             reloadAfterSubmit:true,
             forceSync:true,
             closeOnEscape:true,
-//            beforeSubmit:function(postdata, formid) {
-//                if (postdata['no'] == "") {  //验证客户编号不能为空
-//                    return[false, "客户编号不能为空" ]
-//                }
-//            },
+            beforeSubmit:function(postdata, formid) {
+                if (postdata['no'] == "") {  //验证客户编号不能为空
+                    return[false, "客户编号不能为空" ]
+                }
+            },
             afterSubmit: function (response, postdata) {
                 var json = response.responseText;
                 var result = eval("(" + json + ")"), success = false;
@@ -311,18 +256,23 @@
         );
 
         $(window).resize(function() {
-            $("#tableList").setGridWidth($("body .container").width()-40);
-            $("#ui-datepicker-div").css("left",$("#compareDate").offset().left);
+            $("#tableList").setGridWidth($(window).width() * 0.80);
         });
-
-
-//        $("#search_startDate").datepicker({dateFormat:'yy-mm-dd'});
-//        $("#search_endDate").datepicker({dateFormat:'yy-mm-dd'});
-    });
-
 
         $("#search_startDate").datepicker({dateFormat:'yy-mm-dd'});
         $("#search_endDate").datepicker({dateFormat:'yy-mm-dd'});
+    });
+
+    var timeoutHnd;
+    var flAuto = false;
+
+    function doSearch(ev){
+        if(!flAuto)
+            return;
+        if(timeoutHnd)
+            clearTimeout(timeoutHnd);
+        timeoutHnd = setTimeout(gridReload,500);
+    }
 
     function gridReload(){
         //@CodeGen begin
@@ -334,8 +284,11 @@
             var var4 = $("#search_endDate").val();
             $("#tableList").jqGrid('setGridParam',{url:"classListSelectM?className="+var1+"&createMan="+var2+"&search_startDate="+var3+"&search_endDate="+var4 , page:1}).trigger("reloadGrid");
         }
-
         //@CodeGen end
+    }
+    function enableAutosubmit(state){
+        flAuto = state;
+        $("#submitButton").attr("disabled",state);
     }
 
     function dateCompare(){
@@ -350,8 +303,6 @@
         else
             return true;
     }
-
-
 </script>
 
 </body>

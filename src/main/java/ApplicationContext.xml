@@ -20,13 +20,10 @@
 
 	
 	<context:property-placeholder location="classpath:jdbc.properties" /> <!-- Properties文件读取配置，base的properties -->
-	
-	<context:annotation-config />  <!-- 是否可以使用annotation方式实现IOC -->
 	<context:component-scan base-package="com.canco" />  <!-- 以下的配置对该包及其子包有效 -->
 
 	<aop:aspectj-autoproxy />  <!-- 支持aop注解 -->
 	<tx:annotation-driven />
-	<!--<cache:annotation-driven cache-manager="cacheManager" />  &lt;!&ndash; 支持缓存注解 &ndash;&gt;-->
 
 	
 	<bean id="mySqlDataSource" class="org.apache.commons.dbcp.BasicDataSource"
@@ -74,8 +71,11 @@
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="com.canco.*.dao" />
 	</bean>
-	
-	<!--&lt;!&ndash; 配置ehcahe缓存管理器 &ndash;&gt;-->
+
+
+    <!--<cache:annotation-driven cache-manager="cacheManager" />  &lt;!&ndash; 支持缓存注解 &ndash;&gt;-->
+
+    <!--&lt;!&ndash; 配置ehcahe缓存管理器 &ndash;&gt;-->
 	<!--<bean id="cacheManagerFactory" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">-->
 		<!--<property name="configLocation" value="classpath:ehcache.xml"/>-->
 	<!--</bean>-->

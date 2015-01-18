@@ -6,17 +6,11 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<<<<<<< HEAD
-    <title> Classification Information </title>
-    <link rel="stylesheet" href="common/css/bootstrap.min.css">
-    <link type="text/css" href="common/css/jquery-ui.css" rel="stylesheet">
-=======
-    <title>资产管理系统</title>
+    <title>资产入库</title>
 
     <link rel="stylesheet" type="text/css" href="common/css/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="common/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="common/css/font_awesome/css/font-awesome.css"/>
->>>>>>> cc2f81d88ae18ea3db6989e305de6fc48f00422e
     <%--<link rel="stylesheet" type="text/css" media="screen" href="common/css/jquery-ui.theme.css" />--%>
     <link rel="stylesheet" type="text/css" media="screen" href="common/css/ui.jqgrid.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="common/css/searchFilter.css" />
@@ -77,12 +71,12 @@
                 <div class="col-lg-12">
                     <form class="navbar-form navbar-left" role="search_list">
                         <div class="form-group">
+                            资产编号:
+                            <input type="text" class="form-control" placeholder="资产编号" name="assetNo" id="search_assetNo">
+                            &nbsp;
+                            &nbsp;
                             资产名称:
-                            <input type="text" class="form-control" placeholder="资产名称" name="className" id="search_className">
-                            &nbsp;
-                            &nbsp;
-                            创建人:
-                            <input type="text" class="form-control" placeholder="创建人" name="createMan" id="search_createMan">
+                            <input type="text" class="form-control" placeholder="资产名称" name="assetName" id="search_assetName">
                             &nbsp;
                             &nbsp;
                             <div id="compareDate">创建日期：</div>
@@ -105,36 +99,12 @@
          </div>
         </div>
 
+        <!-- 列表 -->
         <div class="panel-body">
             <table class="table" id="tableList"></table>
             <div id="pager"></div>
-                <%--<table class="table">--%>
-                    <%--<tr>--%>
-                        <%--<th><input type="checkbox"/></th>--%>
-                        <%--<th>审核状态</th>--%>
-                        <%--<th>标题</th>--%>
-                        <%--<th>作者</th>--%>
-                        <%--<th>创建时间</th>--%>
-                        <%--<th>详情</th>--%>
-                    <%--</tr>--%>
-                    <%--<tr>--%>
-                        <%--<td><input type="checkbox"/></td>--%>
-                        <%--<td><span class="label label-success">已通过</span></td>--%>
-                        <%--<td><a href="#">虎式真是太强了，应该削弱</a></td>--%>
-                        <%--<td><a href="#">王者祝福</a></td>--%>
-                        <%--<td>2013年12月18日 10:52</td>--%>
-                        <%--<td>--%>
-                            <%--<a class="detail-link" data-toggle="collapse" data-parent="#accordion" href="#collapse8">--%>
-                                <%--<span class="glyphicon glyphicon-chevron-down"></span>--%>
-                            <%--</a>--%>
-                        <%--</td>--%>
-                    <%--</tr>--%>
-                    <%--<tr id="collapse8" class="collapse">--%>
-                        <%--<td colspan="10">--%>
-                        <%--</td>--%>
-                    <%--</tr>--%>
-                <%--</table>--%>
         </div>
+
     </div>
 </div>
 <!-- footer -->
@@ -147,14 +117,8 @@
 </div>
 
 
-<<<<<<< HEAD
-
-<script src="common/js/jquery-2.1.1.min.js"></script>
-<script src="common/js/jquery-ui.js"></script>
-=======
 <script src="common/js/jquery-2.1.1.min.js"></script>
 <script src="common/js/jquery-ui.min.js"></script>
->>>>>>> cc2f81d88ae18ea3db6989e305de6fc48f00422e
 <script src="common/js/bootstrap.min.js"></script>
 
 <script src="common/js/i18n/grid.locale-en.js" type="text/javascript"></script>
@@ -165,13 +129,7 @@
 <script src="common/js/jquery.tablednd.js"></script>
 
 <script src="common/js/AjaxUtil.js"></script>
-<<<<<<< HEAD
-
-<script src="classification/js/time.js"></script>
-=======
 <script src="common/js/cancojs.js"></script>
-<%--<script src="classification/js/stickUp.min.js"></script>--%>
->>>>>>> cc2f81d88ae18ea3db6989e305de6fc48f00422e
 <script>
     $(function() {
         var date_options={
@@ -191,24 +149,24 @@
         };
 
 
-
         $("#tableList").jqGrid({
             //@CodeGen begin
-            url: 'classListSelectM',
-            editurl: 'classListEdit',
-            colNames: ['ID', '资产名','状态名','创建人','创建日期'],
+            url: 'assetstockinSelect',
+            editurl: 'assetstockinEdit',
+            colNames: ['入库信息主键','资产编号','入库单号', '资产创建日期', '资产名', '入库创建人', '入库说明'],//['入库单号', '入库日期', '资产名','购买时间','创建人','说明']
             colModel: [
-                {name: 'classId', index: 'classId', width: 100, sortable: true, key:true, hidden:true},
-
-                {name: 'className', index: 'className', width: 200, sortable: true, align:"left", editable:true,
-                    editrules:{required:true}},
-                {name: 'defaultStatName', index: 'defaultStatName', width: 200, sortable: true, align:"left", editable:true,
-                    editrules:{required:true}},
-                {name: 'createMan', index: 'createMan', width: 200, sortable: true, align:"left", editable:true,
-                    editrules:{required:true}},
-                {name: 'createDate', index: 'createDate', width: 200, sortable: true, align: "left", editable: false,
-                    editoptions:date_options,editrules:{required:true, date:true},
-                    formatter:'date',formatoptions:{srcformat:'Y-m-d H:i:s', newformat:'Y-m-d'}}
+                {name: 'stockInInfoList.stockInInfoId', index: 'stockInInfoList.stockInInfoId', width: 100, sortable: true, key:true, hidden:true}
+                ,{name: 'assetList.assetNo', index: 'assetList.assetNo', width: 100, sortable: true, align:"left", editable:true
+                    ,edittype:"select",editoptions:{value:"FE:FedEx;IN:InTime;TN:TNT;AR:ARAMEX"}}
+                ,{name: 'stockInList.stockInNo', index: 'stockInList.stockInNo', width: 100, sortable: true, align:"left", editable:true}
+                ,{name: 'assetList.assetCreateDate', index: 'assetList.assetCreateDate', width: 100, sortable: true, align:"left", editable:false,
+                    editoptions:date_options,editrules:{required:true, date:true}
+                    ,formatter:'date',formatoptions:{srcformat:'Y-m-d H:i:s', newformat:'Y-m-d'}}
+                ,{name: 'assetList.assetName', index: 'assetList.assetName', width: 100, sortable: true, align:"left", editable:false,
+                    editrules:{required:true}}
+                ,{name: 'stockInList.stockInCreateMan', index: 'stockInList.stockInCreateMan', width: 100, sortable: true, align:"left", editable:true}
+                ,{name: 'stockInList.stockInExplainInfo', index: 'stockInList.stockInExplainInfo', width: 100, sortable: true, align:"left", editable:true
+                    ,edittype:"textarea", editoptions:{rows:"2",cols:"10"}}
             ],
             jsonReader : {
                 page: "currentpage",
@@ -218,8 +176,8 @@
                 userdata: "userdata" //其他参数
             },
             caption: "数据列表", //表格名称
-            sortname: 'classId',
-            sortorder: "desc",
+            sortname: 'stockInInfoList.stockInInfoId',
+            sortorder: "asc",
             //@CodeGen end
             pager: '#pager',
             rowNum: 10,
@@ -244,11 +202,6 @@
             reloadAfterSubmit:true,
             forceSync:true,
             closeOnEscape:true,
-//            beforeSubmit:function(postdata, formid) {
-//                if (postdata['no'] == "") {  //验证客户编号不能为空
-//                    return[false, "客户编号不能为空" ]
-//                }
-//            },
             afterSubmit: function (response, postdata) {
                 var json = response.responseText;
                 var result = eval("(" + json + ")"), success = false;
@@ -315,42 +268,37 @@
             $("#ui-datepicker-div").css("left",$("#compareDate").offset().left);
         });
 
-
 //        $("#search_startDate").datepicker({dateFormat:'yy-mm-dd'});
 //        $("#search_endDate").datepicker({dateFormat:'yy-mm-dd'});
     });
 
+    var timeoutHnd;
+    var flAuto = false;
 
-        $("#search_startDate").datepicker({dateFormat:'yy-mm-dd'});
-        $("#search_endDate").datepicker({dateFormat:'yy-mm-dd'});
+    function doSearch(ev){
+        if(!flAuto)
+            return;
+        if(timeoutHnd)
+            clearTimeout(timeoutHnd);
+        timeoutHnd = setTimeout(gridReload,500);
+    }
 
     function gridReload(){
         //@CodeGen begin
-        var var1 = $("#search_className").val();
-        var var2 = $("#search_createMan").val();
+        var var1 = $("#search_assetNo").val();
+        var var2 = $("#search_assetName").val();
         if (dateCompare() == true)
         {
             var var3 = $("#search_startDate").val();
             var var4 = $("#search_endDate").val();
-            $("#tableList").jqGrid('setGridParam',{url:"classListSelectM?className="+var1+"&createMan="+var2+"&search_startDate="+var3+"&search_endDate="+var4 , page:1}).trigger("reloadGrid");
+            $("#tableList").jqGrid('setGridParam',{url:"assetstockinSelect?assetNo="+var1+"&assetName="+var2+"&search_startDate="+var3+"&search_endDate="+var4 , page:1}).trigger("reloadGrid");
         }
-
         //@CodeGen end
     }
-
-    function dateCompare(){
-        var startdate=new Date(($("#search_startDate").val()).replace(/-/g,"/"));
-        var enddate=new Date(($("#search_endDate").val()).replace(/-/g,"/"));
-        var date = new Date();
-        if(startdate > enddate)
-        {
-            alert("起始日期不得大于截止日期！");
-            return false;
-        }
-        else
-            return true;
+    function enableAutosubmit(state){
+        flAuto = state;
+        $("#submitButton").attr("disabled",state);
     }
-
 
 </script>
 

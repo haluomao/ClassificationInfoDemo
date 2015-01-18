@@ -28,7 +28,6 @@ import java.util.Set;
 @Controller
 public class ClassificationController {
     public static final Logger logger = LoggerFactory.getLogger(ClassificationController.class);
-
     @Autowired
     private ClassListService classListService;
 
@@ -52,7 +51,7 @@ public class ClassificationController {
                 String oper = (String) map.get("oper");
                 if ("add".equals(oper)) {
                     ClassList entity = UtilMethod.ClassMakeup(ClassList.class, map);
-                    System.out.println("user1:" + entity);
+                    logger.info("entity:" + entity);
                     int res = classListService.add(entity);
                     if (res == 1) {
                         editResponse.setStatus("success");
@@ -60,7 +59,7 @@ public class ClassificationController {
                     }
                 } else if ("edit".equals(oper)) {
                     ClassList entity = UtilMethod.ClassMakeup(ClassList.class, map);
-                    System.out.println("user1:" + entity);
+                    logger.info("entity:" + entity);
                     int res = classListService.update(entity);
                     if (res == 1) {
                         editResponse.setStatus("success");
@@ -68,7 +67,7 @@ public class ClassificationController {
                     }
                 } else if ("del".equals(oper)) {
                     Set<Integer> idSet = UtilMethod.TurnString2Set((String)map.get("id"));/*fill*/
-                    System.out.println("keySet:" + idSet);
+                    logger.info("keySet:" + idSet);
 
                     editResponse.setStatus("success");
                     editResponse.setMessage(oper + " succeed");
@@ -86,7 +85,7 @@ public class ClassificationController {
             e.printStackTrace();
             editResponse.setStatus("error");
             editResponse.setMessage("operation failed");
-            logger.info(editResponse.toString());
+            logger.error(editResponse.toString());
             result.put("editResponse", editResponse);
             return result;
         }
@@ -108,6 +107,7 @@ public class ClassificationController {
 				dataResponse = search(map, dataRequest, entity, classListService);
         }catch(Exception e){
             e.printStackTrace();
+            logger.error(e.getMessage());
         }
         return dataResponse;
     }

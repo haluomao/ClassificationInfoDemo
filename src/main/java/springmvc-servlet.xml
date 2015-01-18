@@ -10,14 +10,20 @@
             http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
 
     <context:annotation-config/>  <!-- 是否可以使用annotation方式实现IOC -->
-    <context:component-scan base-package="com.canco.*.controller" />  <!-- annotation对哪些包下面的类适用 -->
-
     <mvc:annotation-driven/>  <!-- 支持spring3.0新的mvc注解 -->
 
     <mvc:resources mapping="/common/images/**" location="/WEB-INF/pages/common/images/"/>
     <mvc:resources mapping="/common/css/**" location="/WEB-INF/pages/common/css/"/>
     <mvc:resources mapping="/common/js/**" location="/WEB-INF/pages/common/js/"/>
     <mvc:resources mapping="/common/fonts/**" location="/WEB-INF/pages/common/fonts/"/>
+
+    <mvc:resources mapping="/register/images/**" location="/WEB-INF/pages/register/images/"/>
+    <mvc:resources mapping="/register/css/**" location="/WEB-INF/pages/register/css/"/>
+
+    <!--<mvc:resources mapping="/images/**" location="/WEB-INF/pages/classification/images/"/>-->
+    <mvc:resources mapping="/classification/images/**" location="/WEB-INF/pages/classification/images/"/>
+    <mvc:resources mapping="/classification/js/**" location="/WEB-INF/pages/classification/js/"/>
+    <mvc:resources mapping="/classification/css/**" location="/WEB-INF/pages/classification/css/"/>
 
     <!-- 启动Spring MVC的注解功能，完成请求和注解POJO的映射 -->
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
