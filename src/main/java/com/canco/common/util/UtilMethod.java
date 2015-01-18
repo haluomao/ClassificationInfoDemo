@@ -100,8 +100,9 @@ public class UtilMethod {
             String key ;
             while (iterator.hasNext()) {
                 key = (String) iterator.next();
-                if(key.indexOf('.')==-1)
-                    key = key.substring(key.indexOf('.') + 1);
+//                if(key.indexOf('.')!=-1) {
+//                    key = key.substring(key.indexOf('.') + 1);
+//                }
                 value = map.get(key);
 
                 if (entity != null) {
@@ -109,6 +110,9 @@ public class UtilMethod {
                     Method m[] = c.getDeclaredMethods();
                     for (int i = 0; i < m.length; i++) {
                         //Search the setter method like setName()
+                        if(key.indexOf('.')!=-1) {
+                            key = key.substring(key.indexOf('.') + 1);
+                        }
                         if (m[i].getName().equals("set" + key.substring(0, 1).toUpperCase() + key.substring(1))) {
                             logger.info(m[i].getName()+" value:" + value);
                             //There may exist some unexpected errors.

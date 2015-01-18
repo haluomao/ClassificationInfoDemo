@@ -242,7 +242,6 @@ public class StockInList {
     //@CodeGen start
     public StockInList(){
         this.setStockInNo("");
-        this.setStockInNo("");
         this.setInOrganId(0);
         this.setInUnitId(0);
         this.setInEmployeeId(0);
@@ -250,6 +249,9 @@ public class StockInList {
         this.setStockInIsVisible("1");
         this.setStockInCreateDate(new Date());
         this.setStockInCreateMan("");
+    }
+    //For update
+    public StockInList(int id){
     }
 
 	@Override

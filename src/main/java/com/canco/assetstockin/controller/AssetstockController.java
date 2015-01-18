@@ -17,12 +17,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 
 /**
@@ -64,45 +67,52 @@ public class AssetstockController {
                     StockInList entity = UtilMethod.ClassMakeup(StockInList.class, map);
                     logger.info("entity:" + entity);
 
-                    res = stockInService.add(entity);
-                    if (res == 1) {
-                        logger.info(oper + " succeed");
-                    }else{
-                        logger.info(oper + " failed");
-                        throw new Exception();
-                    }
-                    StockInInfoList entity2 = UtilMethod.ClassMakeup(StockInInfoList.class, map);
+                    StockInInfoList entity1 = UtilMethod.ClassMakeup(StockInInfoList.class, map);
+                    logger.info("entity1:" + entity1);
+
+                    AssetList entity2 = UtilMethod.ClassMakeup(AssetList.class, map);
+                    entity2.setAssetId(Integer.valueOf(entity2.getAssetNo() ));
                     logger.info("entity2:" + entity2);
 
-                    res = stockInInfoService.add(entity2);
+                    res = stockInInfoService.add(entity, entity1, entity2);
                     if (res == 1) {
                         editResponse.setStatus("success");
                         editResponse.setMessage(oper + " succeed");
                     }
                 } else if ("edit".equals(oper)) {
+                    int res = 0;
                     logger.info("edit");
-//                    ClassList entity = UtilMethod.ClassMakeup(ClassList.class, map);
-//                    logger.info("entity:" + entity);
-//                    int res = classListService.update(entity);
-//                    if (res == 1) {
-//                        editResponse.setStatus("success");
-//                        editResponse.setMessage(oper + " succeed");
-//                    }
+                    StockInList entity = UtilMethod.ClassMakeup(StockInList.class, map);
+                    logger.info("entity:" + entity);
+
+                    StockInInfoList entity1 = UtilMethod.ClassMakeup(StockInInfoList.class, map);
+                    entity1.setStockInInfoId(Integer.valueOf((String)map.get("id")));
+                    logger.info("entity1:" + entity1);
+
+                    AssetList entity2 = UtilMethod.ClassMakeup(AssetList.class, map);
+                    entity2.setAssetId(Integer.valueOf(entity2.getAssetNo() ));
+                    logger.info("entity2:" + entity2);
+
+                    res = stockInInfoService.update(entity, entity1, entity2);
+                    if (res == 1) {
+                        editResponse.setStatus("success");
+                        editResponse.setMessage(oper + " succeed");
+                    }
                 } else if ("del".equals(oper)) {
                     logger.info("del");
-//                    Set<Integer> idSet = UtilMethod.TurnString2Set((String)map.get("id"));/*fill*/
-//                    logger.info("keySet:" + idSet);
+                    Set<Integer> idSet = UtilMethod.TurnString2Set((String)map.get("id"));/*fill*/
+                    logger.info("keySet:" + idSet);
 //
-//                    editResponse.setStatus("success");
-//                    editResponse.setMessage(oper + " succeed");
-//                    for (Integer id : idSet) {
-//                        int res = classListService.delete(id);
-//                        if (res == 0) {
-//                            editResponse.setStatus("error");
-//                            editResponse.setMessage(oper + " failed");
-//                            break;
-//                        }
-//                    }
+                    editResponse.setStatus("success");
+                    editResponse.setMessage(oper + " succeed");
+                    for (Integer id : idSet) {
+                        int res = stockInInfoService.delete(id);
+                        if (res == 0) {
+                            editResponse.setStatus("error");
+                            editResponse.setMessage(oper + " failed");
+                            break;
+                        }
+                    }
                 }
             }
         }catch(Exception e){
@@ -118,12 +128,18 @@ public class AssetstockController {
         return result;
     }
 
+    /**
+     * 查找
+     * @param httpServletRequest
+     * @param dataRequest
+     * @return
+     * @throws Exception
+     */
     @RequestMapping("assetstockinSelect")
     @ResponseBody
     public DataSearchResponse<?> assetstockinSelect(HttpServletRequest httpServletRequest, DataRequest dataRequest) throws Exception
     {
         logger.info("dataRequest:" + dataRequest);
-        //logger.info("Entity:" + entity.getClass()+entity.toString());
 
         Map map = UtilMethod.TurnRequest2Map(httpServletRequest);
         DataSearchResponse<AssetStockList> dataResponse = null;
@@ -139,7 +155,14 @@ public class AssetstockController {
         return dataResponse;
     }
 
-    //搜索
+    /**
+     * 搜索
+      * @param map
+     * @param request
+     * @param entity
+     * @param service
+     * @return
+     */
     public DataSearchResponse<AssetStockList> search(Map<String, Object> map, DataRequest request, AssetList entity, StockInInfoService service) {
         DataSearchResponse<AssetStockList> response = new DataSearchResponse<AssetStockList>();
 
@@ -168,11 +191,50 @@ public class AssetstockController {
         response.setCurrentpage(currPage);
         response.setRows(list);
 
-//        for(AssetStockList a:list){
-//            System.out.println(a.toString());
-//        }
-
         logger.info("response:"+response);
         return response;
     }
+
+    /**
+     * 找出不在关联表中的资产列表
+     * @param httpServletRequest
+     * @return
+     */
+    @RequestMapping("assetListSelect")
+    @ResponseBody
+    public List<AssetList> assetListSelect(HttpServletRequest httpServletRequest){
+        List<AssetList> assetLists =  stockInInfoService.selectAssetList();
+        logger.info("assetLists:"+assetLists);
+        return  assetLists;
+    }
+
+    /**
+     * 映射
+     * @param locale
+     * @param httpServletRequest
+     * @return
+     */
+    @RequestMapping(value="index" , method = RequestMethod.GET)
+     public String index(@RequestParam(required=false,defaultValue="en",value="locale" ) String locale,HttpServletRequest httpServletRequest){
+        logger.info("index and locale:"+locale);
+        return "classification/classification";
+    }
+    @RequestMapping(value="assetstockin")
+    public String assetstockin(HttpServletRequest httpServletRequest){
+        logger.info("Go to Assetstockin");
+        return "assetstockin/assetstockin";
+    }
+
+    @RequestMapping(value="classification2")
+    public String classification2(HttpServletRequest httpServletRequest){
+        logger.info("Go to classification2");
+        return "classification/classification2";
+    }
+
+    @RequestMapping(value="login")
+    public String redirectTo_login() throws Exception {
+        return "classification2/login";  //跳转到registerSuccess.jsp;
+
+    }
+
 }
