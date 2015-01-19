@@ -82,10 +82,10 @@ public class AccountController {
             map.put("objList", classLists);
 			map.put("username",userFormBean.getUsername());
 
-            return "classification2/classification2";
+            return "common/index";
         }
         //userService.add(u);
-        return "classification2/login";
+        return "register/login";
     }
 
     @RequestMapping(value="usercheck",method= RequestMethod.POST)
@@ -145,12 +145,12 @@ public class AccountController {
 
     @RequestMapping(value="register.html")
     public String redirectTo_register(ModelMap map) throws Exception {
-        return "classification2/login";  //跳转到registerSuccess.jsp;
+        return "register/login";  //跳转到registerSuccess.jsp;
     }
 
     @RequestMapping(value="login.html")
     public String redirectTo_login(ModelMap map) throws Exception {
-        return "classification2/login";  //跳转到registerSuccess.jsp;
+        return "register/login";  //跳转到registerSuccess.jsp;
     }
 
     //@Override  //不带参数访问时的默认方法

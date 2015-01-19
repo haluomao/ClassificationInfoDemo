@@ -225,15 +225,21 @@ public class AssetstockController {
         return "assetstockin/assetstockin";
     }
 
-    @RequestMapping(value="classification2")
+    @RequestMapping(value="classification")
     public String classification2(HttpServletRequest httpServletRequest){
         logger.info("Go to classification2");
-        return "classification/classification2";
+        return "classification/classification";
     }
 
     @RequestMapping(value="login")
     public String redirectTo_login() throws Exception {
-        return "classification2/login";  //跳转到registerSuccess.jsp;
+        return "register/login";  //跳转到registerSuccess.jsp;
+
+    }
+
+    @RequestMapping(value="index.html")
+    public String redirectTo_index() throws Exception {
+        return "common/index";  //跳转到registerSuccess.jsp;
 
     }
 

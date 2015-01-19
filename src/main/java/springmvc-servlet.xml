@@ -12,7 +12,7 @@
     <context:annotation-config/>  <!-- 是否可以使用annotation方式实现IOC -->
     <mvc:annotation-driven/>  <!-- 支持spring3.0新的mvc注解 -->
 
-    <mvc:resources mapping="/assets/**" location="/WEB-INF/pages/classification2/assets/"/>
+    <mvc:resources mapping="/assets/**" location="/WEB-INF/pages/common/assets/"/>
 
     <mvc:resources mapping="/common/images/**" location="/WEB-INF/pages/common/images/"/>
     <mvc:resources mapping="/common/css/**" location="/WEB-INF/pages/common/css/"/>

@@ -588,86 +588,81 @@
             </small>
         </h1>
     </div><!-- /.page-header -->
-
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-sm-12">
             <div class="widget-box">
                 <div class="widget-header">
                     <h4 class="widget-title">检索条件</h4>
+                    <div class="widget-toolbar">
+                        <a href="#" data-action="collapse">
+                            <i class="ace-icon fa fa-chevron-up"></i>
+                        </a>
+
+                    </div>
                 </div>
 
                 <div class="widget-body">
-                    <div class="widget-main">
-                        <div class="col-xs-12 col-md-10">
+                    <div class="widget-main no-padding">
+                        <form>
+                            <!-- <legend>Form</legend> -->
+                            <fieldset>
 
-                            <div class="col-xs-12 col-md-6">
-                                <label for="form-field-1" >资产编号:</label>
-                                <!-- #section:plugins/input.masked-input -->
-                                <input type="text"  id="form-field-1" placeholder="资产编号"  name="assetNo" />
-                            </div>
+                                <div class="form-inline col-xs-12 col-md-offset-1 col-md-5">
+                                    <label  for="form-field-1" >资产编号:</label>
+                                    <!-- #section:plugins/input.masked-input -->
 
-                            <div class="col-xs-12 col-md-6">
-                                <label for="form-field-2">资产名称:</label>
-                                <!-- #section:plugins/input.masked-input -->
-                                <input type="text" id="form-field-2" placeholder="资产名称"  name="assetName" />
-                            </div>
+                                    <input type="text" id="form-field-1" placeholder="资产编号"  name="assetNo" />
 
-                            <div class="col-xs-12 col-md-6">
-                                <div class="form-inline">
-                                    <label for="search_beginDate"> 创建日期: </label>
-                                    <div class="input-group col-xs-10">
-                                        <input class="col-xs-6" placeholder="起始于.." type="text" id="search_beginDate" />
+                                </div>
+
+                                <div class="col-xs-12 col-md-6">
+                                    <label for="form-field-2">资产名称:</label>
+                                    <!-- #section:plugins/input.masked-input -->
+                                    <input type="text" id="form-field-2" placeholder="资产名称"  name="assetName" />
+                                </div>
+                                <br>
+                                <div class="space space-12"></div>
+                                <div class="col-xs-12 col-md-offset-1 col-md-5">
+                                    <div class="form-inline">
+                                        <label for="search_beginDate"> 创建日期: </label>
+                                        <div class="input-group col-xs-6 col-md-6">
+                                            <input class="col-xs-12 col-md-12" placeholder="起始于.." type="text" id="search_beginDate" />
                                             <span class="input-group-addon">
                                                 <i class="fa fa-arrow-right"></i>
                                             </span>
 
-                                        <input class="col-xs-4" placeholder="截止于.." type="text" id="search_endDate" />
+                                            <input class="col-xs-12 col-md-12" placeholder="截止于.." type="text" id="search_endDate" />
+                                        </div>
                                     </div>
                                 </div>
+
+                                <!--<label>Label name</label>-->
+
+                                <!--<input type="text" placeholder="Type something…">-->
+                                <!--<span class="help-block">Example block-level help text here.</span>-->
+
+                                <!--<label class="pull-right">-->
+                                    <!--<input type="checkbox" class="ace">-->
+                                    <!--<span class="lbl"> check me out</span>-->
+                                <!--</label>-->
+                            </fieldset>
+
+                            <div class="form-actions center">
+                                <!--<button type="button" class="btn btn-sm btn-success">-->
+                                    <!--Submit-->
+                                    <!--<i class="ace-icon fa fa-arrow-right icon-on-right bigger-110"></i>-->
+                                <!--</button>-->
+                                <button type="button" class="btn btn-success" onclick="gridReload()">检索</button>
+                                <button type="reset" class="btn btn-primary">重置</button>
                             </div>
-                        </div>
-
-                        <div class="col-md-2">
-                            <button type="button" class="btn btn-success" onclick="gridReload()">检索</button>
-                            <button type="reset" class="btn btn-primary">重置</button>
-                        </div>
-
-                            <!--<div class="col-xs-12 col-lg-2">-->
-                                <!--<label for="form-field-1" >资产编号:</label>-->
-                                <!--<!-- #section:plugins/input.masked-input -->
-                                <!--<input type="text"  id="form-field-1" placeholder="资产编号"  name="assetNo" />-->
-                            <!--</div>-->
-
-                            <!--<div class="col-xs-12 col-lg-offset-1 col-lg-2">-->
-                                <!--<label for="form-field-2">资产名称:</label>-->
-                                <!--<!-- #section:plugins/input.masked-input -->
-                                <!--<input type="text" id="form-field-2" placeholder="资产名称"  name="assetName" />-->
-                            <!--</div>-->
-
-                            <!--<div class="col-xs-12 col-lg-offset-0 col-lg-5">-->
-                                <!--<div class="form-inline">-->
-                                    <!--<label for="search_beginDate"> 创建日期: </label>-->
-                                    <!--<div class="input-group">-->
-                                        <!--<input placeholder="起始于.." type="text" id="search_beginDate" />-->
-                                        <!--<span class="input-group-addon">-->
-                                            <!--<i class="fa fa-arrow-right"></i>-->
-                                        <!--</span>-->
-
-                                        <!--<input  placeholder="截止于.." type="text" id="search_endDate" />-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                            <!--</div>-->
-
-                        <!--<div class="col-lg-offset-0">-->
-                                <!--<button type="button" class="btn btn-success" onclick="gridReload()">检索</button>-->
-                                <!--<button type="reset" class="btn btn-primary">重置</button>-->
-                            <!--</div>-->
-
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+
 
     <div class="row">
         <div class="col-xs-12">
