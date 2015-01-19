@@ -121,10 +121,14 @@ public class AccountController {
     @RequestMapping("registerSubmitAction")
     public String registerSubmit(@Valid UserFormBean userFormBean, BindingResult result, HttpServletRequest req,ModelMap map) throws Exception {
 
+
+
+
         if(result.hasErrors()){
             logger.info("Validation failed! Password is too long?");
             logger.info(result.getAllErrors().toString());
-            return "register/registerFailure";
+			map.put("errorinfo",result.getFieldError().getField() + result.getFieldError().getDefaultMessage().toString());
+            return "classification2/registerFailure";
         }
 
         logger.info("registerSubmitAction");
@@ -137,10 +141,12 @@ public class AccountController {
         u.setPassword(userFormBean.getPassword());
 		u.setEmail(userFormBean.getEmail());
 
-        if(userService.exists(u))
-            return "register/registerFailure";  //跳转到registerFailure.jsp;
+        if(userService.exists(u)) {
+			map.put("errorinfo","用户名已经被注册");
+			return "classification2/registerFailure";  //跳转到registerFailure.jsp;
+		}
         userService.add(u);
-        return "register/registerSuccess";  //跳转到registerSuccess.jsp;
+        return "classification2/registerSuccess";  //跳转到registerSuccess.jsp;
     }
 
     @RequestMapping(value="register.html")

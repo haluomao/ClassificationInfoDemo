@@ -185,28 +185,28 @@
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input id="reg_email" name="email" type="email" class="form-control" placeholder="请输入邮箱" />
+															<input id="reg_email" name="email" type="email" class="form-control" placeholder="请输入邮箱（8-64位）" />
 															<i class="ace-icon fa fa-envelope"></i>
 														</span>
 													</label>
 
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input id="reg_username" name="username" type="text" class="form-control" placeholder="请输入用户名" />
+															<input id="reg_username" name="username" type="text" class="form-control" placeholder="请输入用户名（6-32位）" />
 															<i class="ace-icon fa fa-user"></i>
 														</span>
 													</label>
 
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input id="reg_password" name="password" type="password" class="form-control" placeholder="请输入密码" />
+															<input id="reg_password" name="password" type="password" class="form-control" placeholder="请输入密码（6-32位）" />
 															<i class="ace-icon fa fa-lock"></i>
 														</span>
 													</label>
 
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input id="reg_confirm" name="confirm" type="password" class="form-control" placeholder="密码确认" />
+															<input id="reg_confirm" name="confirm" type="password" class="form-control" placeholder="密码确认（6-32位）" />
 															<i class="ace-icon fa fa-retweet"></i>
 														</span>
 													</label>
