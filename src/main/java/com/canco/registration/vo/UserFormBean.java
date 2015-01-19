@@ -3,7 +3,7 @@ package com.canco.registration.vo;
 import org.hibernate.validator.constraints.Length;
 
 public class UserFormBean {
-    @Length(max = 32)
+    @Length(max = 32, min=6)
 	private String username;
 
     @Length(max = 32, min=6)
