@@ -6,17 +6,12 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<<<<<<< HEAD
-    <title> Classification Information </title>
-    <link rel="stylesheet" href="common/css/bootstrap.min.css">
-    <link type="text/css" href="common/css/jquery-ui.css" rel="stylesheet">
-=======
+
     <title>资产管理系统</title>
 
     <link rel="stylesheet" type="text/css" href="common/css/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="common/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="common/css/font_awesome/css/font-awesome.css"/>
->>>>>>> cc2f81d88ae18ea3db6989e305de6fc48f00422e
     <%--<link rel="stylesheet" type="text/css" media="screen" href="common/css/jquery-ui.theme.css" />--%>
     <link rel="stylesheet" type="text/css" media="screen" href="common/css/ui.jqgrid.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="common/css/searchFilter.css" />
@@ -146,15 +141,8 @@
     </div>
 </div>
 
-
-<<<<<<< HEAD
-
-<script src="common/js/jquery-2.1.1.min.js"></script>
-<script src="common/js/jquery-ui.js"></script>
-=======
 <script src="common/js/jquery-2.1.1.min.js"></script>
 <script src="common/js/jquery-ui.min.js"></script>
->>>>>>> cc2f81d88ae18ea3db6989e305de6fc48f00422e
 <script src="common/js/bootstrap.min.js"></script>
 
 <script src="common/js/i18n/grid.locale-en.js" type="text/javascript"></script>
@@ -165,13 +153,9 @@
 <script src="common/js/jquery.tablednd.js"></script>
 
 <script src="common/js/AjaxUtil.js"></script>
-<<<<<<< HEAD
 
-<script src="classification/js/time.js"></script>
-=======
 <script src="common/js/cancojs.js"></script>
 <%--<script src="classification/js/stickUp.min.js"></script>--%>
->>>>>>> cc2f81d88ae18ea3db6989e305de6fc48f00422e
 <script>
     $(function() {
         var date_options={

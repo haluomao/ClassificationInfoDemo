@@ -55,6 +55,7 @@ public class AccountController {
         u.setUsername(userFormBean.getUsername());
         u.setPassword(userFormBean.getPassword());
 
+
         System.out.println("hhh_username:" + userFormBean.getUsername());
         System.out.println("hhh_password:" + userFormBean.getPassword());
 
@@ -79,11 +80,12 @@ public class AccountController {
             map.put("pageBean",pageBean);
             map.put("classListFormBean",classListFormBean);
             map.put("objList", classLists);
+			map.put("username",userFormBean.getUsername());
 
-            return "classification/classification";
+            return "classification2/classification2";
         }
-        userService.add(u);
-        return "register/register";
+        //userService.add(u);
+        return "classification2/login";
     }
 
     @RequestMapping(value="usercheck",method= RequestMethod.POST)
@@ -133,6 +135,7 @@ public class AccountController {
         User u = new User();
         u.setUsername(userFormBean.getUsername());
         u.setPassword(userFormBean.getPassword());
+		u.setEmail(userFormBean.getEmail());
 
         if(userService.exists(u))
             return "register/registerFailure";  //跳转到registerFailure.jsp;
@@ -142,13 +145,12 @@ public class AccountController {
 
     @RequestMapping(value="register.html")
     public String redirectTo_register(ModelMap map) throws Exception {
-        return "register/register";  //跳转到registerSuccess.jsp;
+        return "classification2/login";  //跳转到registerSuccess.jsp;
     }
 
     @RequestMapping(value="login.html")
     public String redirectTo_login(ModelMap map) throws Exception {
-        return "register/login";  //跳转到registerSuccess.jsp;
-
+        return "classification2/login";  //跳转到registerSuccess.jsp;
     }
 
     //@Override  //不带参数访问时的默认方法

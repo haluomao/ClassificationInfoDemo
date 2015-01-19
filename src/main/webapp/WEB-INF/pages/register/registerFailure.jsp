@@ -8,6 +8,6 @@
 </head>
 <body>
 注册失败！用户名已存在！
-<a href="register.html">返回注册</a>
+<a href="login.html?register">返回注册</a>
 </body>
 </html>

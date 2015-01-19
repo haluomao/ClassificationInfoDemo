@@ -8,6 +8,8 @@
     <meta name="description" content="Dynamic tables and grids using jqGrid plugin" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
     <!-- bootstrap & fontawesome -->
     <link rel="stylesheet" href="assets/css/bootstrap.css" />
     <link rel="stylesheet" href="assets/css/font-awesome.css" />
@@ -345,7 +347,7 @@
         <img class="nav-user-photo" src="assets/avatars/user.jpg" alt="Jason's Photo" />
 								<span class="user-info">
 									<small>欢迎,</small>
-									Jason
+									${requestScope.username}
 								</span>
 
         <i class="ace-icon fa fa-caret-down"></i>
@@ -439,7 +441,7 @@
                 <li>
                     <a href="login">
                         <i class="menu-icon fa fa-caret-right"></i>
-                        登陆
+                        登录
                     </a>
                     <b class="arrow"></b>
                 </li>
