@@ -1,5 +1,6 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en"><head>
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta charset="utf-8" />
@@ -98,7 +99,7 @@
             4 Tasks to complete
         </li>
 
-        <li class="dropdown-content">
+        <li class="dropdown-content ace-scroll" style="position: relative;"><div class="scroll-track" style="display: none;"><div class="scroll-bar"></div></div><div class="scroll-content" style="max-height: 200px;">
             <ul class="dropdown-menu dropdown-navbar">
                 <li>
                     <a href="#">
@@ -152,7 +153,7 @@
                     </a>
                 </li>
             </ul>
-        </li>
+        </div></li>
 
         <li class="dropdown-footer">
             <a href="#">
@@ -175,7 +176,7 @@
             8 Notifications
         </li>
 
-        <li class="dropdown-content">
+        <li class="dropdown-content ace-scroll" style="position: relative;"><div class="scroll-track" style="display: none;"><div class="scroll-bar"></div></div><div class="scroll-content" style="max-height: 200px;">
             <ul class="dropdown-menu dropdown-navbar navbar-pink">
                 <li>
                     <a href="#">
@@ -220,7 +221,7 @@
                     </a>
                 </li>
             </ul>
-        </li>
+        </div></li>
 
         <li class="dropdown-footer">
             <a href="#">
@@ -243,11 +244,11 @@
             5 Messages
         </li>
 
-        <li class="dropdown-content">
+        <li class="dropdown-content ace-scroll" style="position: relative;"><div class="scroll-track" style="display: none;"><div class="scroll-bar"></div></div><div class="scroll-content" style="max-height: 200px;">
             <ul class="dropdown-menu dropdown-navbar">
                 <li>
                     <a href="#" class="clearfix">
-                        <img src="assets/avatars/avatar.png" class="msg-photo" alt="Alex's Avatar" />
+                        <img src="assets/avatars/avatar.png" class="msg-photo" alt="Alex's Avatar">
 												<span class="msg-body">
 													<span class="msg-title">
 														<span class="blue">Alex:</span>
@@ -264,7 +265,7 @@
 
                 <li>
                     <a href="#" class="clearfix">
-                        <img src="assets/avatars/avatar3.png" class="msg-photo" alt="Susan's Avatar" />
+                        <img src="assets/avatars/avatar3.png" class="msg-photo" alt="Susan's Avatar">
 												<span class="msg-body">
 													<span class="msg-title">
 														<span class="blue">Susan:</span>
@@ -281,7 +282,7 @@
 
                 <li>
                     <a href="#" class="clearfix">
-                        <img src="assets/avatars/avatar4.png" class="msg-photo" alt="Bob's Avatar" />
+                        <img src="assets/avatars/avatar4.png" class="msg-photo" alt="Bob's Avatar">
 												<span class="msg-body">
 													<span class="msg-title">
 														<span class="blue">Bob:</span>
@@ -298,7 +299,7 @@
 
                 <li>
                     <a href="#" class="clearfix">
-                        <img src="assets/avatars/avatar2.png" class="msg-photo" alt="Kate's Avatar" />
+                        <img src="assets/avatars/avatar2.png" class="msg-photo" alt="Kate's Avatar">
 												<span class="msg-body">
 													<span class="msg-title">
 														<span class="blue">Kate:</span>
@@ -315,7 +316,7 @@
 
                 <li>
                     <a href="#" class="clearfix">
-                        <img src="assets/avatars/avatar5.png" class="msg-photo" alt="Fred's Avatar" />
+                        <img src="assets/avatars/avatar5.png" class="msg-photo" alt="Fred's Avatar">
 												<span class="msg-body">
 													<span class="msg-title">
 														<span class="blue">Fred:</span>
@@ -330,7 +331,7 @@
                     </a>
                 </li>
             </ul>
-        </li>
+        </div></li>
 
         <li class="dropdown-footer">
             <a href="inbox.html">
@@ -344,10 +345,10 @@
 <!-- #section:basics/navbar.user_menu -->
 <li class="light-blue">
     <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-        <img class="nav-user-photo" src="assets/avatars/user.jpg" alt="Jason's Photo" />
+        <img class="nav-user-photo" src="assets/avatars/user.jpg" alt="Jason's Photo">
 								<span class="user-info">
 									<small>欢迎,</small>
-									${requestScope.username}
+
 								</span>
 
         <i class="ace-icon fa fa-caret-down"></i>
@@ -414,7 +415,7 @@
         <li class="active open">
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-list"></i>
-                <span class="menu-text"> 列表 </span>
+                <span class="menu-text"> 数据列表 </span>
 
                 <b class="arrow fa fa-angle-down"></b>
             </a>
@@ -423,25 +424,18 @@
 
             <ul class="submenu">
 
-                <li class="active">
-                <a href="/">
-                    <i class="menu-icon fa fa-caret-right"></i>
-                    资产分类
-                </a>
+                <li >
+                    <a href="classification">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        资产分类
+                    </a>
 
-                <b class="arrow"></b>
+                    <b class="arrow"></b>
                 </li>
-                <li>
+                <li class="active">
                     <a href="assetstockin">
                         <i class="menu-icon fa fa-caret-right"></i>
                         资产入库
-                    </a>
-                    <b class="arrow"></b>
-                </li>
-                <li>
-                    <a href="login">
-                        <i class="menu-icon fa fa-caret-right"></i>
-                        登录
                     </a>
                     <b class="arrow"></b>
                 </li>
@@ -479,7 +473,7 @@
         <li>
             <a href="#">数据列表</a>
         </li>
-        <li class="active">资产分类</li>
+        <li class="active">资产入库</li>
     </ul><!-- /.breadcrumb -->
 
     <!-- #section:basics/content.searchbox -->
@@ -589,62 +583,107 @@
     <!-- /section:settings.box -->
     <div class="page-header">
         <h1>
-            资产管理
-            <small>
-                <i class="ace-icon fa fa-angle-double-right"></i>
-                资产分类操作
-            </small>
+            资产入库
         </h1>
     </div><!-- /.page-header -->
     <div class="row">
-        <div class="col-xs-12 col-lg-12">
+        <div class="col-sm-12">
             <div class="widget-box">
                 <div class="widget-header">
                     <h4 class="widget-title">检索条件</h4>
+                    <div class="widget-toolbar">
+                        <a href="#" data-action="collapse">
+                            <i class="ace-icon fa fa-chevron-up"></i>
+                        </a>
+
+                    </div>
                 </div>
 
                 <div class="widget-body">
-                    <div class="widget-main">
+                    <div class="widget-main no-padding">
+                        <form>
+                            <!-- <legend>Form</legend> -->
+                            <fieldset>
 
-                        <div class="col-xs-12 col-lg-offset-2 col-lg-4">
-                            <label for="search_classNo" >资产编号:</label>
-                            <!-- #section:plugins/input.masked-input -->
-                            <input type="text"  id="search_classNo" placeholder="资产编号"  name="assetNo" />
-                        </div>
+                                <div class="form-inline col-xs-12 col-md-offset-1 col-md-5" >
+                                    <label  for="search_assetNo" >资产编号:</label>
+                                    <!-- #section:plugins/input.masked-input -->
 
-                        <div class="col-xs-12 col-lg-6">
-                            <label for="search_className">资产名称:</label>
-                            <!-- #section:plugins/input.masked-input -->
-                            <input type="text" id="search_className" placeholder="资产名称"  name="assetName" />
-                        </div>
+                                    <input type="text" id="search_assetNo" placeholder="资产名称"  name="search_assetNo" />
 
-                        <div class="col-xs-12 col-lg-offset-2 col-lg-10">
-                            <div class="form-inline">
-                                <label for="search_beginDate"> 创建日期: </label>
-                                <div class="input-group">
-                                    <input placeholder="起始于.." type="text" id="search_beginDate" />
-                                            <span class="input-group-addon">
-														<i class="ace-icon fa fa-calendar"></i>
-													</span>
                                 </div>
-                                <div class="input-group">
-                                    <input  placeholder="截止于.." type="text" id="search_endDate" />
-                                            <span class="input-group-addon">
-														<i class="ace-icon fa fa-calendar"></i>
-													</span>
+
+                                <div class="col-xs-12 col-md-6">
+                                    <label for="search_assetName">资产名称:</label>
+                                    <!-- #section:plugins/input.masked-input -->
+                                    <input type="text" id="search_assetName" placeholder="资产名称"  name="search_assetName" />
                                 </div>
+                                <br>
+                                <div class="space space-12"></div>
+                                <div class="col-xs-12 col-md-offset-1 col-md-5">
+                                    <div class="form-inline">
+                                        <label for="search_beginDate"> 创建日期: </label>
+                                        <div class="input-group col-xs-6 col-md-6">
+                                            <input class="col-xs-12 col-md-12" placeholder="起始于.." type="text" id="search_beginDate" />
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-arrow-right"></i>
+                                            </span>
+
+                                            <input class="col-xs-12 col-md-12" placeholder="截止于.." type="text" id="search_endDate" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--<label>Label name</label>-->
+
+                                <!--<input type="text" placeholder="Type something…">-->
+                                <!--<span class="help-block">Example block-level help text here.</span>-->
+
+                                <!--<label class="pull-right">-->
+                                <!--<input type="checkbox" class="ace">-->
+                                <!--<span class="lbl"> check me out</span>-->
+                                <!--</label>-->
+                            </fieldset>
+
+                            <div class="form-actions center">
+                                <!--<button type="button" class="btn btn-sm btn-success">-->
+                                <!--Submit-->
+                                <!--<i class="ace-icon fa fa-arrow-right icon-on-right bigger-110"></i>-->
+                                <!--</button>-->
+                                <button type="button" class="btn btn-success" onclick="gridReload()">检索</button>
+                                <button type="reset" class="btn btn-primary">重置</button>
                             </div>
-                        </div>
-
-                        <div >
-                            <button type="button" class="btn btn-success" onclick="gridReload()">检索</button>
-                            <button type="reset" class="btn btn-primary">重置</button>
-                        </div>
-
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="row">
+    <!-- 购物车 -->
+    <div class="widget-toolbar dropdown">
+        <a href="#" class="dropdown-menu-right dropdown-toggle" data-action="cart" data-toggle="dropdown"
+           aria-expanded="false">
+            <i class="ace-icon fa fa-shopping-cart bigger-120 red"></i>
+            <span class="infobox-data-number red">购物车</span>
+        </a>
+
+        <ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close"
+            style="width:auto;">
+            <li class="dropdown-header">
+                <i class="ace-icon fa fa-shopping-cart"></i>
+                购物车
+            </li>
+
+            <li class="dropdown-content ace-scroll" style="position: relative;">
+                <div class="scroll-content" style="line-height: 19.5px;background-color: #FFFFFF;">
+                    <table id="grid-table-cart"></table>
+                    <div id="grid-pager-cart"></div>
+                </div>
+            </li>
+        </ul>
+    </div><!-- 购物车 -->
     </div>
 
     <div class="row">
@@ -737,48 +776,13 @@
 <script src="common/js/cancojs.js"></script>
 <!-- inline scripts related to this page -->
 <script type="text/javascript">
-var grid_data =
-        [
-            {id:"1",name:"Desktop Computer",note:"note",stock:"Yes",ship:"FedEx", sdate:"2007-12-03"},
-            {id:"2",name:"Laptop",note:"Long text ",stock:"Yes",ship:"InTime",sdate:"2007-12-03"},
-            {id:"3",name:"LCD Monitor",note:"note3",stock:"Yes",ship:"TNT",sdate:"2007-12-03"},
-            {id:"4",name:"Speakers",note:"note",stock:"No",ship:"ARAMEX",sdate:"2007-12-03"},
-            {id:"5",name:"Laser Printer",note:"note2",stock:"Yes",ship:"FedEx",sdate:"2007-12-03"},
-            {id:"6",name:"Play Station",note:"note3",stock:"No", ship:"FedEx",sdate:"2007-12-03"},
-            {id:"7",name:"Mobile Telephone",note:"note",stock:"Yes",ship:"ARAMEX",sdate:"2007-12-03"},
-            {id:"8",name:"Server",note:"note2",stock:"Yes",ship:"TNT",sdate:"2007-12-03"},
-            {id:"9",name:"Matrix Printer",note:"note3",stock:"No", ship:"FedEx",sdate:"2007-12-03"},
-            {id:"10",name:"Desktop Computer",note:"note",stock:"Yes",ship:"FedEx", sdate:"2007-12-03"},
-            {id:"11",name:"Laptop",note:"Long text ",stock:"Yes",ship:"InTime",sdate:"2007-12-03"},
-            {id:"12",name:"LCD Monitor",note:"note3",stock:"Yes",ship:"TNT",sdate:"2007-12-03"},
-            {id:"13",name:"Speakers",note:"note",stock:"No",ship:"ARAMEX",sdate:"2007-12-03"},
-            {id:"14",name:"Laser Printer",note:"note2",stock:"Yes",ship:"FedEx",sdate:"2007-12-03"},
-            {id:"15",name:"Play Station",note:"note3",stock:"No", ship:"FedEx",sdate:"2007-12-03"},
-            {id:"16",name:"Mobile Telephone",note:"note",stock:"Yes",ship:"ARAMEX",sdate:"2007-12-03"},
-            {id:"17",name:"Server",note:"note2",stock:"Yes",ship:"TNT",sdate:"2007-12-03"},
-            {id:"18",name:"Matrix Printer",note:"note3",stock:"No", ship:"FedEx",sdate:"2007-12-03"},
-            {id:"19",name:"Matrix Printer",note:"note3",stock:"No", ship:"FedEx",sdate:"2007-12-03"},
-            {id:"20",name:"Desktop Computer",note:"note",stock:"Yes",ship:"FedEx", sdate:"2007-12-03"},
-            {id:"21",name:"Laptop",note:"Long text ",stock:"Yes",ship:"InTime",sdate:"2007-12-03"},
-            {id:"22",name:"LCD Monitor",note:"note3",stock:"Yes",ship:"TNT",sdate:"2007-12-03"},
-            {id:"23",name:"Speakers",note:"note",stock:"No",ship:"ARAMEX",sdate:"2007-12-03"}
-        ];
-
-var subgrid_data =
-        [
-            {id:"1", name:"sub grid item 1", qty: 11},
-            {id:"2", name:"sub grid item 2", qty: 3},
-            {id:"3", name:"sub grid item 3", qty: 12},
-            {id:"4", name:"sub grid item 4", qty: 5},
-            {id:"5", name:"sub grid item 5", qty: 2},
-            {id:"6", name:"sub grid item 6", qty: 9},
-            {id:"7", name:"sub grid item 7", qty: 3},
-            {id:"8", name:"sub grid item 8", qty: 8}
-        ];
 
 jQuery(function($) {
     var grid_selector = "#tableList";
     var pager_selector = "#pager";
+
+    jQuery("#search_beginDate").datepicker({dateFormat:'yy-mm-dd'});
+    jQuery("#search_endDate").datepicker({dateFormat:'yy-mm-dd'});
 
     //resize to fit page size
     $(window).on('resize.jqGrid', function () {
@@ -826,13 +830,122 @@ jQuery(function($) {
         }
     };
 
-    jQuery(grid_selector).jqGrid({
-        //direction: "rtl",
+    var select_options={
+        dataUrl:'assetListSelect'
+        ,buildSelect: function(data) {
+            var response =  eval(data);
+            var s = '<select>';
+            var selectedId = $("#tableList").jqGrid("getGridParam", "selrow");
+            if(selectedId){
+                var rowData = $("#tableList").jqGrid("getRowData", selectedId);
+                s += '<option value="'+rowData["assetList.assetId"]+'">'+rowData["assetList.assetNo"]+'</option>';
+            }
 
-        //subgrid options
-        //subGrid : true,
-        //subGridModel: [{ name : ['No','Item Name','Qty'], width : [55,200,80] }],
-        //datatype: "xml",
+            if (response && response.length) {
+                for (var i = 0, l=response.length; i<l ; i++) {
+                    var ri = response[i];
+                    s += '<option value="'+ri.assetId+'">'+ri.assetNo+'</option>';
+                }
+            }
+            return s+'</select>';
+        }
+    };
+
+    function indexOfGoods(cartGoods, rowData){
+        for(var i=0; i<cartGoods.length; i++){
+            if(rowData["stockInInfoList.stockInInfoId"]==cartGoods[i]["stockInInfoList.stockInInfoId"])
+                return i;
+        }
+        alert("error");
+        return -1;
+    }
+    //选择单条数据
+    function updateCart(id,  status){
+        var rowData = $("#tableList").jqGrid("getRowData", id);
+        if(status){
+            rowDataIds.push(id);
+            cartGoods.push(rowData);
+        }else{
+
+            rowDataIds.splice(rowDataIds.indexOf(id), 1);
+            var index = indexOfGoods(cartGoods, rowData);
+            cartGoods.splice(index, index<0?0:1);
+        }
+        $("#grid-table-cart").jqGrid("clearGridData");
+        for(var i=0; i<cartGoods.length; i++){
+            $("#grid-table-cart").jqGrid("addRowData", i, cartGoods[i]);
+        }
+        $("#grid-table-cart").trigger("reloadGrid");
+    }
+
+    //选择多条数据，一般是全选操作
+    function updateCartAll(ids,  status){
+        for(var i=0; i<ids.length; i++){
+            var id= ids[i];
+            var rowData = $("#tableList").jqGrid("getRowData", id);
+            if(status){
+                if(rowDataIds.indexOf(id)<0) {
+                    rowDataIds.push(id);
+                    cartGoods.push(rowData);
+                }
+            }else{
+                if(rowDataIds.indexOf(id)>=0) {
+                    rowDataIds.splice(rowDataIds.indexOf(id), 1);
+                    var index = indexOfGoods(cartGoods, rowData);
+                    cartGoods.splice(index, index<0?0:1);
+                }
+            }
+        }
+        $("#grid-table-cart").jqGrid("clearGridData");
+        for(var i=0; i<cartGoods.length; i++){
+            $("#grid-table-cart").jqGrid("addRowData", i, cartGoods[i]);
+        }
+        $("#grid-table-cart").trigger("reloadGrid");
+    }
+
+    //保存翻页时的选择
+    function updateSelection(){
+        for(var i=0; i<rowDataIds.length; i++){
+            $("#tableList").jqGrid("setSelection",rowDataIds[i], false);
+        }
+    }
+    //清空购物车
+    function clearCart(){
+        rowDataIds = [];
+        cartGoods = [];
+        $("#grid-table-cart").jqGrid("clearGridData");
+    }
+
+    //购物车
+    $("#grid-table-cart").jqGrid({
+        colNames: ['入库信息主键','资产主键','资产编号','入库单号', '资产创建日期', '资产名', '入库创建人', '入库说明'],//['入库单号', '入库日期', '资产名','购买时间','创建人','说明']
+        colModel: [
+            {name: 'stockInInfoList.stockInInfoId', index: 'stockInInfoList.stockInInfoId', width: 100, sortable: true, key:true, hidden:true}
+            ,{name: 'assetList.assetId', index: 'assetList.assetId', width: 100, sortable: true, hidden:true}
+            ,{name: 'assetList.assetNo', index: 'assetList.assetNo', width: 100, sortable: true, align:"left"}
+            ,{name: 'stockInList.stockInNo', index: 'stockInList.stockInNo', width: 100, sortable: true, align:"left", editable:true}
+            ,{name: 'assetList.assetCreateDate', index: 'assetList.assetCreateDate', width: 100, sortable: true, align:"left", editable:false,
+                editoptions:date_options,editrules:{required:true, date:true}
+                ,formatter:'date',formatoptions:{srcformat:'Y-m-d H:i:s', newformat:'Y-m-d'}}
+            ,{name: 'assetList.assetName', index: 'assetList.assetName', width: 100, sortable: true, align:"left", editable:false,
+                editrules:{required:true}}
+            ,{name: 'stockInList.stockInCreateMan', index: 'stockInList.stockInCreateMan', width: 100, sortable: true, align:"left", editable:true}
+            ,{name: 'stockInList.stockInExplainInfo', index: 'stockInList.stockInExplainInfo', width: 100, sortable: true, align:"left", editable:true
+                ,edittype:"textarea", editoptions:{rows:"2",cols:"20"}}
+        ],
+        caption: "购物清单", //表格名称
+        //@CodeGen end
+        pager: '#grid-pager-cart',
+        rowNum: 10,
+        rowList: [10, 20, 30],
+        viewrecords: true, //总记录数
+        autowidth: true,
+        datatype: "local",
+        height: '300px'
+    });
+
+
+    jQuery(grid_selector).jqGrid({
         subGridOptions : {
             plusicon : "ace-icon fa fa-plus center bigger-110 blue",
             minusicon  : "ace-icon fa fa-minus center bigger-110 blue",
@@ -856,20 +969,24 @@ jQuery(function($) {
 
 
 
-        url: 'classListSelectM',
-        editurl: 'classListEdit',
-        colNames: ['ID', '资产名','状态名','创建人','创建日期'],
+        url: 'assetstockinSelect',
+        editurl: 'assetstockinEdit',
+        colNames: ['入库信息主键','资产主键','资产编号','入库单号', '资产创建日期', '资产名', '入库创建人', '入库说明'],//['入库单号', '入库日期', '资产名','购买时间','创建人','说明']
         colModel: [
-            {name: 'classId', index: 'classId', width: 100, sortable: true, key:true, hidden:true},
-            {name: 'className', index: 'className', width: 200, sortable: true, align:"left", editable:true,
-                editrules:{required:true}},
-            {name: 'defaultStatName', index: 'defaultStatName', width: 200, sortable: true, align:"left", editable:true,
-                editrules:{required:true}},
-            {name: 'createMan', index: 'createMan', width: 200, sortable: true, align:"left", editable:true,
-                editrules:{required:true}},
-            {name: 'createDate', index: 'createDate', width: 200, sortable: true, align: "left", editable: false,
-                editoptions:date_options,editrules:{required:true, date:true},
-                formatter:'date',formatoptions:{srcformat:'Y-m-d H:i:s', newformat:'Y-m-d'}}
+            {name: 'stockInInfoList.stockInInfoId', index: 'stockInInfoList.stockInInfoId', width: 100, sortable: true, key:true, hidden:true}
+            ,{name: 'assetList.assetId', index: 'assetList.assetId', width: 100, sortable: true, hidden:true}
+            ,{name: 'assetList.assetNo', index: 'assetList.assetNo', width: 100, sortable: true, align:"left", editable:true
+                ,edittype:"select",editoptions:select_options
+            }
+            ,{name: 'stockInList.stockInNo', index: 'stockInList.stockInNo', width: 100, sortable: true, align:"left", editable:true}
+            ,{name: 'assetList.assetCreateDate', index: 'assetList.assetCreateDate', width: 100, sortable: true, align:"left", editable:false,
+                editoptions:date_options,editrules:{required:true, date:true}
+                ,formatter:'date',formatoptions:{srcformat:'Y-m-d H:i:s', newformat:'Y-m-d'}}
+            ,{name: 'assetList.assetName', index: 'assetList.assetName', width: 100, sortable: true, align:"left", editable:false,
+                editrules:{required:true}}
+            ,{name: 'stockInList.stockInCreateMan', index: 'stockInList.stockInCreateMan', width: 100, sortable: true, align:"left", editable:true}
+            ,{name: 'stockInList.stockInExplainInfo', index: 'stockInList.stockInExplainInfo', width: 100, sortable: true, align:"left", editable:true
+                ,edittype:"textarea", editoptions:{rows:"2",cols:"20"}}
         ],
         jsonReader : {
             page: "currentpage",
@@ -879,7 +996,7 @@ jQuery(function($) {
             userdata: "userdata" //其他参数
         },
         caption: "数据列表", //表格名称
-        sortname: 'classId',
+        sortname: 'stockInInfoList.stockInInfoId',
         sortorder: "desc",
         //@CodeGen end
         pager: '#pager',
@@ -893,26 +1010,6 @@ jQuery(function($) {
         mtype: 'POST',
         datatype: "json",
         height: 250,
-//        colNames:[' ', 'ID','Last Sales','Name', 'Stock', 'Ship via','Notes'],
-//        colModel:[
-//            {name:'myac',index:'', width:80, fixed:true, sortable:false, resize:false,
-//                formatter:'actions',
-//                formatoptions:{
-//                    keys:true,
-//                    //delbutton: false,//disable delete button
-//
-//                    delOptions:{recreateForm: true, beforeShowForm:beforeDeleteCallback},
-//                    //editformbutton:true, editOptions:{recreateForm: true, beforeShowForm:beforeEditCallback}
-//                }
-//            },
-//            {name:'id',index:'id', width:60, sorttype:"int", editable: true},
-//            {name:'sdate',index:'sdate',width:90, editable:true, sorttype:"date",unformat: pickDate},
-//            {name:'name',index:'name', width:150,editable: true,editoptions:{size:"20",maxlength:"30"}},
-//            {name:'stock',index:'stock', width:70, editable: true,edittype:"checkbox",editoptions: {value:"Yes:No"},unformat: aceSwitch},
-//            {name:'ship',index:'ship', width:90, editable: true,edittype:"select",editoptions:{value:"FE:FedEx;IN:InTime;TN:TNT;AR:ARAMEX"}},
-//            {name:'note',index:'note', width:150, sortable:false,editable: true,edittype:"textarea", editoptions:{rows:"2",cols:"10"}}
-//        ],
-
 
         loadComplete : function() {
             var table = this;
@@ -1053,7 +1150,7 @@ jQuery(function($) {
                 addicon : 'ace-icon fa fa-plus-circle purple',
                 del: true,
                 delicon : 'ace-icon fa fa-trash-o red',
-                search: true,
+                search: false,
                 searchicon : 'ace-icon fa fa-search orange',
                 refresh: true,
                 refreshicon : 'ace-icon fa fa-refresh green',
@@ -1218,29 +1315,28 @@ jQuery(function($) {
         $('.ui-jqdialog').remove();
     });
 
-    $("#search_beginDate").datepicker({dateFormat: 'yy-mm-dd'});
-    $("#search_endDate").datepicker({dateFormat: 'yy-mm-dd'});
+
 });
-    function gridReload(){
-        //@CodeGen begin
-        var var1 = $("#search_className").val();
-        var var2 = $("#search_createMan").val();
-        var var3 = $("#search_startDate").val();
-        var var4 = $("#search_endDate").val();
-        var startdate=new Date(($("#search_startDate").val()).replace(/-/g,"/"));
-        var enddate=new Date(($("#search_endDate").val()).replace(/-/g,"/"));
-        if(startdate > enddate)
-        {
-            alert("起始日期不得大于截止日期！");
-            $("#search_endDate").val("");
-            return false;
-        }
-        else
-        {
-            $("#tableList").jqGrid('setGridParam',{url:"classListSelectM?className="+var1+"&createMan="+var2+"&search_startDate="+var3+"&search_endDate="+var4 , page:1}).trigger("reloadGrid");
-        }
-        //@CodeGen end
+function gridReload(){
+    //@CodeGen begin
+    var var1 = $("#search_assetNo").val();
+    var var2 = $("#search_assetName").val();
+    var var3 = $("#search_beginDate").val();
+    var var4 = $("#search_endDate").val();
+    var startdate=new Date(($("#search_beginDate").val()).replace(/-/g,"/"));
+    var enddate=new Date(($("#search_endDate").val()).replace(/-/g,"/"));
+    if(startdate > enddate)
+    {
+        alert("起始日期不得大于截止日期！");
+        $("#search_endDate").val("");
+        return false;
     }
+    else
+    {
+        $("#tableList").jqGrid('setGridParam',{url:"assetstockinSelect?assetNo="+var1+"&assetName="+var2+"&search_startDate="+var3+"&search_endDate="+var4 , page:1}).trigger("reloadGrid");
+    }
+    //@CodeGen end
+}
 
 </script>
 

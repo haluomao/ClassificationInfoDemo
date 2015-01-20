@@ -1,23 +1,26 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
-<html lang="en"><head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta charset="utf-8">
-    <title>Canco</title>
+﻿﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+          pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <title>Cancosoft</title>
 
-    <meta name="description" content="overview &amp; stats">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
     <!-- bootstrap & fontawesome -->
-    <link rel="stylesheet" href="assets/css/bootstrap.css">
-    <link rel="stylesheet" href="assets/css/font-awesome.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="assets/css/font-awesome.css" />
 
     <!-- page specific plugin styles -->
 
     <!-- text fonts -->
-    <link rel="stylesheet" href="assets/css/ace-fonts.css">
+    <link rel="stylesheet" href="assets/css/ace-fonts.css" />
 
     <!-- ace styles -->
-    <link rel="stylesheet" href="assets/css/ace.css" class="ace-main-stylesheet" id="main-ace-style">
+    <link rel="stylesheet" href="assets/css/ace.css" class="ace-main-stylesheet" id="main-ace-style" />
 
     <!--[if lte IE 9]>
     <link rel="stylesheet" href="assets/css/ace-part2.css" class="ace-main-stylesheet" />
@@ -38,46 +41,346 @@
     <script src="assets/js/html5shiv.js"></script>
     <script src="assets/js/respond.js"></script>
     <![endif]-->
-    <style type="text/css">.jqstooltip { position: absolute;left: 0px;top: 0px;visibility: hidden;background: rgb(0, 0, 0) transparent;background-color: rgba(0,0,0,0.6);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";color: white;font: 10px arial, san serif;text-align: left;white-space: nowrap;padding: 5px;border: 1px solid white;z-index: 10000;}.jqsfield { color: white;font: 10px arial, san serif;text-align: left;}</style></head>
+</head>
 
 <body class="no-skin">
 <!-- #section:basics/navbar.layout -->
 <div id="navbar" class="navbar navbar-default">
-    <script type="text/javascript">
-        try{ace.settings.check('navbar' , 'fixed')}catch(e){}
-    </script>
+<script type="text/javascript">
+    try{ace.settings.check('navbar' , 'fixed')}catch(e){}
+</script>
 
-    <div class="navbar-container" id="navbar-container">
-        <!-- #section:basics/sidebar.mobile.toggle -->
-        <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
-            <span class="sr-only">Toggle sidebar</span>
+<div class="navbar-container" id="navbar-container">
+<!-- #section:basics/sidebar.mobile.toggle -->
+<button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+    <span class="sr-only">Toggle sidebar</span>
 
-            <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
 
-            <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
 
-            <span class="icon-bar"></span>
-        </button>
+    <span class="icon-bar"></span>
+</button>
 
-        <!-- /section:basics/sidebar.mobile.toggle -->
-        <div class="navbar-header pull-left">
-            <!-- #section:basics/navbar.layout.brand -->
-            <a href="#" class="navbar-brand">
-                <small>
-                    <i class="fa fa-leaf"></i>
-                    实物资产管理
-                </small>
+<!-- /section:basics/sidebar.mobile.toggle -->
+<div class="navbar-header pull-left">
+    <!-- #section:basics/navbar.layout.brand -->
+    <a href="#" class="navbar-brand">
+        <small>
+            <i class="fa fa-leaf"></i>
+            实物资产管理
+        </small>
+    </a>
+
+    <!-- /section:basics/navbar.layout.brand -->
+
+    <!-- #section:basics/navbar.toggle -->
+
+    <!-- /section:basics/navbar.toggle -->
+</div>
+
+<!-- #section:basics/navbar.dropdown -->
+<div class="navbar-buttons navbar-header pull-right" role="navigation">
+<ul class="nav ace-nav">
+<li class="grey">
+    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+        <i class="ace-icon fa fa-tasks"></i>
+        <span class="badge badge-grey">4</span>
+    </a>
+
+    <ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
+        <li class="dropdown-header">
+            <i class="ace-icon fa fa-check"></i>
+            4 Tasks to complete
+        </li>
+
+        <li class="dropdown-content">
+            <ul class="dropdown-menu dropdown-navbar">
+                <li>
+                    <a href="#">
+                        <div class="clearfix">
+                            <span class="pull-left">Software Update</span>
+                            <span class="pull-right">65%</span>
+                        </div>
+
+                        <div class="progress progress-mini">
+                            <div style="width:65%" class="progress-bar"></div>
+                        </div>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <div class="clearfix">
+                            <span class="pull-left">Hardware Upgrade</span>
+                            <span class="pull-right">35%</span>
+                        </div>
+
+                        <div class="progress progress-mini">
+                            <div style="width:35%" class="progress-bar progress-bar-danger"></div>
+                        </div>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <div class="clearfix">
+                            <span class="pull-left">Unit Testing</span>
+                            <span class="pull-right">15%</span>
+                        </div>
+
+                        <div class="progress progress-mini">
+                            <div style="width:15%" class="progress-bar progress-bar-warning"></div>
+                        </div>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <div class="clearfix">
+                            <span class="pull-left">Bug Fixes</span>
+                            <span class="pull-right">90%</span>
+                        </div>
+
+                        <div class="progress progress-mini progress-striped active">
+                            <div style="width:90%" class="progress-bar progress-bar-success"></div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="dropdown-footer">
+            <a href="#">
+                See tasks with details
+                <i class="ace-icon fa fa-arrow-right"></i>
             </a>
+        </li>
+    </ul>
+</li>
 
-            <!-- /section:basics/navbar.layout.brand -->
+<li class="purple">
+    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+        <i class="ace-icon fa fa-bell icon-animated-bell"></i>
+        <span class="badge badge-important">8</span>
+    </a>
 
-            <!-- #section:basics/navbar.toggle -->
+    <ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
+        <li class="dropdown-header">
+            <i class="ace-icon fa fa-exclamation-triangle"></i>
+            8 Notifications
+        </li>
 
-            <!-- /section:basics/navbar.toggle -->
-        </div>
+        <li class="dropdown-content">
+            <ul class="dropdown-menu dropdown-navbar navbar-pink">
+                <li>
+                    <a href="#">
+                        <div class="clearfix">
+													<span class="pull-left">
+														<i class="btn btn-xs no-hover btn-pink fa fa-comment"></i>
+														New Comments
+													</span>
+                            <span class="pull-right badge badge-info">+12</span>
+                        </div>
+                    </a>
+                </li>
 
-        <!-- /section:basics/navbar.dropdown -->
-    </div><!-- /.navbar-container -->
+                <li>
+                    <a href="#">
+                        <i class="btn btn-xs btn-primary fa fa-user"></i>
+                        Bob just signed up as an editor ...
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <div class="clearfix">
+													<span class="pull-left">
+														<i class="btn btn-xs no-hover btn-success fa fa-shopping-cart"></i>
+														New Orders
+													</span>
+                            <span class="pull-right badge badge-success">+8</span>
+                        </div>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <div class="clearfix">
+													<span class="pull-left">
+														<i class="btn btn-xs no-hover btn-info fa fa-twitter"></i>
+														Followers
+													</span>
+                            <span class="pull-right badge badge-info">+11</span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="dropdown-footer">
+            <a href="#">
+                See all notifications
+                <i class="ace-icon fa fa-arrow-right"></i>
+            </a>
+        </li>
+    </ul>
+</li>
+
+<li class="green">
+    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+        <i class="ace-icon fa fa-envelope icon-animated-vertical"></i>
+        <span class="badge badge-success">5</span>
+    </a>
+
+    <ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
+        <li class="dropdown-header">
+            <i class="ace-icon fa fa-envelope-o"></i>
+            5 Messages
+        </li>
+
+        <li class="dropdown-content">
+            <ul class="dropdown-menu dropdown-navbar">
+                <li>
+                    <a href="#" class="clearfix">
+                        <img src="assets/avatars/avatar.png" class="msg-photo" alt="Alex's Avatar" />
+												<span class="msg-body">
+													<span class="msg-title">
+														<span class="blue">Alex:</span>
+														Ciao sociis natoque penatibus et auctor ...
+													</span>
+
+													<span class="msg-time">
+														<i class="ace-icon fa fa-clock-o"></i>
+														<span>a moment ago</span>
+													</span>
+												</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" class="clearfix">
+                        <img src="assets/avatars/avatar3.png" class="msg-photo" alt="Susan's Avatar" />
+												<span class="msg-body">
+													<span class="msg-title">
+														<span class="blue">Susan:</span>
+														Vestibulum id ligula porta felis euismod ...
+													</span>
+
+													<span class="msg-time">
+														<i class="ace-icon fa fa-clock-o"></i>
+														<span>20 minutes ago</span>
+													</span>
+												</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" class="clearfix">
+                        <img src="assets/avatars/avatar4.png" class="msg-photo" alt="Bob's Avatar" />
+												<span class="msg-body">
+													<span class="msg-title">
+														<span class="blue">Bob:</span>
+														Nullam quis risus eget urna mollis ornare ...
+													</span>
+
+													<span class="msg-time">
+														<i class="ace-icon fa fa-clock-o"></i>
+														<span>3:15 pm</span>
+													</span>
+												</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" class="clearfix">
+                        <img src="assets/avatars/avatar2.png" class="msg-photo" alt="Kate's Avatar" />
+												<span class="msg-body">
+													<span class="msg-title">
+														<span class="blue">Kate:</span>
+														Ciao sociis natoque eget urna mollis ornare ...
+													</span>
+
+													<span class="msg-time">
+														<i class="ace-icon fa fa-clock-o"></i>
+														<span>1:33 pm</span>
+													</span>
+												</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" class="clearfix">
+                        <img src="assets/avatars/avatar5.png" class="msg-photo" alt="Fred's Avatar" />
+												<span class="msg-body">
+													<span class="msg-title">
+														<span class="blue">Fred:</span>
+														Vestibulum id penatibus et auctor  ...
+													</span>
+
+													<span class="msg-time">
+														<i class="ace-icon fa fa-clock-o"></i>
+														<span>10:09 am</span>
+													</span>
+												</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="dropdown-footer">
+            <a href="inbox.html">
+                See all messages
+                <i class="ace-icon fa fa-arrow-right"></i>
+            </a>
+        </li>
+    </ul>
+</li>
+
+<!-- #section:basics/navbar.user_menu -->
+<li class="light-blue">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+        <img class="nav-user-photo" src="assets/avatars/user.jpg" alt="Jason's Photo" />
+								<span class="user-info">
+									<small>欢迎,</small>
+									${requestScope.username}
+								</span>
+
+        <i class="ace-icon fa fa-caret-down"></i>
+    </a>
+
+    <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+        <li>
+            <a href="#">
+                <i class="ace-icon fa fa-cog"></i>
+                设置
+            </a>
+        </li>
+
+        <li>
+            <a href="profile.html">
+                <i class="ace-icon fa fa-user"></i>
+                个人信息
+            </a>
+        </li>
+
+        <li class="divider"></li>
+
+        <li>
+            <a href="#">
+                <i class="ace-icon fa fa-power-off"></i>
+                登出
+            </a>
+        </li>
+    </ul>
+</li>
+
+<!-- /section:basics/navbar.user_menu -->
+</ul>
+</div>
+
+<!-- /section:basics/navbar.dropdown -->
+</div><!-- /.navbar-container -->
 </div>
 
 <!-- /section:basics/navbar.layout -->
@@ -87,12 +390,11 @@
 </script>
 
 <!-- #section:basics/sidebar -->
-<div id="sidebar" class="sidebar                  responsive" data-sidebar="true" data-sidebar-scroll="true" data-sidebar-hover="true">
-<script type="text/javascript">
-    try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
-</script>
+<div id="sidebar" class="sidebar                  responsive">
+    <script type="text/javascript">
+        try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
+    </script>
 
-<!-- /.sidebar-shortcuts -->
     <ul class="nav nav-list">
         <li class="">
             <a href="index.html">
@@ -103,10 +405,11 @@
             <b class="arrow"></b>
         </li>
 
+
         <li class="active open">
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-list"></i>
-                <span class="menu-text"> 列表 </span>
+                <span class="menu-text"> 数据列表 </span>
 
                 <b class="arrow fa fa-angle-down"></b>
             </a>
@@ -133,18 +436,17 @@
                 </li>
             </ul>
         </li>
-
     </ul><!-- /.nav-list -->
 
-<!-- #section:basics/sidebar.layout.minimize -->
-<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
-    <i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
-</div>
+    <!-- #section:basics/sidebar.layout.minimize -->
+    <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+        <i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+    </div>
 
-<!-- /section:basics/sidebar.layout.minimize -->
-<script type="text/javascript">
-    try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
-</script>
+    <!-- /section:basics/sidebar.layout.minimize -->
+    <script type="text/javascript">
+        try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
+    </script>
 </div>
 
 <!-- /section:basics/sidebar -->
@@ -195,7 +497,7 @@
                         <option data-skin="skin-1" value="#222A2D">#222A2D</option>
                         <option data-skin="skin-2" value="#C6487E">#C6487E</option>
                         <option data-skin="skin-3" value="#D0D0D0">#D0D0D0</option>
-                    </select><div class="dropdown dropdown-colorpicker">		<a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="btn-colorpicker" style="background-color:#438EB9"></span></a><ul class="dropdown-menu dropdown-caret"><li><a class="colorpick-btn selected" href="#" style="background-color:#438EB9;" data-color="#438EB9"></a></li><li><a class="colorpick-btn" href="#" style="background-color:#222A2D;" data-color="#222A2D"></a></li><li><a class="colorpick-btn" href="#" style="background-color:#C6487E;" data-color="#C6487E"></a></li><li><a class="colorpick-btn" href="#" style="background-color:#D0D0D0;" data-color="#D0D0D0"></a></li></ul></div>
+                    </select><div class="dropdown dropdown-colorpicker">		<a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="btn-colorpicker" style="background-color:#438EB9"></span></a><ul class="dropdown-menu dropdown-caret"><li><a class="colorpick-btn selected" href="#" style="background-color:#438EB9;" data-color="#438EB9"></a></li><li><a class="colorpick-btn" href="#" style="background-color:#222A2D;" data-color="#222A2D"></a></li><li><a class="colorpick-btn" href="#" style="background-color:#C6487E;" data-color="#C6487E"></a></li><li><a class="colorpick-btn" href="#" style="background-color:#D0D0D0;" data-color="#D0D0D0"></a></li></ul></div><div class="dropdown dropdown-colorpicker">		<a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="btn-colorpicker" style="background-color:#438EB9"></span></a><ul class="dropdown-menu dropdown-caret"><li><a class="colorpick-btn selected" href="#" style="background-color:#438EB9;" data-color="#438EB9"></a></li><li><a class="colorpick-btn" href="#" style="background-color:#222A2D;" data-color="#222A2D"></a></li><li><a class="colorpick-btn" href="#" style="background-color:#C6487E;" data-color="#C6487E"></a></li><li><a class="colorpick-btn" href="#" style="background-color:#D0D0D0;" data-color="#D0D0D0"></a></li></ul></div>
                 </div>
                 <span>&nbsp; Choose Skin</span>
             </div>
@@ -272,10 +574,6 @@
 <div class="page-header">
     <h1>
         控制面板
-        <%--<small>--%>
-            <%--<i class="ace-icon fa fa-angle-double-right"></i>--%>
-            <%--overview &amp; stats--%>
-        <%--</small>--%>
     </h1>
 </div><!-- /.page-header -->
 
@@ -378,7 +676,7 @@
             <!-- #section:pages/dashboard.infobox.easypiechart -->
             <div class="easy-pie-chart percentage" data-percent="42" data-size="46" style="height: 46px; width: 46px; line-height: 45px;">
                 <span class="percent">42</span>%
-                <canvas height="46" width="46"></canvas></div>
+                <canvas height="46" width="46"></canvas><canvas height="46" width="46"></canvas></div>
 
             <!-- /section:pages/dashboard.infobox.easypiechart -->
         </div>
@@ -402,7 +700,7 @@
             <!-- #section:pages/dashboard.infobox.easypiechart -->
             <div class="easy-pie-chart percentage" data-percent="61" data-size="39" style="height: 39px; width: 39px; line-height: 38px;">
                 <span class="percent">61</span>%
-                <canvas height="39" width="39"></canvas></div>
+                <canvas height="39" width="39"></canvas><canvas height="39" width="39"></canvas></div>
 
             <!-- /section:pages/dashboard.infobox.easypiechart -->
         </div>
@@ -493,17 +791,7 @@
         <div class="widget-body">
             <div class="widget-main">
                 <!-- #section:plugins/charts.flotchart -->
-                <div id="piechart-placeholder" style="width: 90%; min-height: 150px; padding: 0px; position: relative;">
-                    <canvas class="flot-base" width="354" height="150" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 354px; height: 150px;"></canvas>
-                    <canvas class="flot-overlay" width="354" height="150" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 354px; height: 150px;"></canvas>
-                    <div class="legend"><div style="position: absolute; width: 93px; height: 110px; top: 15px; right: -30px; opacity: 0.85; background-color: rgb(255, 255, 255);"> </div><table style="position:absolute;top:15px;right:-30px;;font-size:smaller;color:#545454">
-                        <tbody><tr><td class="legendColorBox"><div style="border:1px solid ;padding:1px">
-                        <div style="width:4px;height:0;border:5px solid #68BC31;overflow:hidden"></div></div></td><td class="legendLabel">social networks</td></tr>
-                    <tr><td class="legendColorBox"><div style="border:1px solid ;padding:1px"><div style="width:4px;height:0;border:5px solid #2091CF;overflow:hidden"></div></div></td><td class="legendLabel">search engines</td></tr>
-                        <tr><td class="legendColorBox">
-                        <div style="border:1px solid;padding:1px"><div style="width:4px;height:0;border:5px solid #AF4E96;overflow:hidden"></div></div></td><td class="legendLabel">ad campaigns</td></tr><tr><td class="legendColorBox"><div style="border:1px solid ;padding:1px"><div style="width:4px;height:0;border:5px solid #DA5430;overflow:hidden"></div></div></td><td class="legendLabel">direct traffic</td></tr>
-                    <tr><td class="legendColorBox"><div style="border:1px solid ;padding:1px"><div style="width:4px;height:0;border:5px solid #FEE074;overflow:hidden"></div></div></td><td class="legendLabel">other</td></tr>
-                        </tbody></table></div></div>
+                <div id="piechart-placeholder" style="width: 90%; min-height: 150px; padding: 0px; position: relative;"><canvas class="flot-base" width="377" height="150" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 377px; height: 150px;"></canvas><canvas class="flot-overlay" width="377" height="150" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 377px; height: 150px;"></canvas><div class="legend"><div style="position: absolute; width: 93px; height: 110px; top: 15px; right: -30px; opacity: 0.85; background-color: rgb(255, 255, 255);"> </div><table style="position:absolute;top:15px;right:-30px;;font-size:smaller;color:#545454"><tbody><tr><td class="legendColorBox"><div style="border:1px solid;padding:1px"><div style="width:4px;height:0;border:5px solid #68BC31;overflow:hidden"></div></div></td><td class="legendLabel">social networks</td></tr><tr><td class="legendColorBox"><div style="border:1px solid;padding:1px"><div style="width:4px;height:0;border:5px solid #2091CF;overflow:hidden"></div></div></td><td class="legendLabel">search engines</td></tr><tr><td class="legendColorBox"><div style="border:1px solid;padding:1px"><div style="width:4px;height:0;border:5px solid #AF4E96;overflow:hidden"></div></div></td><td class="legendLabel">ad campaigns</td></tr><tr><td class="legendColorBox"><div style="border:1px solid;padding:1px"><div style="width:4px;height:0;border:5px solid #DA5430;overflow:hidden"></div></div></td><td class="legendLabel">direct traffic</td></tr><tr><td class="legendColorBox"><div style="border:1px solid;padding:1px"><div style="width:4px;height:0;border:5px solid #FEE074;overflow:hidden"></div></div></td><td class="legendLabel">other</td></tr></tbody></table></div></div>
 
                 <!-- /section:plugins/charts.flotchart -->
                 <div class="hr hr8 hr-double"></div>
@@ -673,7 +961,7 @@
 
             <div class="widget-body">
                 <div class="widget-main padding-4">
-                    <div id="sales-charts" style="width: 100%; height: 220px; padding: 0px; position: relative;"><canvas class="flot-base" width="588" height="220" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 588px; height: 220px;"></canvas><div class="flot-text" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);"><div class="flot-x-axis flot-x1-axis xAxis x1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;"><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 73px; top: 201px; left: 39px; text-align: center;">0.0</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 73px; top: 201px; left: 124px; text-align: center;">1.0</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 73px; top: 201px; left: 210px; text-align: center;">2.0</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 73px; top: 201px; left: 295px; text-align: center;">3.0</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 73px; top: 201px; left: 380px; text-align: center;">4.0</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 73px; top: 201px; left: 466px; text-align: center;">5.0</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 73px; top: 201px; left: 551px; text-align: center;">6.0</div></div><div class="flot-y-axis flot-y1-axis yAxis y1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;"><div class="flot-tick-label tickLabel" style="position: absolute; top: 187px; left: 1px; text-align: right;">-2.000</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 164px; left: 1px; text-align: right;">-1.500</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 140px; left: 1px; text-align: right;">-1.000</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 117px; left: 1px; text-align: right;">-0.500</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 94px; left: 8px; text-align: right;">0.000</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 70px; left: 8px; text-align: right;">0.500</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 47px; left: 8px; text-align: right;">1.000</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 23px; left: 8px; text-align: right;">1.500</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 0px; left: 8px; text-align: right;">2.000</div></div></div><canvas class="flot-overlay" width="588" height="220" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 588px; height: 220px;"></canvas><div class="legend"><div style="position: absolute; width: 63px; height: 66px; top: 14px; right: 15px; opacity: 0.85; background-color: rgb(255, 255, 255);"> </div><table style="position:absolute;top:14px;right:15px;;font-size:smaller;color:#545454"><tbody><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(237,194,64);overflow:hidden"></div></div></td><td class="legendLabel">Domains</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(175,216,248);overflow:hidden"></div></div></td><td class="legendLabel">Hosting</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(203,75,75);overflow:hidden"></div></div></td><td class="legendLabel">Services</td></tr></tbody></table></div></div>
+                    <div id="sales-charts" style="width: 100%; height: 220px; padding: 0px; position: relative;"><canvas class="flot-base" width="624" height="220" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 624px; height: 220px;"></canvas><div class="flot-text" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);"><div class="flot-x-axis flot-x1-axis xAxis x1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;"><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 78px; top: 201px; left: 39px; text-align: center;">0.0</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 78px; top: 201px; left: 130px; text-align: center;">1.0</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 78px; top: 201px; left: 221px; text-align: center;">2.0</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 78px; top: 201px; left: 312px; text-align: center;">3.0</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 78px; top: 201px; left: 404px; text-align: center;">4.0</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 78px; top: 201px; left: 495px; text-align: center;">5.0</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 78px; top: 201px; left: 586px; text-align: center;">6.0</div></div><div class="flot-y-axis flot-y1-axis yAxis y1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;"><div class="flot-tick-label tickLabel" style="position: absolute; top: 187px; left: 1px; text-align: right;">-2.000</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 164px; left: 1px; text-align: right;">-1.500</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 140px; left: 1px; text-align: right;">-1.000</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 117px; left: 1px; text-align: right;">-0.500</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 94px; left: 8px; text-align: right;">0.000</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 70px; left: 8px; text-align: right;">0.500</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 47px; left: 8px; text-align: right;">1.000</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 23px; left: 8px; text-align: right;">1.500</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 0px; left: 8px; text-align: right;">2.000</div></div></div><canvas class="flot-overlay" width="624" height="220" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 624px; height: 220px;"></canvas><div class="legend"><div style="position: absolute; width: 63px; height: 66px; top: 14px; right: 15px; opacity: 0.85; background-color: rgb(255, 255, 255);"> </div><table style="position:absolute;top:14px;right:15px;;font-size:smaller;color:#545454"><tbody><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(237,194,64);overflow:hidden"></div></div></td><td class="legendLabel">Domains</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(175,216,248);overflow:hidden"></div></div></td><td class="legendLabel">Hosting</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(203,75,75);overflow:hidden"></div></div></td><td class="legendLabel">Services</td></tr></tbody></table></div></div>
                 </div><!-- /.widget-main -->
             </div><!-- /.widget-body -->
         </div><!-- /.widget-box -->
@@ -726,7 +1014,7 @@
 
             <div class="pull-right easy-pie-chart percentage" data-size="30" data-color="#ECCB71" data-percent="42" style="height: 30px; width: 30px; line-height: 29px;">
                 <span class="percent">42</span>%
-                <canvas height="30" width="30"></canvas></div>
+                <canvas height="30" width="30"></canvas><canvas height="30" width="30"></canvas></div>
         </li>
 
         <li class="item-red clearfix ui-sortable-handle">
@@ -1110,7 +1398,7 @@
 
 <div id="comment-tab" class="tab-pane">
     <!-- #section:pages/dashboard.comments -->
-    <div class="comments ace-scroll" style="position: relative;"><div class="scroll-track" style="display: none;"><div class="scroll-bar"></div></div><div class="scroll-content" style="max-height: 300px;">
+    <div class="comments ace-scroll" style="position: relative;"><div class="scroll-track" style="display: none;"><div class="scroll-bar"></div></div><div class="scroll-content" style="max-height: 300px;"><div class="scroll-track" style="display: none;"><div class="scroll-bar"></div></div><div class="scroll-content" style="max-height: 300px;">
         <div class="itemdiv commentdiv">
             <div class="user">
                 <img alt="Bob Doe's Avatar" src="assets/avatars/avatar.png">
@@ -1268,7 +1556,7 @@
                 </div>
             </div>
         </div>
-    </div></div>
+    </div></div></div>
 
     <div class="hr hr8"></div>
 
@@ -1304,7 +1592,7 @@
         <div class="widget-body">
             <div class="widget-main no-padding">
                 <!-- #section:pages/dashboard.conversations -->
-                <div class="dialogs ace-scroll"><div class="scroll-track scroll-active" style="display: block; height: 300px;"><div class="scroll-bar" style="height: 236px; top: 0px;"></div></div><div class="scroll-content" style="max-height: 300px;">
+                <div class="dialogs ace-scroll"><div class="scroll-track" style="display: none;"><div class="scroll-bar"></div></div><div class="scroll-content"><div class="scroll-track scroll-active" style="display: block; height: 300px;"><div class="scroll-bar" style="height: 236px; top: 0px;"></div></div><div class="scroll-content" style="max-height: 300px;">
                     <div class="itemdiv dialogdiv">
                         <div class="user">
                             <img alt="Alexa's Avatar" src="assets/avatars/avatar1.png">
@@ -1425,7 +1713,7 @@
                             </div>
                         </div>
                     </div>
-                </div></div>
+                </div></div></div>
 
                 <!-- /section:pages/dashboard.conversations -->
                 <form>
@@ -1450,6 +1738,9 @@
 <!-- PAGE CONTENT ENDS -->
 </div><!-- /.col -->
 </div><!-- /.row -->
+</div>
+
+
 </div><!-- /.page-content -->
 </div>
 </div><!-- /.main-content -->
@@ -1471,14 +1762,14 @@
 <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
     <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
 </a>
-</div><!-- /.main-container -->
+
 
 <!-- basic scripts -->
 
 <!--[if !IE]> -->
 <script type="text/javascript">
     window.jQuery || document.write("<script src='assets/js/jquery.js'>"+"<"+"/script>");
-</script><script src="assets/js/jquery.js"></script>
+</script>
 
 <!-- <![endif]-->
 
@@ -1493,17 +1784,6 @@
 <script src="assets/js/bootstrap.js"></script>
 
 <!-- page specific plugin scripts -->
-
-<!--[if lte IE 8]>
-<script src="assets/js/excanvas.js"></script>
-<![endif]-->
-<script src="assets/js/jquery-ui.custom.js"></script>
-<script src="assets/js/jquery.ui.touch-punch.js"></script>
-<script src="assets/js/jquery.easypiechart.js"></script>
-<script src="assets/js/jquery.sparkline.js"></script>
-<script src="assets/js/flot/jquery.flot.js"></script>
-<script src="assets/js/flot/jquery.flot.pie.js"></script>
-<script src="assets/js/flot/jquery.flot.resize.js"></script>
 
 <!-- ace scripts -->
 <script src="assets/js/ace/elements.scroller.js"></script>
@@ -1529,230 +1809,17 @@
 <script src="assets/js/ace/ace.searchbox-autocomplete.js"></script>
 
 <!-- inline scripts related to this page -->
-<script type="text/javascript">
-jQuery(function($) {
-    $('.easy-pie-chart.percentage').each(function(){
-        var $box = $(this).closest('.infobox');
-        var barColor = $(this).data('color') || (!$box.hasClass('infobox-dark') ? $box.css('color') : 'rgba(255,255,255,0.95)');
-        var trackColor = barColor == 'rgba(255,255,255,0.95)' ? 'rgba(255,255,255,0.25)' : '#E2E2E2';
-        var size = parseInt($(this).data('size')) || 50;
-        $(this).easyPieChart({
-            barColor: barColor,
-            trackColor: trackColor,
-            scaleColor: false,
-            lineCap: 'butt',
-            lineWidth: parseInt(size/10),
-            animate: /msie\s*(8|7|6)/.test(navigator.userAgent.toLowerCase()) ? false : 1000,
-            size: size
-        });
-    })
-
-    $('.sparkline').each(function(){
-        var $box = $(this).closest('.infobox');
-        var barColor = !$box.hasClass('infobox-dark') ? $box.css('color') : '#FFF';
-        $(this).sparkline('html',
-                {
-                    tagValuesAttribute:'data-values',
-                    type: 'bar',
-                    barColor: barColor ,
-                    chartRangeMin:$(this).data('min') || 0
-                });
-    });
-
-
-    //flot chart resize plugin, somehow manipulates default browser resize event to optimize it!
-    //but sometimes it brings up errors with normal resize event handlers
-    $.resize.throttleWindow = false;
-
-    var placeholder = $('#piechart-placeholder').css({'width':'90%' , 'min-height':'150px'});
-    var data = [
-        { label: "social networks",  data: 38.7, color: "#68BC31"},
-        { label: "search engines",  data: 24.5, color: "#2091CF"},
-        { label: "ad campaigns",  data: 8.2, color: "#AF4E96"},
-        { label: "direct traffic",  data: 18.6, color: "#DA5430"},
-        { label: "other",  data: 10, color: "#FEE074"}
-    ]
-    function drawPieChart(placeholder, data, position) {
-        $.plot(placeholder, data, {
-            series: {
-                pie: {
-                    show: true,
-                    tilt:0.8,
-                    highlight: {
-                        opacity: 0.25
-                    },
-                    stroke: {
-                        color: '#fff',
-                        width: 2
-                    },
-                    startAngle: 2
-                }
-            },
-            legend: {
-                show: true,
-                position: position || "ne",
-                labelBoxBorderColor: null,
-                margin:[-30,15]
-            }
-            ,
-            grid: {
-                hoverable: true,
-                clickable: true
-            }
-        })
-    }
-    drawPieChart(placeholder, data);
-
-    /**
-     we saved the drawing function and the data to redraw with different position later when switching to RTL mode dynamically
-     so that's not needed actually.
-     */
-    placeholder.data('chart', data);
-    placeholder.data('draw', drawPieChart);
-
-
-    //pie chart tooltip example
-    var $tooltip = $("<div class='tooltip top in'><div class='tooltip-inner'></div></div>").hide().appendTo('body');
-    var previousPoint = null;
-
-    placeholder.on('plothover', function (event, pos, item) {
-        if(item) {
-            if (previousPoint != item.seriesIndex) {
-                previousPoint = item.seriesIndex;
-                var tip = item.series['label'] + " : " + item.series['percent']+'%';
-                $tooltip.show().children(0).text(tip);
-            }
-            $tooltip.css({top:pos.pageY + 10, left:pos.pageX + 10});
-        } else {
-            $tooltip.hide();
-            previousPoint = null;
-        }
-
-    });
-
-    /////////////////////////////////////
-    $(document).one('ajaxloadstart.page', function(e) {
-        $tooltip.remove();
-    });
-
-
-
-
-    var d1 = [];
-    for (var i = 0; i < Math.PI * 2; i += 0.5) {
-        d1.push([i, Math.sin(i)]);
-    }
-
-    var d2 = [];
-    for (var i = 0; i < Math.PI * 2; i += 0.5) {
-        d2.push([i, Math.cos(i)]);
-    }
-
-    var d3 = [];
-    for (var i = 0; i < Math.PI * 2; i += 0.2) {
-        d3.push([i, Math.tan(i)]);
-    }
-
-
-    var sales_charts = $('#sales-charts').css({'width':'100%' , 'height':'220px'});
-    $.plot("#sales-charts", [
-        { label: "Domains", data: d1 },
-        { label: "Hosting", data: d2 },
-        { label: "Services", data: d3 }
-    ], {
-        hoverable: true,
-        shadowSize: 0,
-        series: {
-            lines: { show: true },
-            points: { show: true }
-        },
-        xaxis: {
-            tickLength: 0
-        },
-        yaxis: {
-            ticks: 10,
-            min: -2,
-            max: 2,
-            tickDecimals: 3
-        },
-        grid: {
-            backgroundColor: { colors: [ "#fff", "#fff" ] },
-            borderWidth: 1,
-            borderColor:'#555'
-        }
-    });
-
-
-    $('#recent-box [data-rel="tooltip"]').tooltip({placement: tooltip_placement});
-    function tooltip_placement(context, source) {
-        var $source = $(source);
-        var $parent = $source.closest('.tab-content')
-        var off1 = $parent.offset();
-        var w1 = $parent.width();
-
-        var off2 = $source.offset();
-        //var w2 = $source.width();
-
-        if( parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2) ) return 'right';
-        return 'left';
-    }
-
-
-    $('.dialogs,.comments').ace_scroll({
-        size: 300
-    });
-
-
-    //Android's default browser somehow is confused when tapping on label which will lead to dragging the task
-    //so disable dragging when clicking on label
-    var agent = navigator.userAgent.toLowerCase();
-    if("ontouchstart" in document && /applewebkit/.test(agent) && /android/.test(agent))
-        $('#tasks').on('touchstart', function(e){
-            var li = $(e.target).closest('#tasks li');
-            if(li.length == 0)return;
-            var label = li.find('label.inline').get(0);
-            if(label == e.target || $.contains(label, e.target)) e.stopImmediatePropagation() ;
-        });
-
-    $('#tasks').sortable({
-                opacity:0.8,
-                revert:true,
-                forceHelperSize:true,
-                placeholder: 'draggable-placeholder',
-                forcePlaceholderSize:true,
-                tolerance:'pointer',
-                stop: function( event, ui ) {
-                    //just for Chrome!!!! so that dropdowns on items don't appear below other items after being moved
-                    $(ui.item).css('z-index', 'auto');
-                }
-            }
-    );
-    $('#tasks').disableSelection();
-    $('#tasks input:checkbox').removeAttr('checked').on('click', function(){
-        if(this.checked) $(this).closest('li').addClass('selected');
-        else $(this).closest('li').removeClass('selected');
-    });
-
-
-    //show the dropdowns on top or bottom depending on window height and menu position
-    $('#task-tab .dropdown-hover').on('mouseenter', function(e) {
-        var offset = $(this).offset();
-
-        var $w = $(window)
-        if (offset.top > $w.scrollTop() + $w.innerHeight() - 100)
-            $(this).addClass('dropup');
-        else $(this).removeClass('dropup');
-    });
-
-})
-</script>
 
 <!-- the following scripts are used in demo only for onpage help and you don't need them -->
-<link rel="stylesheet" href="assets/css/ace.onpage-help.css">
+<link rel="stylesheet" href="assets/css/ace.onpage-help.css" />
 
 <script type="text/javascript"> ace.vars['base'] = '..'; </script>
 <script src="assets/js/ace/elements.onpage-help.js"></script>
 <script src="assets/js/ace/ace.onpage-help.js"></script>
-
-
-<div class="tooltip top in" style="display: none;"><div class="tooltip-inner"></div></div></body></html>
+<script src="../docs/assets/js/rainbow.js"></script>
+<script src="../docs/assets/js/language/generic.js"></script>
+<script src="../docs/assets/js/language/html.js"></script>
+<script src="../docs/assets/js/language/css.js"></script>
+<script src="../docs/assets/js/language/javascript.js"></script>
+</body>
+</html>

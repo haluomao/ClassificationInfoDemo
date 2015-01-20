@@ -1,5 +1,6 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en"><head>
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta charset="utf-8" />
@@ -98,7 +99,7 @@
             4 Tasks to complete
         </li>
 
-        <li class="dropdown-content">
+        <li class="dropdown-content ace-scroll" style="position: relative;"><div class="scroll-track" style="display: none;"><div class="scroll-bar"></div></div><div class="scroll-content" style="max-height: 200px;">
             <ul class="dropdown-menu dropdown-navbar">
                 <li>
                     <a href="#">
@@ -152,7 +153,7 @@
                     </a>
                 </li>
             </ul>
-        </li>
+        </div></li>
 
         <li class="dropdown-footer">
             <a href="#">
@@ -175,7 +176,7 @@
             8 Notifications
         </li>
 
-        <li class="dropdown-content">
+        <li class="dropdown-content ace-scroll" style="position: relative;"><div class="scroll-track" style="display: none;"><div class="scroll-bar"></div></div><div class="scroll-content" style="max-height: 200px;">
             <ul class="dropdown-menu dropdown-navbar navbar-pink">
                 <li>
                     <a href="#">
@@ -220,7 +221,7 @@
                     </a>
                 </li>
             </ul>
-        </li>
+        </div></li>
 
         <li class="dropdown-footer">
             <a href="#">
@@ -243,11 +244,11 @@
             5 Messages
         </li>
 
-        <li class="dropdown-content">
+        <li class="dropdown-content ace-scroll" style="position: relative;"><div class="scroll-track" style="display: none;"><div class="scroll-bar"></div></div><div class="scroll-content" style="max-height: 200px;">
             <ul class="dropdown-menu dropdown-navbar">
                 <li>
                     <a href="#" class="clearfix">
-                        <img src="assets/avatars/avatar.png" class="msg-photo" alt="Alex's Avatar" />
+                        <img src="assets/avatars/avatar.png" class="msg-photo" alt="Alex's Avatar">
 												<span class="msg-body">
 													<span class="msg-title">
 														<span class="blue">Alex:</span>
@@ -264,7 +265,7 @@
 
                 <li>
                     <a href="#" class="clearfix">
-                        <img src="assets/avatars/avatar3.png" class="msg-photo" alt="Susan's Avatar" />
+                        <img src="assets/avatars/avatar3.png" class="msg-photo" alt="Susan's Avatar">
 												<span class="msg-body">
 													<span class="msg-title">
 														<span class="blue">Susan:</span>
@@ -281,7 +282,7 @@
 
                 <li>
                     <a href="#" class="clearfix">
-                        <img src="assets/avatars/avatar4.png" class="msg-photo" alt="Bob's Avatar" />
+                        <img src="assets/avatars/avatar4.png" class="msg-photo" alt="Bob's Avatar">
 												<span class="msg-body">
 													<span class="msg-title">
 														<span class="blue">Bob:</span>
@@ -298,7 +299,7 @@
 
                 <li>
                     <a href="#" class="clearfix">
-                        <img src="assets/avatars/avatar2.png" class="msg-photo" alt="Kate's Avatar" />
+                        <img src="assets/avatars/avatar2.png" class="msg-photo" alt="Kate's Avatar">
 												<span class="msg-body">
 													<span class="msg-title">
 														<span class="blue">Kate:</span>
@@ -315,7 +316,7 @@
 
                 <li>
                     <a href="#" class="clearfix">
-                        <img src="assets/avatars/avatar5.png" class="msg-photo" alt="Fred's Avatar" />
+                        <img src="assets/avatars/avatar5.png" class="msg-photo" alt="Fred's Avatar">
 												<span class="msg-body">
 													<span class="msg-title">
 														<span class="blue">Fred:</span>
@@ -330,7 +331,7 @@
                     </a>
                 </li>
             </ul>
-        </li>
+        </div></li>
 
         <li class="dropdown-footer">
             <a href="inbox.html">
@@ -344,10 +345,10 @@
 <!-- #section:basics/navbar.user_menu -->
 <li class="light-blue">
     <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-        <img class="nav-user-photo" src="assets/avatars/user.jpg" alt="Jason's Photo" />
+        <img class="nav-user-photo" src="assets/avatars/user.jpg" alt="Jason's Photo">
 								<span class="user-info">
 									<small>欢迎,</small>
-									${requestScope.username}
+
 								</span>
 
         <i class="ace-icon fa fa-caret-down"></i>
@@ -414,7 +415,7 @@
         <li class="active open">
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-list"></i>
-                <span class="menu-text"> 列表 </span>
+                <span class="menu-text"> 数据列表 </span>
 
                 <b class="arrow fa fa-angle-down"></b>
             </a>
@@ -424,7 +425,7 @@
             <ul class="submenu">
 
                 <li class="active">
-                    <a href="/">
+                    <a href="classification">
                         <i class="menu-icon fa fa-caret-right"></i>
                         资产分类
                     </a>
@@ -435,13 +436,6 @@
                     <a href="assetstockin">
                         <i class="menu-icon fa fa-caret-right"></i>
                         资产入库
-                    </a>
-                    <b class="arrow"></b>
-                </li>
-                <li>
-                    <a href="login">
-                        <i class="menu-icon fa fa-caret-right"></i>
-                        登录
                     </a>
                     <b class="arrow"></b>
                 </li>
@@ -597,50 +591,73 @@
         </h1>
     </div><!-- /.page-header -->
     <div class="row">
-        <div class="col-xs-12 col-lg-12">
+        <div class="col-sm-12">
             <div class="widget-box">
                 <div class="widget-header">
                     <h4 class="widget-title">检索条件</h4>
+                    <div class="widget-toolbar">
+                        <a href="#" data-action="collapse">
+                            <i class="ace-icon fa fa-chevron-up"></i>
+                        </a>
+
+                    </div>
                 </div>
 
                 <div class="widget-body">
-                    <div class="widget-main">
+                    <div class="widget-main no-padding">
+                        <form>
+                            <!-- <legend>Form</legend> -->
+                            <fieldset>
 
-                        <div class="col-xs-12 col-lg-offset-2 col-lg-4">
-                            <label for="search_classNo" >资产编号:</label>
-                            <!-- #section:plugins/input.masked-input -->
-                            <input type="text"  id="search_classNo" placeholder="资产编号"  name="assetNo" />
-                        </div>
+                                <div class="form-inline col-xs-12 col-md-offset-1 col-md-5">
+                                    <label  for="search_className" >资产名称:</label>
+                                    <!-- #section:plugins/input.masked-input -->
 
-                        <div class="col-xs-12 col-lg-6">
-                            <label for="search_className">资产名称:</label>
-                            <!-- #section:plugins/input.masked-input -->
-                            <input type="text" id="search_className" placeholder="资产名称"  name="assetName" />
-                        </div>
+                                    <input type="text" id="search_className" placeholder="资产名称"  name="search_className" />
 
-                        <div class="col-xs-12 col-lg-offset-2 col-lg-10">
-                            <div class="form-inline">
-                                <label for="search_beginDate"> 创建日期: </label>
-                                <div class="input-group">
-                                    <input placeholder="起始于.." type="text" id="search_beginDate" />
-                                            <span class="input-group-addon">
-														<i class="ace-icon fa fa-calendar"></i>
-													</span>
                                 </div>
-                                <div class="input-group">
-                                    <input  placeholder="截止于.." type="text" id="search_endDate" />
-                                            <span class="input-group-addon">
-														<i class="ace-icon fa fa-calendar"></i>
-													</span>
+
+                                <div class="col-xs-12 col-md-6">
+                                    <label for="search_createMan">创建人:</label>
+                                    <!-- #section:plugins/input.masked-input -->
+                                    <input type="text" id="search_createMan" placeholder="创建人"  name="search_createMan" />
                                 </div>
+                                <br>
+                                <div class="space space-12"></div>
+                                <div class="col-xs-12 col-md-offset-1 col-md-5">
+                                    <div class="form-inline">
+                                        <label for="search_beginDate"> 创建日期: </label>
+                                        <div class="input-group col-xs-6 col-md-6">
+                                            <input class="col-xs-12 col-md-12" placeholder="起始于.." type="text" id="search_beginDate" />
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-arrow-right"></i>
+                                            </span>
+
+                                            <input class="col-xs-12 col-md-12" placeholder="截止于.." type="text" id="search_endDate" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--<label>Label name</label>-->
+
+                                <!--<input type="text" placeholder="Type something…">-->
+                                <!--<span class="help-block">Example block-level help text here.</span>-->
+
+                                <!--<label class="pull-right">-->
+                                <!--<input type="checkbox" class="ace">-->
+                                <!--<span class="lbl"> check me out</span>-->
+                                <!--</label>-->
+                            </fieldset>
+
+                            <div class="form-actions center">
+                                <!--<button type="button" class="btn btn-sm btn-success">-->
+                                <!--Submit-->
+                                <!--<i class="ace-icon fa fa-arrow-right icon-on-right bigger-110"></i>-->
+                                <!--</button>-->
+                                <button type="button" class="btn btn-success" onclick="gridReload()">检索</button>
+                                <button type="reset" class="btn btn-primary">重置</button>
                             </div>
-                        </div>
-
-                        <div >
-                            <button type="button" class="btn btn-success" onclick="gridReload()">检索</button>
-                            <button type="reset" class="btn btn-primary">重置</button>
-                        </div>
-
+                        </form>
                     </div>
                 </div>
             </div>
@@ -779,6 +796,9 @@ var subgrid_data =
 jQuery(function($) {
     var grid_selector = "#tableList";
     var pager_selector = "#pager";
+
+    $("#search_beginDate").datepicker({dateFormat: 'yy-mm-dd'});
+    $("#search_endDate").datepicker({dateFormat: 'yy-mm-dd'});
 
     //resize to fit page size
     $(window).on('resize.jqGrid', function () {
@@ -1218,16 +1238,15 @@ jQuery(function($) {
         $('.ui-jqdialog').remove();
     });
 
-    $("#search_beginDate").datepicker({dateFormat: 'yy-mm-dd'});
-    $("#search_endDate").datepicker({dateFormat: 'yy-mm-dd'});
+
 });
 function gridReload(){
     //@CodeGen begin
     var var1 = $("#search_className").val();
     var var2 = $("#search_createMan").val();
-    var var3 = $("#search_startDate").val();
+    var var3 = $("#search_beginDate").val();
     var var4 = $("#search_endDate").val();
-    var startdate=new Date(($("#search_startDate").val()).replace(/-/g,"/"));
+    var startdate=new Date(($("#search_beginDate").val()).replace(/-/g,"/"));
     var enddate=new Date(($("#search_endDate").val()).replace(/-/g,"/"));
     if(startdate > enddate)
     {

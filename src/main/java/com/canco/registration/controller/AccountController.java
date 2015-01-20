@@ -128,7 +128,7 @@ public class AccountController {
             logger.info("Validation failed! Password is too long?");
             logger.info(result.getAllErrors().toString());
 			map.put("errorinfo",result.getFieldError().getField() + result.getFieldError().getDefaultMessage().toString());
-            return "classification2/registerFailure";
+            return "register/registerFailure";
         }
 
         logger.info("registerSubmitAction");
@@ -143,10 +143,10 @@ public class AccountController {
 
         if(userService.exists(u)) {
 			map.put("errorinfo","用户名已经被注册");
-			return "classification2/registerFailure";  //跳转到registerFailure.jsp;
+			return "register/registerFailure";  //跳转到registerFailure.jsp;
 		}
         userService.add(u);
-        return "classification2/registerSuccess";  //跳转到registerSuccess.jsp;
+        return "register/registerSuccess";  //跳转到registerSuccess.jsp;
     }
 
     @RequestMapping(value="register.html")

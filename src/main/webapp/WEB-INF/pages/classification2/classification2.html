@@ -703,7 +703,8 @@
 </div><!-- /.main-container -->
 
 <!-- basic scripts -->
-
+<script src="../common/js/jquery-2.1.1.min.js"></script>
+<script src="../common/js/jquery-ui.min.js"></script>
 <!--[if !IE]> -->
 <script type="text/javascript">
     window.jQuery || document.write("<script src='assets/js/jquery.js'>"+"<"+"/script>");
@@ -793,7 +794,8 @@ var subgrid_data =
 jQuery(function($) {
     var grid_selector = "#tableList";
     var pager_selector = "#pager";
-
+    $("#search_beginDate").datepicker({dateFormat: 'yy-mm-dd'});
+    $("#search_endDate").datepicker({dateFormat: 'yy-mm-dd'});
     //resize to fit page size
     $(window).on('resize.jqGrid', function () {
         $(grid_selector).jqGrid( 'setGridWidth', $(".page-content").width() );
@@ -1232,8 +1234,8 @@ jQuery(function($) {
         $('.ui-jqdialog').remove();
     });
 
-    $("#search_beginDate").datepicker({dateFormat: 'yy-mm-dd'});
-    $("#search_endDate").datepicker({dateFormat: 'yy-mm-dd'});
+//    $("#search_beginDate").datepicker({dateFormat: 'yy-mm-dd'});
+//    $("#search_endDate").datepicker({dateFormat: 'yy-mm-dd'});
 });
 function gridReload(){
     //@CodeGen begin
